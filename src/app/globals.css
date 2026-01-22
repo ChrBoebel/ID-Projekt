@@ -1,26 +1,316 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* 3DGlobal Corporate Colors per Analysis */
+  --color-primary: #003E77;
+  /* Deep Blue */
+  --color-secondary: #004A99;
+  /* Slightly lighter blue for variance */
+  --color-accent: #73C7D4;
+  /* Cyan Accent */
+  --background: #FFFFFF;
+  --text: #2E2E2E;
+  /* Dark Grey for body text */
+  --text-heading: #003E77;
+  /* Deep Blue for headings */
+
+  --danger: #dc2626;
+  --warning: #ea580c;
+  --caution: #ca8a04;
+  --info: #004A99;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-sora);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--text-heading);
+  font-weight: 300;
+  /* Default to Light for 3D Global look */
+}
+
+/* 3D Global Specific Utilities */
+.text-light {
+  font-weight: 300;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+/* Parallelogram Button Shape */
+.btn-slant {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 300;
+  text-decoration: none;
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+  /* Slight angle on right */
+  transition: all 0.3s ease;
+}
+
+.btn-slant:hover {
+  background-color: var(--color-secondary);
+  padding-right: 40px;
+  /* Expand slightly on hover */
+}
+
+/* Arrow Icon Handling */
+.btn-slant svg {
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.btn-slant:hover svg {
+  transform: translateX(4px);
+}
+
+/* Section Divider Curves */
+.curve-top {
+  clip-path: ellipse(75% 100% at 50% 100%);
+}
+
+.curve-bottom {
+  clip-path: ellipse(75% 100% at 50% 0%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Smooth scroll offset for fixed header */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Image zoom effect */
+.image-zoom {
+  transition: transform 0.3s ease;
+}
+
+.image-zoom:hover {
+  transform: scale(1.02);
+}
+
+/* Glassmorphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Progress bar animation */
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Slide up animation for hero */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.8s ease forwards;
+}
+
+/* ===========================================
+   PDF / Print Styles
+   =========================================== */
+@media print {
+  /* Hide navigation and footer for print */
+  aside,
+  nav,
+  .navigation {
+    display: none !important;
+  }
+
+  /* Remove margin for main content */
+  main {
+    margin-left: 0 !important;
+  }
+
+  /* Ensure backgrounds are printed */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Disable hover effects */
+  .btn-slant:hover,
+  .image-zoom:hover {
+    transform: none !important;
+  }
+
+  /* Page break utilities */
+  .page-break-before {
+    page-break-before: always;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+  }
+
+  /* Keep headings with following content */
+  h2, h3, h4 {
+    page-break-after: avoid;
+  }
+
+  /* Avoid breaking inside certain elements */
+  section,
+  .warning-box,
+  table,
+  .feature-card {
+    page-break-inside: avoid;
+  }
+
+  /* Fixed width for consistent layout */
+  body {
+    width: 210mm;
+    margin: 0 auto;
+  }
+
+  /* Hide scroll indicators */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* PDF Document specific styles (for /pdf route) */
+.pdf-document {
+  width: 210mm;
+  margin: 0 auto;
+}
+
+.pdf-document .title-page {
+  min-height: 297mm;
+  box-sizing: border-box;
+}
+
+.pdf-document .toc-page {
+  min-height: 297mm;
+  box-sizing: border-box;
+}
+
+/* Page break classes for PDF */
+.page-break-before {
+  break-before: page;
+}
+
+.page-break-after {
+  break-after: page;
+}
+
+.avoid-break {
+  break-inside: avoid;
+}
+
+/* Ensure feature cards don't break across pages */
+.feature-card {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.feature-grid {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* PDF-specific image handling */
+.pdf-document img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure warning boxes don't break */
+.pdf-document .warning-box {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* Better table handling in PDF */
+.pdf-document table {
+  break-inside: auto;
+}
+
+.pdf-document tr {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* Ensure sub-sections don't break awkwardly */
+.pdf-document section > div {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }

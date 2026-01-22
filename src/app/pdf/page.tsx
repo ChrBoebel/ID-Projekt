@@ -1,6 +1,5 @@
 import Image from "next/image";
 import {
-  Navigation,
   Section,
   SubSection,
   WarningBox,
@@ -9,85 +8,106 @@ import {
   StepList,
   Checklist,
   SingleImage,
-  Footer,
   FeatureCard,
   FeatureGrid,
 } from "@/components";
 import { Users, Eye, Box, ImageIcon, Cable } from "lucide-react";
 
-export default function Home() {
+export default function PDFPage() {
   return (
-    <>
-      <Navigation />
+    <div className="pdf-document bg-white">
+      {/* Titelseite */}
+      <div className="title-page min-h-[297mm] flex flex-col items-center justify-center p-12 relative">
+        {/* Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-[#73C7D4]/10"></div>
 
-      <main className="lg:ml-[280px] min-h-screen">
-        {/* Hero Section */}
-        <div className="relative bg-gradient-to-br from-white via-white to-[#73C7D4]/5 border-b border-gray-100 overflow-hidden">
-          {/* Subtle Background Accents */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-[#73C7D4]/10 to-transparent rounded-full blur-3xl -mr-32 -mt-32"></div>
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-[#003E77]/5 to-transparent rounded-full blur-3xl -ml-32 -mb-32"></div>
-
-          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-12 sm:py-16 lg:py-24 pt-20 lg:pt-24">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
-              {/* Left: Text Content */}
-              <div className="order-2 lg:order-1 text-center lg:text-left">
-                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-light font-heading text-[#003E77] mb-6 sm:mb-8 leading-[1.1] animate-slideUp tracking-tight">
-                  MultiView <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#003E77] to-[#73C7D4] font-normal">3D-Display</span>
-                </h1>
-                <p className="text-lg sm:text-xl lg:text-2xl text-gray-500 font-light mb-8 sm:mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                  Brillenfreie 3D-Visualisierung für professionelle Anwendungen.
-                  Erleben Sie die Zukunft der Darstellung.
-                </p>
-                <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 justify-center lg:justify-start">
-                  <a
-                    href="#hinweise"
-                    className="btn-slant text-sm sm:text-base group"
-                  >
-                    Zur Anleitung
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                  </a>
-
-                  <a
-                    href="#technisch"
-                    className="px-6 py-3 bg-transparent text-[#003E77] text-sm sm:text-base font-light border-b border-[#003E77]/30 hover:border-[#003E77] transition-all flex items-center gap-2 justify-center"
-                  >
-                    Technische Daten
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" /></svg>
-                  </a>
-                </div>
+        <div className="relative z-10 text-center">
+          {/* Logo/Brand */}
+          <div className="mb-8">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#003E77] to-[#004A99] rounded-xl flex items-center justify-center">
+                <span className="text-white font-bold text-2xl">3D</span>
               </div>
+              <span className="text-3xl font-light text-[#003E77]">Global</span>
+            </div>
+          </div>
 
-              {/* Right: Title Image */}
-              <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-                <div className="relative">
-                  {/* Decorative elements */}
-                  <div className="absolute -inset-4 bg-gradient-to-br from-[#003E77]/10 to-[#73C7D4]/20 rounded-3xl blur-2xl opacity-60"></div>
-                  <div className="relative bg-white rounded-2xl shadow-2xl shadow-[#003E77]/10 overflow-hidden border border-slate-100">
-                    <Image
-                      src="/images/Titelblatt.jpeg"
-                      alt="3D Bildschirm - Bedienungsanleitung"
-                      width={400}
-                      height={500}
-                      className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[380px] h-auto object-contain"
-                      priority
-                    />
-                  </div>
-                  {/* Floating badge */}
-                  <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 bg-[#003E77] text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl shadow-lg">
-                    <p className="text-[10px] sm:text-xs font-medium">3DGlobal</p>
-                    <p className="text-xs sm:text-sm font-bold">2025 Serie</p>
-                  </div>
-                </div>
+          {/* Title Image */}
+          <div className="mb-12">
+            <div className="relative inline-block">
+              <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
+                <Image
+                  src="/images/Titelblatt.jpeg"
+                  alt="3D Bildschirm"
+                  width={350}
+                  height={440}
+                  className="object-contain"
+                  priority
+                />
               </div>
             </div>
           </div>
+
+          {/* Title */}
+          <h1 className="text-5xl font-light text-[#003E77] mb-4">
+            MultiView 3D-Display
+          </h1>
+          <h2 className="text-3xl font-light text-transparent bg-clip-text bg-gradient-to-r from-[#003E77] to-[#73C7D4] mb-8">
+            Bedienungsanleitung
+          </h2>
+
+          {/* Subtitle */}
+          <p className="text-xl text-gray-500 font-light mb-12 max-w-lg mx-auto">
+            Brillenfreie 3D-Visualisierung für professionelle Anwendungen
+          </p>
+
+          {/* Model Info */}
+          <div className="inline-flex items-center gap-4 bg-[#003E77] text-white px-6 py-3 rounded-lg">
+            <span className="text-sm">43&quot; MultiView 3D-Bildschirm</span>
+            <span className="text-sm opacity-60">|</span>
+            <span className="text-sm font-semibold">2025 Serie</span>
+          </div>
         </div>
 
-        {/* Content */}
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        {/* Footer on title page */}
+        <div className="absolute bottom-12 left-0 right-0 text-center">
+          <p className="text-sm text-gray-400">3DGlobal Displays GmbH</p>
+          <p className="text-xs text-gray-300 mt-1">www.3dglobal.de</p>
+        </div>
+      </div>
 
-          {/* Kapitel 1: Hinweise zur Bedienungsanleitung */}
+      {/* Inhaltsverzeichnis */}
+      <div className="toc-page page-break-before min-h-[297mm] p-12 pt-16">
+        <h2 className="text-3xl font-light text-[#003E77] mb-8 pb-4 border-b-2 border-[#73C7D4]">
+          Inhaltsverzeichnis
+        </h2>
+
+        <div className="space-y-3 text-lg">
+          {[
+            { num: "1", title: "Hinweise zur Bedienungsanleitung", page: "3" },
+            { num: "2", title: "Sicherheit", page: "4" },
+            { num: "3", title: "Leistungsbeschreibung", page: "8" },
+            { num: "4", title: "Gerätebeschreibung", page: "12" },
+            { num: "5", title: "Tätigkeitsbeschreibung", page: "16" },
+            { num: "6", title: "Problemlösung", page: "24" },
+            { num: "7", title: "Technische Daten", page: "26" },
+            { num: "8", title: "Anhang", page: "28" },
+          ].map((item) => (
+            <div key={item.num} className="flex items-baseline">
+              <span className="font-semibold text-[#003E77] w-8">{item.num}</span>
+              <span className="flex-1 text-slate-700">{item.title}</span>
+              <span className="text-slate-400 border-b border-dotted border-slate-300 flex-1 mx-4"></span>
+              <span className="text-slate-500">{item.page}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="max-w-4xl mx-auto px-8 py-12">
+
+        {/* Kapitel 1: Hinweise zur Bedienungsanleitung */}
+        <div className="page-break-before">
           <Section
             id="hinweise"
             title="1. Hinweise zur Bedienungsanleitung"
@@ -130,8 +150,10 @@ export default function Home() {
               </p>
             </div>
           </Section>
+        </div>
 
-          {/* Kapitel 2: Sicherheit */}
+        {/* Kapitel 2: Sicherheit */}
+        <div className="page-break-before">
           <Section
             id="sicherheit"
             title="2. Sicherheit"
@@ -218,8 +240,10 @@ export default function Home() {
               />
             </SubSection>
           </Section>
+        </div>
 
-          {/* Kapitel 3: Leistungsbeschreibung */}
+        {/* Kapitel 3: Leistungsbeschreibung */}
+        <div className="page-break-before">
           <Section
             id="leistung"
             title="3. Leistungsbeschreibung"
@@ -326,8 +350,10 @@ export default function Home() {
               />
             </SubSection>
           </Section>
+        </div>
 
-          {/* Kapitel 4: Gerätebeschreibung */}
+        {/* Kapitel 4: Gerätebeschreibung */}
+        <div className="page-break-before">
           <Section
             id="geraet"
             title="4. Gerätebeschreibung"
@@ -436,8 +462,10 @@ export default function Home() {
               </WarningBox>
             </SubSection>
           </Section>
+        </div>
 
-          {/* Kapitel 5: Tätigkeitsbeschreibung */}
+        {/* Kapitel 5: Tätigkeitsbeschreibung */}
+        <div className="page-break-before">
           <Section
             id="taetigkeit"
             title="5. Tätigkeitsbeschreibung"
@@ -652,7 +680,7 @@ export default function Home() {
                 <p>Verwenden Sie die Pfeiltasten zur Navigation:</p>
                 <ul className="list-disc list-inside ml-4 space-y-1">
                   <li><strong>▲ / ▼:</strong> Zwischen Menüpunkten wechseln</li>
-                  <li><strong>◀ / ▶:</strong> Werte ändern oder Untermenüs öffnen</li>
+                  <li><strong>◄ / ►:</strong> Werte ändern oder Untermenüs öffnen</li>
                   <li><strong>OK:</strong> Auswahl bestätigen</li>
                 </ul>
                 <p className="mt-4">Drücken Sie <strong>OK</strong> auf einem Menüpunkt mit Pfeil, um ein Untermenü zu öffnen.</p>
@@ -736,8 +764,10 @@ export default function Home() {
               </div>
             </SubSection>
           </Section>
+        </div>
 
-          {/* Kapitel 6: Problemlösung */}
+        {/* Kapitel 6: Problemlösung */}
+        <div className="page-break-before">
           <Section
             id="problemloesung"
             title="6. Problemlösung"
@@ -770,8 +800,10 @@ export default function Home() {
               ]}
             />
           </Section>
+        </div>
 
-          {/* Kapitel 7: Technische Daten */}
+        {/* Kapitel 7: Technische Daten */}
+        <div className="page-break-before">
           <Section
             id="technisch"
             title="7. Technische Daten"
@@ -831,10 +863,10 @@ export default function Home() {
                 <div className="bg-white p-6 rounded-lg border border-slate-200 text-center">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/images/CE_symbol.svg"
+                    src="/images/CE_symbol.png"
                     alt="CE-Kennzeichnung"
-                    width={70}
-                    height={50}
+                    width={60}
+                    height={60}
                     className="mx-auto mb-3"
                   />
                   <h4 className="font-semibold text-slate-700">CE-Kennzeichnung</h4>
@@ -843,10 +875,10 @@ export default function Home() {
                 <div className="bg-white p-6 rounded-lg border border-slate-200 text-center">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="https://www.precisionot.com/wp-content/uploads/2020/11/rohs_001.png"
+                    src="/images/RoHS_symbol.png"
                     alt="RoHS-konform"
-                    width={70}
-                    height={35}
+                    width={60}
+                    height={60}
                     className="mx-auto mb-3"
                   />
                   <h4 className="font-semibold text-slate-700">RoHS-konform</h4>
@@ -855,9 +887,9 @@ export default function Home() {
                 <div className="bg-white p-6 rounded-lg border border-slate-200 text-center">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/images/WEEE_symbol.svg"
+                    src="/images/WEEE_symbol.png"
                     alt="WEEE-konform"
-                    width={50}
+                    width={60}
                     height={60}
                     className="mx-auto mb-3"
                   />
@@ -867,8 +899,10 @@ export default function Home() {
               </div>
             </SubSection>
           </Section>
+        </div>
 
-          {/* Kapitel 8: Anhang */}
+        {/* Kapitel 8: Anhang */}
+        <div className="page-break-before">
           <Section
             id="anhang"
             title="8. Anhang"
@@ -954,9 +988,9 @@ export default function Home() {
               <div className="flex items-start gap-4 mb-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/WEEE_symbol.svg"
+                  src="/images/WEEE_symbol.png"
                   alt="WEEE-Symbol"
-                  width={50}
+                  width={60}
                   height={60}
                   className="shrink-0"
                 />
@@ -1002,10 +1036,10 @@ export default function Home() {
               <div className="flex items-start gap-4 mb-6">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/CE_symbol.svg"
+                  src="/images/CE_symbol.png"
                   alt="CE-Kennzeichnung"
                   width={80}
-                  height={57}
+                  height={80}
                   className="shrink-0"
                 />
                 <div>
@@ -1062,13 +1096,23 @@ export default function Home() {
               </div>
             </SubSection>
           </Section>
-
         </div>
-      </main>
 
-      <div className="lg:ml-72">
-        <Footer />
+        {/* Footer Page */}
+        <div className="page-break-before min-h-[200mm] flex flex-col items-center justify-center text-center">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <div className="w-12 h-12 bg-gradient-to-br from-[#003E77] to-[#004A99] rounded-xl flex items-center justify-center">
+              <span className="text-white font-bold text-lg">3D</span>
+            </div>
+            <span className="text-2xl font-light text-[#003E77]">Global</span>
+          </div>
+          <p className="text-slate-500 mb-2">3DGlobal Displays GmbH</p>
+          <p className="text-slate-400 text-sm">Musterstraße 123, 12345 Musterstadt, Deutschland</p>
+          <p className="text-slate-400 text-sm mt-1">www.3dglobal.de</p>
+          <p className="text-slate-300 text-xs mt-8">© 2025 3DGlobal Displays GmbH. Alle Rechte vorbehalten.</p>
+        </div>
+
       </div>
-    </>
+    </div>
   );
 }
