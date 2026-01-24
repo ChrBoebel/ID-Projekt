@@ -22,38 +22,59 @@ export default function Home() {
 
       <main className="lg:ml-[280px] min-h-screen">
         {/* Hero Section */}
-        <div className="relative bg-gradient-to-br from-white via-white to-[#73C7D4]/5 border-b border-gray-100 overflow-hidden">
+        <div className="relative bg-gradient-to-br from-white via-white to-[#73C7D4]/5 border-b border-gray-100 overflow-hidden min-h-screen flex flex-col justify-center">
           {/* Subtle Background Accents */}
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-[#73C7D4]/10 to-transparent rounded-full blur-3xl -mr-32 -mt-32"></div>
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-[#003E77]/5 to-transparent rounded-full blur-3xl -ml-32 -mb-32"></div>
 
-          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-12 sm:py-16 lg:py-24 pt-20 lg:pt-24">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-6 sm:py-16 lg:py-24 pt-20 lg:pt-24 w-full">
+            <div className="grid lg:grid-cols-2 gap-y-12 gap-x-4 lg:gap-8 items-center">
               {/* Left: Text Content */}
               <div className="order-2 lg:order-1 text-center lg:text-left">
-                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-light font-heading text-[#003E77] mb-6 sm:mb-8 leading-[1.1] animate-slideUp tracking-tight">
+                <h1 className="text-3xl sm:text-5xl lg:text-7xl font-light font-heading text-[#003E77] mb-3 sm:mb-8 leading-[1.1] animate-slideUp tracking-tight">
                   MultiView <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#003E77] to-[#73C7D4] font-normal">3D-Display</span>
                 </h1>
-                <p className="text-lg sm:text-xl lg:text-2xl text-gray-500 font-light mb-8 sm:mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                <p className="text-xs sm:text-base text-gray-400 font-light mb-4 sm:mb-8 max-w-xl mx-auto lg:mx-0">
                   Brillenfreie 3D-Visualisierung für professionelle Anwendungen.
-                  Erleben Sie die Zukunft der Darstellung.
                 </p>
-                <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 justify-center lg:justify-start">
+                {/* User Intent Navigation */}
+                <p className="text-xs sm:text-sm text-slate-400 mb-3 font-light">Was möchten Sie tun?</p>
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 max-w-lg mx-auto lg:mx-0">
                   <a
-                    href="#hinweise"
-                    className="btn-slant text-sm sm:text-base group"
+                    href="#taetigkeit"
+                    className="group flex flex-col items-center lg:items-start p-3 sm:p-6 rounded-xl border border-slate-200 hover:border-[#003E77] hover:bg-[#003E77]/5 transition-all"
                   >
-                    Zur Anleitung
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#73C7D4] mb-2 sm:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    <span className="text-xs sm:text-base font-medium text-[#003E77]">Gerät einrichten</span>
+                    <span className="text-xs text-slate-400 hidden lg:block mt-1">Ersteinrichtung & Anschluss</span>
+                  </a>
+
+                  <a
+                    href="#problemloesung"
+                    className="group flex flex-col items-center lg:items-start p-3 sm:p-6 rounded-xl border border-slate-200 hover:border-[#003E77] hover:bg-[#003E77]/5 transition-all"
+                  >
+                    <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#73C7D4] mb-2 sm:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <span className="text-xs sm:text-base font-medium text-[#003E77]">Problem lösen</span>
+                    <span className="text-xs text-slate-400 hidden lg:block mt-1">Fehlerdiagnose & Hilfe</span>
+                  </a>
+
+                  <a
+                    href="#sicherheit"
+                    className="group flex flex-col items-center lg:items-start p-3 sm:p-6 rounded-xl border border-slate-200 hover:border-[#003E77] hover:bg-[#003E77]/5 transition-all"
+                  >
+                    <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#73C7D4] mb-2 sm:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                    <span className="text-xs sm:text-base font-medium text-[#003E77]">Sicherheit</span>
+                    <span className="text-xs text-slate-400 hidden lg:block mt-1">Wichtige Hinweise</span>
                   </a>
 
                   <a
                     href="#technisch"
-                    className="px-6 py-3 bg-transparent text-[#003E77] text-sm sm:text-base font-light border-b border-[#003E77]/30 hover:border-[#003E77] transition-all flex items-center gap-2 justify-center"
+                    className="group flex flex-col items-center lg:items-start p-3 sm:p-6 rounded-xl border border-slate-200 hover:border-[#003E77] hover:bg-[#003E77]/5 transition-all"
                   >
-                    Technische Daten
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" /></svg>
+                    <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#73C7D4] mb-2 sm:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                    <span className="text-xs sm:text-base font-medium text-[#003E77]">Technische Daten</span>
+                    <span className="text-xs text-slate-400 hidden lg:block mt-1">Spezifikationen</span>
                   </a>
                 </div>
               </div>
@@ -69,7 +90,7 @@ export default function Home() {
                       alt="3D Bildschirm - Bedienungsanleitung"
                       width={400}
                       height={500}
-                      className="w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[380px] h-auto object-contain"
+                      className="w-full max-w-[160px] sm:max-w-[280px] lg:max-w-[380px] h-auto object-contain"
                       priority
                     />
                   </div>
@@ -81,54 +102,46 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
+            {/* Scroll Indicator */}
+            <div className="flex justify-center mt-8 lg:mt-12">
+              <a
+                href="#sicherheit"
+                className="flex flex-col items-center text-slate-400 hover:text-[#003E77] transition-colors animate-bounce"
+              >
+                <span className="text-xs mb-2">Zur Anleitung</span>
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Content */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
 
-          {/* Kapitel 1: Hinweise zur Bedienungsanleitung */}
+          {/* Kapitel 1: Lieferumfang */}
           <Section
-            id="hinweise"
-            title="1. Hinweise zur Bedienungsanleitung"
-            subtitle="Signalwörter und Gefahrenstufen"
+            id="lieferumfang"
+            title="1. Lieferumfang"
+            subtitle="Übersicht der mitgelieferten Komponenten"
           >
-            <p className="text-slate-600 mb-6">
-              In dieser Bedienungsanleitung werden verschiedene Signalwörter verwendet,
-              um auf Gefahren und wichtige Hinweise aufmerksam zu machen.
+            <p className="text-slate-600 mb-4">
+              Prüfen Sie nach dem Auspacken, ob alle Teile vollständig geliefert wurden.
             </p>
 
             <Table
-              headers={["Symbol", "Signalwort", "Bedeutung"]}
+              headers={["Anzahl", "Bezeichnung", "Verwendung"]}
               rows={[
-                [
-                  <Image key="gefahr" src="/images/warnung.png" alt="Warnung" width={40} height={40} />,
-                  <span key="gefahr-text" className="font-bold text-red-600">GEFAHR</span>,
-                  "Unmittelbar drohende Gefahr. Tod oder schwerste Verletzungen sind die Folge."
-                ],
-                [
-                  <Image key="warnung" src="/images/warnung.png" alt="Warnung" width={40} height={40} />,
-                  <span key="warnung-text" className="font-bold text-orange-600">WARNUNG</span>,
-                  "Möglicherweise gefährliche Situation. Schwere Verletzungen können die Folge sein."
-                ],
-                [
-                  <Image key="vorsicht" src="/images/vorsicht.png" alt="Vorsicht" width={40} height={40} />,
-                  <span key="vorsicht-text" className="font-bold text-yellow-600">VORSICHT</span>,
-                  "Möglicherweise gefährliche Situation. Leichte Verletzungen können die Folge sein."
-                ],
-                [
-                  <Image key="hinweis" src="/images/hinweis.png" alt="Hinweis" width={40} height={40} />,
-                  <span key="hinweis-text" className="font-bold text-blue-600">HINWEIS</span>,
-                  "Wichtige Information zu Sachschäden oder Nutzungshinweisen."
-                ],
+                ["1", "43\" MultiView 3D-Bildschirm", "Hauptgerät zur Darstellung von 3D-Inhalten"],
+                ["1", "Fernbedienung", "Steuerung des Bildschirms (inkl. Batterien)"],
+                ["1", "Netzteil", "Stromversorgung des Bildschirms"],
+                ["1", "HDMI-Kabel", "Verbindung zwischen Computer und Bildschirm"],
+                ["1", "USB-Kabel", "Datenverbindung zwischen Computer und Bildschirm"],
+                ["1", "Schnellstartanleitung", "Erste Schritte zur Inbetriebnahme"],
               ]}
             />
-
-            <div className="mt-6 p-4 bg-slate-100 rounded-lg">
-              <p className="text-slate-700">
-                <strong>Handlungsschritte</strong> sind nummeriert. <strong>Ergebnis:</strong> zeigt das erwartete Ergebnis.
-              </p>
-            </div>
           </Section>
 
           {/* Kapitel 2: Sicherheit */}
@@ -145,7 +158,7 @@ export default function Home() {
             </SubSection>
 
             <SubSection title="Gesundheitshinweise (3D-spezifisch)">
-              <WarningBox type="warnung" title="Epilepsie">
+              <WarningBox type="warnung" title="Epilepsie" icon="auge">
                 Bestimmte 3D-Muster können Anfälle auslösen. Bei Schwindel oder Muskelzuckungen
                 Nutzung sofort abbrechen. Bei einem länger als 15 Minuten andauernden epileptischen
                 Anfall einen Notruf absetzen.
@@ -161,7 +174,7 @@ export default function Home() {
             </SubSection>
 
             <SubSection title="Elektrische Sicherheit">
-              <WarningBox type="gefahr" title="Stromschlag- und Brandgefahr">
+              <WarningBox type="gefahr" title="Stromschlag- und Brandgefahr" icon="strom">
                 Um die Gefahr von Stromschlägen oder Bränden zu vermeiden, beachten Sie
                 folgende Hinweise:
               </WarningBox>
@@ -196,7 +209,7 @@ export default function Home() {
             </SubSection>
 
             <SubSection title="Umgang mit der Glasscheibe">
-              <WarningBox type="vorsicht" title="Bruchgefahr">
+              <WarningBox type="vorsicht" title="Bruchgefahr" icon="allgemein">
                 Trotz der robusten Bauweise besteht bei massiver mechanischer Einwirkung Bruchgefahr.
               </WarningBox>
 
@@ -219,7 +232,7 @@ export default function Home() {
             </SubSection>
           </Section>
 
-          {/* Kapitel 3: Leistungsbeschreibung */}
+          {/* Kapitel 2: Leistungsbeschreibung */}
           <Section
             id="leistung"
             title="3. Leistungsbeschreibung"
@@ -243,27 +256,27 @@ export default function Home() {
               <h4 className="font-semibold text-slate-700 mt-8 mb-4">Hauptmerkmale:</h4>
               <FeatureGrid>
                 <FeatureCard
-                  icon={<Users className="w-6 h-6 text-[#0B3D5C]" strokeWidth={1.5} />}
+                  icon={<Users className="w-6 h-6 " strokeWidth={1.5} />}
                   title="MultiView-Technologie"
                   description="Mehrere Benutzer können gleichzeitig den 3D-Effekt aus verschiedenen Blickwinkeln erleben – ohne dass jeder eine bestimmte Position einnehmen muss."
                 />
                 <FeatureCard
-                  icon={<Eye className="w-6 h-6 text-[#0B3D5C]" strokeWidth={1.5} />}
+                  icon={<Eye className="w-6 h-6 " strokeWidth={1.5} />}
                   title="Brillenfreie 3D-Darstellung"
                   description="Spezielle Linsen sorgen für einen räumlichen Effekt ohne zusätzliche Hardware."
                 />
                 <FeatureCard
-                  icon={<Box className="w-6 h-6 text-[#0B3D5C]" strokeWidth={1.5} />}
+                  icon={<Box className="w-6 h-6 " strokeWidth={1.5} />}
                   title="3D-Effekt über Computer"
                   description="Der 3D-Effekt entsteht durch passende Inhalte vom Computer. Spielen Sie die vorgesehene 3D-Datei ab."
                 />
                 <FeatureCard
-                  icon={<ImageIcon className="w-6 h-6 text-[#0B3D5C]" strokeWidth={1.5} />}
+                  icon={<ImageIcon className="w-6 h-6 " strokeWidth={1.5} />}
                   title="Hohe Bildqualität"
                   description="Darstellung in 4K-Auflösung (3840 x 2160 Pixel) für scharfe Details."
                 />
                 <FeatureCard
-                  icon={<Cable className="w-6 h-6 text-[#0B3D5C]" strokeWidth={1.5} />}
+                  icon={<Cable className="w-6 h-6 " strokeWidth={1.5} />}
                   title="Konnektivität"
                   description="Anschluss über HDMI und USB für Bild- und Datenübertragung."
                 />
@@ -331,45 +344,8 @@ export default function Home() {
           <Section
             id="geraet"
             title="4. Gerätebeschreibung"
-            subtitle="Lieferumfang und Geräteansichten"
+            subtitle="Geräteansichten und Anschlüsse"
           >
-            <SubSection title="4.1 Lieferumfang">
-              <p className="text-slate-600 mb-4">
-                Prüfen Sie nach dem Auspacken, ob alle Teile vollständig geliefert wurden.
-              </p>
-
-              <Table
-                headers={["Anzahl", "Bezeichnung", "Verwendung"]}
-                rows={[
-                  ["1", "43\" MultiView 3D-Bildschirm", "Hauptgerät zur Darstellung von 3D-Inhalten"],
-                  ["1", "Fernbedienung", "Steuerung des Bildschirms (inkl. Batterien)"],
-                  ["1", "Netzteil", "Stromversorgung des Bildschirms"],
-                  ["1", "HDMI-Kabel", "Verbindung zwischen Computer und Bildschirm"],
-                  ["1", "USB-Kabel", "Datenverbindung zwischen Computer und Bildschirm"],
-                  ["1", "Schnellstartanleitung", "Erste Schritte zur Inbetriebnahme"],
-                ]}
-              />
-
-              <WarningBox type="hinweis" title="Fehlende Teile">
-                <p className="mb-2"><strong>Fehlerhafte Funktion durch fehlende Teile.</strong></p>
-                <p className="mb-2">Funktionsstörungen und Sachschäden können die Folge sein.</p>
-                <p>
-                  Kontaktieren Sie bei fehlenden oder beschädigten Teilen umgehend Ihren
-                  Händler oder den Support. Verwenden Sie das Gerät nicht, wenn Teile
-                  fehlen oder beschädigt sind.
-                </p>
-              </WarningBox>
-
-              <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-                <h4 className="font-semibold text-amber-800 mb-2">Verpackung aufbewahren</h4>
-                <p className="text-amber-700 text-sm">
-                  Bewahren Sie die Originalverpackung auf. Sie benötigen diese für einen
-                  sicheren Transport oder bei Rücksendungen.
-                </p>
-              </div>
-            </SubSection>
-
-            <SubSection title="4.2 Geräteansichten">
               <h4 className="font-semibold text-slate-700 mb-4">Vorderansicht</h4>
               <SingleImage
                 src="/images/Vorderansicht.jpeg"
@@ -434,10 +410,9 @@ export default function Home() {
                 <p className="mb-2">Defekte Tasten und Funktionsverlust können die Folge sein.</p>
                 <p>Drücken Sie die Tasten nicht mit spitzen Gegenständen. Verwenden Sie nur Ihre Finger.</p>
               </WarningBox>
-            </SubSection>
           </Section>
 
-          {/* Kapitel 5: Tätigkeitsbeschreibung */}
+          {/* Kapitel 4: Tätigkeitsbeschreibung */}
           <Section
             id="taetigkeit"
             title="5. Tätigkeitsbeschreibung"
@@ -464,7 +439,7 @@ export default function Home() {
                   { content: "Entnehmen Sie die Schnellstartanleitung und legen Sie diese bereit." },
                   { content: "Nehmen Sie den Bildschirm mit beiden Händen aus der Verpackung." },
                   { content: "Entnehmen Sie alle weiteren Komponenten aus der Verpackung." },
-                  { content: "Vergleichen Sie den Inhalt mit der Tabelle im Kapitel 4.1 Lieferumfang und prüfen Sie alle Teile auf sichtbare Transportschäden." },
+                  { content: "Vergleichen Sie den Inhalt mit der Tabelle im Kapitel 1 (Lieferumfang) und prüfen Sie alle Teile auf sichtbare Transportschäden." },
                   { content: "Bei fehlenden oder beschädigten Teilen: Kontaktieren Sie umgehend den Händler." },
                 ]}
                 result="Jetzt haben Sie den Bildschirm ausgepackt und den Lieferumfang geprüft."
@@ -593,14 +568,6 @@ export default function Home() {
                 result="Der Bildschirm befindet sich im Bereitschaftsmodus und verbraucht minimal Strom."
               />
 
-              <div className="mt-6 p-4 bg-slate-100 rounded-lg">
-                <h4 className="font-semibold text-slate-700 mb-2">Alternative: Vollständiges Ausschalten</h4>
-                <p className="text-slate-600 text-sm">
-                  Halten Sie die Power-Taste länger als 5 Sekunden gedrückt. Der Bildschirm
-                  schaltet sich komplett aus und verbraucht keinen Strom. Verwenden Sie diese
-                  Methode, wenn Sie den Bildschirm längere Zeit nicht nutzen.
-                </p>
-              </div>
             </SubSection>
 
             <SubSection title="5.7 Eingangsquelle wählen">
@@ -708,7 +675,7 @@ export default function Home() {
               <h4 className="font-semibold text-slate-700 mt-6 mb-4">Geeignete Reinigungsmittel:</h4>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-                  <h5 className="font-semibold text-green-800 mb-2">Empfohlen</h5>
+                  <h5 className="font-semibold text-green-800 mb-2">✓ Empfohlen</h5>
                   <ul className="text-green-700 text-sm space-y-1">
                     <li>• Destilliertes Wasser</li>
                     <li>• Bildschirmreiniger für TFT/LCD (alkoholfrei)</li>
@@ -717,7 +684,7 @@ export default function Home() {
                   </ul>
                 </div>
                 <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-                  <h5 className="font-semibold text-red-800 mb-2">Nicht verwenden</h5>
+                  <h5 className="font-semibold text-red-800 mb-2">✗ Nicht verwenden</h5>
                   <ul className="text-red-700 text-sm space-y-1">
                     <li>• Glasreiniger (enthält Ammoniak)</li>
                     <li>• Alkoholhaltige Reiniger</li>
@@ -737,7 +704,7 @@ export default function Home() {
             </SubSection>
           </Section>
 
-          {/* Kapitel 6: Problemlösung */}
+          {/* Kapitel 5: Problemlösung */}
           <Section
             id="problemloesung"
             title="6. Problemlösung"
@@ -758,12 +725,12 @@ export default function Home() {
                 ["Kein Bild", "Computer nicht aktiv", "Schalten Sie den Computer ein oder wecken Sie ihn aus dem Ruhezustand."],
                 ["Kein 3D-Effekt", "Falsche Inhalte", "Spielen Sie am Computer die vorgesehene 3D-Datei ab."],
                 ["Kein 3D-Effekt", "USB-Verbindung fehlt", "Prüfen Sie die USB-Verbindung zwischen Computer und Bildschirm."],
-                ["Kein 3D-Effekt", "Falscher Betrachtungsabstand", "Korrigieren Sie den Abstand zum Bildschirm (siehe Kapitel 7.1)."],
+                ["Kein 3D-Effekt", "Falscher Betrachtungsabstand", "Korrigieren Sie den Abstand zum Bildschirm (siehe Kapitel 6.1)."],
                 ["Flackern/Streifen", "Lose Kabelverbindung", "Prüfen Sie alle Kabelverbindungen auf festen Sitz."],
                 ["Flackern/Streifen", "Defektes Kabel", "Verwenden Sie ein hochwertiges HDMI-Kabel."],
                 ["Flackern/Streifen", "Falsche Bildwiederholrate", "Stellen Sie am Computer 60 Hz ein."],
                 ["Unscharfes Bild", "Falsche Auflösung", "Stellen Sie die native Auflösung (3840 x 2160) am Computer ein."],
-                ["Unscharfes Bild", "Verschmutzter Bildschirm", "Reinigen Sie den Bildschirm (siehe Kapitel 5.9)."],
+                ["Unscharfes Bild", "Verschmutzter Bildschirm", "Reinigen Sie den Bildschirm (siehe Kapitel 4.9)."],
                 ["Kopfschmerzen", "Zu lange Nutzung", "Legen Sie regelmäßig Pausen ein (15 Min. nach 60 Min. Betrieb)."],
                 ["Kopfschmerzen", "Falsche Sitzposition", "Korrigieren Sie Ihre Sitzposition und den Betrachtungswinkel."],
                 ["Menü reagiert nicht", "Softwarefehler", "Führen Sie einen Neustart durch (Power-Taste 5 Sek. halten)."],
@@ -771,7 +738,7 @@ export default function Home() {
             />
           </Section>
 
-          {/* Kapitel 7: Technische Daten */}
+          {/* Kapitel 6: Technische Daten */}
           <Section
             id="technisch"
             title="7. Technische Daten"
@@ -868,7 +835,7 @@ export default function Home() {
             </SubSection>
           </Section>
 
-          {/* Kapitel 8: Anhang */}
+          {/* Kapitel 7: Anhang */}
           <Section
             id="anhang"
             title="8. Anhang"
@@ -936,16 +903,13 @@ export default function Home() {
               <h4 className="font-semibold text-slate-700 mt-6 mb-3">Garantieabwicklung</h4>
               <StepList
                 steps={[
-                  { content: "Kontaktieren Sie den Support (siehe Kapitel 8.1)." },
+                  { content: "Kontaktieren Sie den Support (siehe Kapitel 7.1)." },
                   { content: "Beschreiben Sie das Problem." },
                   { content: "Sie erhalten eine RMA-Nummer (Rücksendenummer)." },
                   { content: "Senden Sie das Gerät sicher verpackt mit Kaufbeleg an die angegebene Adresse." },
                 ]}
               />
 
-              <WarningBox type="hinweis">
-                Bewahren Sie den Kaufbeleg sorgfältig auf. Er ist Voraussetzung für Garantieleistungen.
-              </WarningBox>
             </SubSection>
 
             <SubSection title="8.3 Entsorgungshinweise">
@@ -1033,34 +997,6 @@ export default function Home() {
               </ul>
             </SubSection>
 
-            <SubSection title="8.5 Stichwortverzeichnis">
-              <div className="grid md:grid-cols-2 gap-x-8 gap-y-2">
-                {[
-                  { term: "3D-Darstellung", chapter: "3.1" },
-                  { term: "Betrachtungsabstand", chapter: "5.2, 7.1" },
-                  { term: "Bildschirmmenü", chapter: "5.8" },
-                  { term: "Eingangsquelle", chapter: "5.7" },
-                  { term: "Entsorgung", chapter: "8.3" },
-                  { term: "Ersteinrichtung", chapter: "5.4" },
-                  { term: "Fernbedienung", chapter: "4.2" },
-                  { term: "Garantie", chapter: "8.2" },
-                  { term: "HDMI", chapter: "4.2, 5.3" },
-                  { term: "Konformitätserklärung", chapter: "8.4" },
-                  { term: "Lieferumfang", chapter: "4.1" },
-                  { term: "MultiView", chapter: "3.1" },
-                  { term: "Positionierung", chapter: "5.2" },
-                  { term: "Reinigung", chapter: "5.9" },
-                  { term: "Sicherheit", chapter: "2" },
-                  { term: "Technische Daten", chapter: "7" },
-                  { term: "USB", chapter: "4.2, 5.3" },
-                ].map((item, index) => (
-                  <div key={index} className="flex justify-between py-1 border-b border-slate-100">
-                    <span className="text-slate-700">{item.term}</span>
-                    <span className="text-slate-500">Kapitel {item.chapter}</span>
-                  </div>
-                ))}
-              </div>
-            </SubSection>
           </Section>
 
         </div>

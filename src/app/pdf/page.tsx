@@ -84,14 +84,13 @@ export default function PDFPage() {
 
         <div className="space-y-3 text-lg">
           {[
-            { num: "1", title: "Hinweise zur Bedienungsanleitung", page: "3" },
-            { num: "2", title: "Sicherheit", page: "4" },
-            { num: "3", title: "Leistungsbeschreibung", page: "8" },
-            { num: "4", title: "Gerätebeschreibung", page: "12" },
-            { num: "5", title: "Tätigkeitsbeschreibung", page: "16" },
-            { num: "6", title: "Problemlösung", page: "24" },
-            { num: "7", title: "Technische Daten", page: "26" },
-            { num: "8", title: "Anhang", page: "28" },
+            { num: "1", title: "Sicherheit", page: "3" },
+            { num: "2", title: "Leistungsbeschreibung", page: "7" },
+            { num: "3", title: "Gerätebeschreibung", page: "11" },
+            { num: "4", title: "Tätigkeitsbeschreibung", page: "15" },
+            { num: "5", title: "Problemlösung", page: "23" },
+            { num: "6", title: "Technische Daten", page: "25" },
+            { num: "7", title: "Anhang", page: "27" },
           ].map((item) => (
             <div key={item.num} className="flex items-baseline">
               <span className="font-semibold text-[#003E77] w-8">{item.num}</span>
@@ -106,49 +105,28 @@ export default function PDFPage() {
       {/* Content */}
       <div className="max-w-4xl mx-auto px-8 py-12">
 
-        {/* Kapitel 1: Hinweise zur Bedienungsanleitung */}
+        {/* Kapitel 1: Lieferumfang */}
         <div className="page-break-before">
           <Section
-            id="hinweise"
-            title="1. Hinweise zur Bedienungsanleitung"
-            subtitle="Signalwörter und Gefahrenstufen"
+            id="lieferumfang"
+            title="1. Lieferumfang"
+            subtitle="Übersicht der mitgelieferten Komponenten"
           >
-            <p className="text-slate-600 mb-6">
-              In dieser Bedienungsanleitung werden verschiedene Signalwörter verwendet,
-              um auf Gefahren und wichtige Hinweise aufmerksam zu machen.
+            <p className="text-slate-600 mb-4">
+              Prüfen Sie nach dem Auspacken, ob alle Teile vollständig geliefert wurden.
             </p>
 
             <Table
-              headers={["Symbol", "Signalwort", "Bedeutung"]}
+              headers={["Anzahl", "Bezeichnung", "Verwendung"]}
               rows={[
-                [
-                  <Image key="gefahr" src="/images/warnung.png" alt="Warnung" width={40} height={40} />,
-                  <span key="gefahr-text" className="font-bold text-red-600">GEFAHR</span>,
-                  "Unmittelbar drohende Gefahr. Tod oder schwerste Verletzungen sind die Folge."
-                ],
-                [
-                  <Image key="warnung" src="/images/warnung.png" alt="Warnung" width={40} height={40} />,
-                  <span key="warnung-text" className="font-bold text-orange-600">WARNUNG</span>,
-                  "Möglicherweise gefährliche Situation. Schwere Verletzungen können die Folge sein."
-                ],
-                [
-                  <Image key="vorsicht" src="/images/vorsicht.png" alt="Vorsicht" width={40} height={40} />,
-                  <span key="vorsicht-text" className="font-bold text-yellow-600">VORSICHT</span>,
-                  "Möglicherweise gefährliche Situation. Leichte Verletzungen können die Folge sein."
-                ],
-                [
-                  <Image key="hinweis" src="/images/hinweis.png" alt="Hinweis" width={40} height={40} />,
-                  <span key="hinweis-text" className="font-bold text-blue-600">HINWEIS</span>,
-                  "Wichtige Information zu Sachschäden oder Nutzungshinweisen."
-                ],
+                ["1", "43\" MultiView 3D-Bildschirm", "Hauptgerät zur Darstellung von 3D-Inhalten"],
+                ["1", "Fernbedienung", "Steuerung des Bildschirms (inkl. Batterien)"],
+                ["1", "Netzteil", "Stromversorgung des Bildschirms"],
+                ["1", "HDMI-Kabel", "Verbindung zwischen Computer und Bildschirm"],
+                ["1", "USB-Kabel", "Datenverbindung zwischen Computer und Bildschirm"],
+                ["1", "Schnellstartanleitung", "Erste Schritte zur Inbetriebnahme"],
               ]}
             />
-
-            <div className="mt-6 p-4 bg-slate-100 rounded-lg">
-              <p className="text-slate-700">
-                <strong>Handlungsschritte</strong> sind nummeriert. <strong>Ergebnis:</strong> zeigt das erwartete Ergebnis.
-              </p>
-            </div>
           </Section>
         </div>
 
@@ -167,7 +145,7 @@ export default function PDFPage() {
             </SubSection>
 
             <SubSection title="Gesundheitshinweise (3D-spezifisch)">
-              <WarningBox type="warnung" title="Epilepsie">
+              <WarningBox type="warnung" title="Epilepsie" icon="auge">
                 Bestimmte 3D-Muster können Anfälle auslösen. Bei Schwindel oder Muskelzuckungen
                 Nutzung sofort abbrechen. Bei einem länger als 15 Minuten andauernden epileptischen
                 Anfall einen Notruf absetzen.
@@ -183,7 +161,7 @@ export default function PDFPage() {
             </SubSection>
 
             <SubSection title="Elektrische Sicherheit">
-              <WarningBox type="gefahr" title="Stromschlag- und Brandgefahr">
+              <WarningBox type="gefahr" title="Stromschlag- und Brandgefahr" icon="strom">
                 Um die Gefahr von Stromschlägen oder Bränden zu vermeiden, beachten Sie
                 folgende Hinweise:
               </WarningBox>
@@ -218,7 +196,7 @@ export default function PDFPage() {
             </SubSection>
 
             <SubSection title="Umgang mit der Glasscheibe">
-              <WarningBox type="vorsicht" title="Bruchgefahr">
+              <WarningBox type="vorsicht" title="Bruchgefahr" icon="allgemein">
                 Trotz der robusten Bauweise besteht bei massiver mechanischer Einwirkung Bruchgefahr.
               </WarningBox>
 
@@ -242,7 +220,7 @@ export default function PDFPage() {
           </Section>
         </div>
 
-        {/* Kapitel 3: Leistungsbeschreibung */}
+        {/* Kapitel 2: Leistungsbeschreibung */}
         <div className="page-break-before">
           <Section
             id="leistung"
@@ -357,45 +335,8 @@ export default function PDFPage() {
           <Section
             id="geraet"
             title="4. Gerätebeschreibung"
-            subtitle="Lieferumfang und Geräteansichten"
+            subtitle="Geräteansichten und Anschlüsse"
           >
-            <SubSection title="4.1 Lieferumfang">
-              <p className="text-slate-600 mb-4">
-                Prüfen Sie nach dem Auspacken, ob alle Teile vollständig geliefert wurden.
-              </p>
-
-              <Table
-                headers={["Anzahl", "Bezeichnung", "Verwendung"]}
-                rows={[
-                  ["1", "43\" MultiView 3D-Bildschirm", "Hauptgerät zur Darstellung von 3D-Inhalten"],
-                  ["1", "Fernbedienung", "Steuerung des Bildschirms (inkl. Batterien)"],
-                  ["1", "Netzteil", "Stromversorgung des Bildschirms"],
-                  ["1", "HDMI-Kabel", "Verbindung zwischen Computer und Bildschirm"],
-                  ["1", "USB-Kabel", "Datenverbindung zwischen Computer und Bildschirm"],
-                  ["1", "Schnellstartanleitung", "Erste Schritte zur Inbetriebnahme"],
-                ]}
-              />
-
-              <WarningBox type="hinweis" title="Fehlende Teile">
-                <p className="mb-2"><strong>Fehlerhafte Funktion durch fehlende Teile.</strong></p>
-                <p className="mb-2">Funktionsstörungen und Sachschäden können die Folge sein.</p>
-                <p>
-                  Kontaktieren Sie bei fehlenden oder beschädigten Teilen umgehend Ihren
-                  Händler oder den Support. Verwenden Sie das Gerät nicht, wenn Teile
-                  fehlen oder beschädigt sind.
-                </p>
-              </WarningBox>
-
-              <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-                <h4 className="font-semibold text-amber-800 mb-2">Verpackung aufbewahren</h4>
-                <p className="text-amber-700 text-sm">
-                  Bewahren Sie die Originalverpackung auf. Sie benötigen diese für einen
-                  sicheren Transport oder bei Rücksendungen.
-                </p>
-              </div>
-            </SubSection>
-
-            <SubSection title="4.2 Geräteansichten">
               <h4 className="font-semibold text-slate-700 mb-4">Vorderansicht</h4>
               <SingleImage
                 src="/images/Vorderansicht.jpeg"
@@ -460,11 +401,10 @@ export default function PDFPage() {
                 <p className="mb-2">Defekte Tasten und Funktionsverlust können die Folge sein.</p>
                 <p>Drücken Sie die Tasten nicht mit spitzen Gegenständen. Verwenden Sie nur Ihre Finger.</p>
               </WarningBox>
-            </SubSection>
           </Section>
         </div>
 
-        {/* Kapitel 5: Tätigkeitsbeschreibung */}
+        {/* Kapitel 4: Tätigkeitsbeschreibung */}
         <div className="page-break-before">
           <Section
             id="taetigkeit"
@@ -492,7 +432,7 @@ export default function PDFPage() {
                   { content: "Entnehmen Sie die Schnellstartanleitung und legen Sie diese bereit." },
                   { content: "Nehmen Sie den Bildschirm mit beiden Händen aus der Verpackung." },
                   { content: "Entnehmen Sie alle weiteren Komponenten aus der Verpackung." },
-                  { content: "Vergleichen Sie den Inhalt mit der Tabelle im Kapitel 4.1 Lieferumfang und prüfen Sie alle Teile auf sichtbare Transportschäden." },
+                  { content: "Vergleichen Sie den Inhalt mit der Tabelle im Kapitel 1 (Lieferumfang) und prüfen Sie alle Teile auf sichtbare Transportschäden." },
                   { content: "Bei fehlenden oder beschädigten Teilen: Kontaktieren Sie umgehend den Händler." },
                 ]}
                 result="Jetzt haben Sie den Bildschirm ausgepackt und den Lieferumfang geprüft."
@@ -621,14 +561,6 @@ export default function PDFPage() {
                 result="Der Bildschirm befindet sich im Bereitschaftsmodus und verbraucht minimal Strom."
               />
 
-              <div className="mt-6 p-4 bg-slate-100 rounded-lg">
-                <h4 className="font-semibold text-slate-700 mb-2">Alternative: Vollständiges Ausschalten</h4>
-                <p className="text-slate-600 text-sm">
-                  Halten Sie die Power-Taste länger als 5 Sekunden gedrückt. Der Bildschirm
-                  schaltet sich komplett aus und verbraucht keinen Strom. Verwenden Sie diese
-                  Methode, wenn Sie den Bildschirm längere Zeit nicht nutzen.
-                </p>
-              </div>
             </SubSection>
 
             <SubSection title="5.7 Eingangsquelle wählen">
@@ -766,7 +698,7 @@ export default function PDFPage() {
           </Section>
         </div>
 
-        {/* Kapitel 6: Problemlösung */}
+        {/* Kapitel 5: Problemlösung */}
         <div className="page-break-before">
           <Section
             id="problemloesung"
@@ -788,12 +720,12 @@ export default function PDFPage() {
                 ["Kein Bild", "Computer nicht aktiv", "Schalten Sie den Computer ein oder wecken Sie ihn aus dem Ruhezustand."],
                 ["Kein 3D-Effekt", "Falsche Inhalte", "Spielen Sie am Computer die vorgesehene 3D-Datei ab."],
                 ["Kein 3D-Effekt", "USB-Verbindung fehlt", "Prüfen Sie die USB-Verbindung zwischen Computer und Bildschirm."],
-                ["Kein 3D-Effekt", "Falscher Betrachtungsabstand", "Korrigieren Sie den Abstand zum Bildschirm (siehe Kapitel 7.1)."],
+                ["Kein 3D-Effekt", "Falscher Betrachtungsabstand", "Korrigieren Sie den Abstand zum Bildschirm (siehe Kapitel 6.1)."],
                 ["Flackern/Streifen", "Lose Kabelverbindung", "Prüfen Sie alle Kabelverbindungen auf festen Sitz."],
                 ["Flackern/Streifen", "Defektes Kabel", "Verwenden Sie ein hochwertiges HDMI-Kabel."],
                 ["Flackern/Streifen", "Falsche Bildwiederholrate", "Stellen Sie am Computer 60 Hz ein."],
                 ["Unscharfes Bild", "Falsche Auflösung", "Stellen Sie die native Auflösung (3840 x 2160) am Computer ein."],
-                ["Unscharfes Bild", "Verschmutzter Bildschirm", "Reinigen Sie den Bildschirm (siehe Kapitel 5.9)."],
+                ["Unscharfes Bild", "Verschmutzter Bildschirm", "Reinigen Sie den Bildschirm (siehe Kapitel 4.9)."],
                 ["Kopfschmerzen", "Zu lange Nutzung", "Legen Sie regelmäßig Pausen ein (15 Min. nach 60 Min. Betrieb)."],
                 ["Kopfschmerzen", "Falsche Sitzposition", "Korrigieren Sie Ihre Sitzposition und den Betrachtungswinkel."],
                 ["Menü reagiert nicht", "Softwarefehler", "Führen Sie einen Neustart durch (Power-Taste 5 Sek. halten)."],
@@ -802,7 +734,7 @@ export default function PDFPage() {
           </Section>
         </div>
 
-        {/* Kapitel 7: Technische Daten */}
+        {/* Kapitel 6: Technische Daten */}
         <div className="page-break-before">
           <Section
             id="technisch"
@@ -901,7 +833,7 @@ export default function PDFPage() {
           </Section>
         </div>
 
-        {/* Kapitel 8: Anhang */}
+        {/* Kapitel 7: Anhang */}
         <div className="page-break-before">
           <Section
             id="anhang"
@@ -970,16 +902,13 @@ export default function PDFPage() {
               <h4 className="font-semibold text-slate-700 mt-6 mb-3">Garantieabwicklung</h4>
               <StepList
                 steps={[
-                  { content: "Kontaktieren Sie den Support (siehe Kapitel 8.1)." },
+                  { content: "Kontaktieren Sie den Support (siehe Kapitel 7.1)." },
                   { content: "Beschreiben Sie das Problem." },
                   { content: "Sie erhalten eine RMA-Nummer (Rücksendenummer)." },
                   { content: "Senden Sie das Gerät sicher verpackt mit Kaufbeleg an die angegebene Adresse." },
                 ]}
               />
 
-              <WarningBox type="hinweis">
-                Bewahren Sie den Kaufbeleg sorgfältig auf. Er ist Voraussetzung für Garantieleistungen.
-              </WarningBox>
             </SubSection>
 
             <SubSection title="8.3 Entsorgungshinweise">
@@ -1067,34 +996,6 @@ export default function PDFPage() {
               </ul>
             </SubSection>
 
-            <SubSection title="8.5 Stichwortverzeichnis">
-              <div className="grid md:grid-cols-2 gap-x-8 gap-y-2">
-                {[
-                  { term: "3D-Darstellung", chapter: "3.1" },
-                  { term: "Betrachtungsabstand", chapter: "5.2, 7.1" },
-                  { term: "Bildschirmmenü", chapter: "5.8" },
-                  { term: "Eingangsquelle", chapter: "5.7" },
-                  { term: "Entsorgung", chapter: "8.3" },
-                  { term: "Ersteinrichtung", chapter: "5.4" },
-                  { term: "Fernbedienung", chapter: "4.2" },
-                  { term: "Garantie", chapter: "8.2" },
-                  { term: "HDMI", chapter: "4.2, 5.3" },
-                  { term: "Konformitätserklärung", chapter: "8.4" },
-                  { term: "Lieferumfang", chapter: "4.1" },
-                  { term: "MultiView", chapter: "3.1" },
-                  { term: "Positionierung", chapter: "5.2" },
-                  { term: "Reinigung", chapter: "5.9" },
-                  { term: "Sicherheit", chapter: "2" },
-                  { term: "Technische Daten", chapter: "7" },
-                  { term: "USB", chapter: "4.2, 5.3" },
-                ].map((item, index) => (
-                  <div key={index} className="flex justify-between py-1 border-b border-slate-100">
-                    <span className="text-slate-700">{item.term}</span>
-                    <span className="text-slate-500">Kapitel {item.chapter}</span>
-                  </div>
-                ))}
-              </div>
-            </SubSection>
           </Section>
         </div>
 

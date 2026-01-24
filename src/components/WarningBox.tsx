@@ -4,11 +4,30 @@ import Image from "next/image";
 
 type WarningType = "gefahr" | "warnung" | "vorsicht" | "hinweis";
 
+// Vordefinierte ISO 7010 Icons für spezifische Gefahren
+export type WarningIcon =
+  | "allgemein"      // W001 - Allgemeines Warnzeichen
+  | "strom"          // W012 - Elektrische Spannung
+  | "brand"          // W021 - Brandgefahr
+  | "auge"           // W027 - Optische Strahlung (Epilepsie)
+  | "bruch"          // W024 - Bruchgefahr
+  | "info";          // M001 - Hinweis
+
 interface WarningBoxProps {
   type: WarningType;
   title?: string;
+  icon?: WarningIcon;
   children: React.ReactNode;
 }
+
+const iconMap: Record<WarningIcon, string> = {
+  allgemein: "/images/ISO_7010_W001.svg",
+  strom: "/images/ISO_7010_W012.svg",
+  brand: "/images/ISO_7010_W021.svg",
+  auge: "/images/ISO_7010_W027.svg",
+  bruch: "/images/ISO_7010_W024.svg",
+  info: "/images/ISO_7010_M001.svg",
+};
 
 const warningConfig = {
   gefahr: {
@@ -18,7 +37,7 @@ const warningConfig = {
     titleColor: "text-red-700",
     iconBg: "bg-red-100",
     label: "GEFAHR",
-    icon: "/images/warnung.png",
+    defaultIcon: "strom" as WarningIcon,
   },
   warnung: {
     bgColor: "bg-orange-50",
@@ -27,7 +46,7 @@ const warningConfig = {
     titleColor: "text-orange-700",
     iconBg: "bg-orange-100",
     label: "WARNUNG",
-    icon: "/images/warnung.png",
+    defaultIcon: "allgemein" as WarningIcon,
   },
   vorsicht: {
     bgColor: "bg-yellow-50",
@@ -36,7 +55,7 @@ const warningConfig = {
     titleColor: "text-yellow-700",
     iconBg: "bg-yellow-100",
     label: "VORSICHT",
-    icon: "/images/vorsicht.png",
+    defaultIcon: "allgemein" as WarningIcon,
   },
   hinweis: {
     bgColor: "bg-[#003E77]/5",
@@ -45,33 +64,35 @@ const warningConfig = {
     titleColor: "text-[#003E77]",
     iconBg: "bg-white",
     label: "HINWEIS",
-    icon: "/images/hinweis.png",
+    defaultIcon: "info" as WarningIcon,
   },
 };
 
-export default function WarningBox({ type, title, children }: WarningBoxProps) {
+export default function WarningBox({ type, title, icon, children }: WarningBoxProps) {
   const config = warningConfig[type];
+  const selectedIcon = icon || config.defaultIcon;
+  const iconSrc = iconMap[selectedIcon];
 
   return (
     <div
-      className={`${config.bgColor} ${config.borderColor} border-l-4 rounded-r-lg sm:rounded-r-xl p-3 sm:p-5 my-4 sm:my-6 animate-fadeIn shadow-sm`}
+      className={`${config.bgColor} ${config.borderColor} border-l-4 rounded-r-lg sm:rounded-r-xl p-4 sm:p-6 my-4 sm:my-6 animate-fadeIn shadow-sm`}
     >
-      <div className="flex items-start gap-2.5 sm:gap-4">
-        <div className={`${config.iconBg} p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl shrink-0 shadow-sm`}>
+      <div className="flex items-center gap-4 sm:gap-6">
+        <div className={`${config.iconBg} p-2 sm:p-3 rounded-xl shrink-0 shadow-sm`}>
           <Image
-            src={config.icon}
+            src={iconSrc}
             alt={config.label}
-            width={28}
-            height={28}
-            className="w-5 h-5 sm:w-7 sm:h-7 object-contain"
+            width={64}
+            height={64}
+            className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
           />
         </div>
         <div className="flex-1 min-w-0">
-          <div className={`font-bold ${config.titleColor} text-sm sm:text-lg mb-1 sm:mb-2`}>
+          <div className={`font-bold ${config.titleColor} text-base sm:text-xl mb-1 sm:mb-2`}>
             {config.label}
             {title && <span className="font-normal ml-1 sm:ml-2">– {title}</span>}
           </div>
-          <div className={`${config.textColor} text-xs sm:text-sm leading-relaxed`}>
+          <div className={`${config.textColor} text-sm sm:text-base leading-relaxed`}>
             {children}
           </div>
         </div>

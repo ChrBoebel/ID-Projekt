@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
-  ClipboardList,
   ShieldAlert,
   Sparkles,
   Monitor,
@@ -11,6 +10,8 @@ import {
   BarChart3,
   Paperclip,
   LucideIcon,
+  X,
+  Package,
 } from "lucide-react";
 
 interface NavItem {
@@ -20,7 +21,7 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { id: "hinweise", title: "Hinweise zur Bedienungsanleitung", icon: ClipboardList },
+  { id: "lieferumfang", title: "Lieferumfang", icon: Package },
   { id: "sicherheit", title: "Sicherheit", icon: ShieldAlert },
   { id: "leistung", title: "Leistungsbeschreibung", icon: Sparkles },
   { id: "geraet", title: "Gerätebeschreibung", icon: Monitor },
@@ -30,10 +31,107 @@ const navItems: NavItem[] = [
   { id: "anhang", title: "Anhang", icon: Paperclip },
 ];
 
+interface SearchResult {
+  text: string;
+  element: Element;
+  section: string;
+}
+
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  // Search function
+  const performSearch = (query: string) => {
+    if (query.length < 2) {
+      setSearchResults([]);
+      return;
+    }
+
+    const results: SearchResult[] = [];
+    const mainContent = document.querySelector("main");
+    if (!mainContent) return;
+
+    const walker = document.createTreeWalker(
+      mainContent,
+      NodeFilter.SHOW_TEXT,
+      null
+    );
+
+    const queryLower = query.toLowerCase();
+    let node;
+    const seen = new Set<Element>();
+
+    while ((node = walker.nextNode())) {
+      const text = node.textContent?.toLowerCase() || "";
+      if (text.includes(queryLower)) {
+        const parent = node.parentElement;
+        if (parent && !seen.has(parent)) {
+          seen.add(parent);
+
+          // Find which section this belongs to
+          let section = "";
+          let el: Element | null = parent;
+          while (el) {
+            if (el.id && navItems.some(item => item.id === el!.id)) {
+              section = navItems.find(item => item.id === el!.id)?.title || "";
+              break;
+            }
+            el = el.parentElement;
+          }
+
+          const fullText = node.textContent || "";
+          const startIndex = Math.max(0, text.indexOf(queryLower) - 30);
+          const endIndex = Math.min(fullText.length, text.indexOf(queryLower) + query.length + 30);
+          let snippet = fullText.slice(startIndex, endIndex).trim();
+          if (startIndex > 0) snippet = "..." + snippet;
+          if (endIndex < fullText.length) snippet = snippet + "...";
+
+          if (snippet.length > 10) {
+            results.push({
+              text: snippet,
+              element: parent,
+              section,
+            });
+          }
+        }
+      }
+      if (results.length >= 10) break;
+    }
+
+    setSearchResults(results);
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    performSearch(query);
+  };
+
+  const scrollToResult = (result: SearchResult) => {
+    result.element.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    // Highlight effect
+    result.element.classList.add("bg-yellow-100", "transition-colors");
+    setTimeout(() => {
+      result.element.classList.remove("bg-yellow-100");
+    }, 2000);
+
+    setSearchQuery("");
+    setSearchResults([]);
+    setIsSearching(false);
+  };
+
+  const clearSearch = () => {
+    setSearchQuery("");
+    setSearchResults([]);
+    searchInputRef.current?.focus();
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -120,7 +218,58 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <nav className="absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-lg">
+          <nav className="absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-lg max-h-[80vh] overflow-y-auto">
+            {/* Mobile Search */}
+            <div className="p-4 border-b border-gray-100">
+              <div className="relative">
+                <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Suchen..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  className="w-full pl-10 pr-8 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:border-[#003E77] focus:ring-1 focus:ring-[#003E77]/20"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={clearSearch}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 p-1 hover:bg-slate-100 rounded"
+                  >
+                    <X className="w-4 h-4 text-slate-400" />
+                  </button>
+                )}
+              </div>
+
+              {/* Mobile Search Results */}
+              {searchResults.length > 0 && (
+                <div className="mt-2 bg-slate-50 rounded-lg max-h-48 overflow-y-auto">
+                  {searchResults.map((result, index) => (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        scrollToResult(result);
+                        setIsOpen(false);
+                      }}
+                      className="w-full text-left px-3 py-2 hover:bg-slate-100 border-b border-slate-100 last:border-b-0"
+                    >
+                      <div className="text-xs text-[#003E77] font-medium">
+                        {result.section || "Dokument"}
+                      </div>
+                      <div className="text-sm text-slate-600 line-clamp-1">
+                        {result.text}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {searchQuery.length >= 2 && searchResults.length === 0 && (
+                <div className="mt-2 p-3 bg-slate-50 rounded-lg">
+                  <p className="text-sm text-slate-500 text-center">Keine Ergebnisse</p>
+                </div>
+              )}
+            </div>
+
             <ul className="py-2">
               {navItems.map((item) => (
                 <li key={item.id}>
@@ -148,12 +297,62 @@ export default function Navigation() {
       <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-[280px] bg-white border-r border-slate-100 z-40 flex-col overflow-y-auto">
         <div className="p-8 pb-4">
           {/* Logo - Original 3D Global SVG */}
-          <div className="mb-16">
+          <div className="mb-8">
             <img
               src="/images/3d-global-logo.svg"
               alt="3D Global Logo"
               className="h-12 w-auto"
             />
+          </div>
+
+          {/* Search */}
+          <div className="mb-8 relative">
+            <div className="relative">
+              <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <input
+                ref={searchInputRef}
+                type="text"
+                placeholder="Suchen..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+                onFocus={() => setIsSearching(true)}
+                className="w-full pl-10 pr-8 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:border-[#003E77] focus:ring-1 focus:ring-[#003E77]/20 transition-colors"
+              />
+              {searchQuery && (
+                <button
+                  onClick={clearSearch}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 p-1 hover:bg-slate-100 rounded"
+                >
+                  <X className="w-4 h-4 text-slate-400" />
+                </button>
+              )}
+            </div>
+
+            {/* Search Results */}
+            {searchResults.length > 0 && (
+              <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-slate-200 rounded-lg shadow-lg max-h-64 overflow-y-auto z-50">
+                {searchResults.map((result, index) => (
+                  <button
+                    key={index}
+                    onClick={() => scrollToResult(result)}
+                    className="w-full text-left px-3 py-2 hover:bg-slate-50 border-b border-slate-100 last:border-b-0"
+                  >
+                    <div className="text-xs text-[#003E77] font-medium mb-0.5">
+                      {result.section || "Dokument"}
+                    </div>
+                    <div className="text-sm text-slate-600 line-clamp-2">
+                      {result.text}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {searchQuery.length >= 2 && searchResults.length === 0 && (
+              <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-slate-200 rounded-lg shadow-lg p-3 z-50">
+                <p className="text-sm text-slate-500 text-center">Keine Ergebnisse gefunden</p>
+              </div>
+            )}
           </div>
 
           {/* Navigation */}
