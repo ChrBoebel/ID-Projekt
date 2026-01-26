@@ -634,16 +634,31 @@ export default function Home() {
 
             <SubSection title="5.9 Bildschirm reinigen">
               <p className="text-slate-600 mb-4">
-                Halten Sie den Bildschirm sauber für optimale Bildqualität.
+                Halten Sie den Bildschirm sauber für optimale Bildqualität. Reinigen Sie das Gehäuse
+                regelmäßig mit einem weichen Tuch.
               </p>
+
+              <WarningBox type="vorsicht" title="Vor der Reinigung">
+                <p>
+                  <strong>Bitte ziehen Sie das Netzkabel, bevor Sie den Bildschirm reinigen.</strong>
+                </p>
+              </WarningBox>
 
               <WarningBox type="hinweis" title="Beschädigung durch falsche Reinigung">
                 <p className="mb-2"><strong>Beschädigung des Bildschirms durch falsche Reinigung.</strong></p>
                 <p className="mb-2">Kratzer, Trübung und dauerhafter Funktionsverlust können die Folge sein.</p>
-                <p>
+                <p className="mb-2">
                   Sprühen Sie niemals direkt auf den Bildschirm. Üben Sie niemals starken Druck aus.
                   Verwenden Sie niemals scharfe Gegenstände. Reinigen Sie den Bildschirm nur bei
                   ausgeschaltetem und abgekühltem Gerät.
+                </p>
+                <p className="mb-2">
+                  <strong>Achten Sie darauf, dass kein Reinigungsmittel in das Gerät gelangt.</strong> Verwenden
+                  Sie ein möglichst weiches Tuch, damit es nicht zu Kratzern auf dem Bildschirm kommt.
+                </p>
+                <p>
+                  Bei hartnäckigen Verschmutzungen können Sie ein mildes Reinigungsmittel verwenden.
+                  Aggressive Reinigungsmittel können das Gehäuse beschädigen.
                 </p>
               </WarningBox>
 
