@@ -632,7 +632,7 @@ export default function Home() {
               </div>
             </SubSection>
 
-            <SubSection title="5.9 Bildschirm reinigen">
+            <SubSection id="reinigung" title="5.9 Bildschirm reinigen">
               <p className="text-slate-600 mb-4">
                 Halten Sie den Bildschirm sauber für optimale Bildqualität. Reinigen Sie das Gehäuse
                 regelmäßig mit einem weichen Tuch.

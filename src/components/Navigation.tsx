@@ -12,6 +12,7 @@ import {
   LucideIcon,
   X,
   Package,
+  SprayCan,
 } from "lucide-react";
 
 interface NavItem {
@@ -26,6 +27,7 @@ const navItems: NavItem[] = [
   { id: "leistung", title: "Leistungsbeschreibung", icon: Sparkles },
   { id: "geraet", title: "Gerätebeschreibung", icon: Monitor },
   { id: "taetigkeit", title: "Tätigkeitsbeschreibung", icon: Wrench },
+  { id: "reinigung", title: "Reinigung", icon: SprayCan },
   { id: "problemloesung", title: "Problemlösung", icon: SearchIcon },
   { id: "technisch", title: "Technische Daten", icon: BarChart3 },
   { id: "anhang", title: "Anhang", icon: Paperclip },

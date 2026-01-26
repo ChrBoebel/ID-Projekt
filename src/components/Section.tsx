@@ -26,13 +26,14 @@ export default function Section({ id, title, subtitle, children, className }: Se
 }
 
 interface SubSectionProps {
+  id?: string;
   title: string;
   children: React.ReactNode;
 }
 
-export function SubSection({ title, children }: SubSectionProps) {
+export function SubSection({ id, title, children }: SubSectionProps) {
   return (
-    <div className="mb-10 sm:mb-14">
+    <div id={id} className="mb-10 sm:mb-14">
       <h3 className="text-xl sm:text-2xl lg:text-2xl font-semibold font-heading text-[#003E77] mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
         <span className="w-1.5 h-6 sm:h-7 bg-gradient-to-b from-[#73C7D4] to-[#003E77]/50 rounded-full shrink-0" />
         {title}
