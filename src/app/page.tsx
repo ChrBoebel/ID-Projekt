@@ -238,7 +238,7 @@ export default function Home() {
             title="3. Leistungsbeschreibung"
             subtitle="Was kann das Gerät und welchen Nutzen bietet es?"
           >
-            <SubSection title="3.1 Was kann das Gerät?">
+            <SubSection title="3.1 Zentrale Funktionen">
               <p className="text-slate-600 mb-6">
                 Der 43&quot; MultiView 3D-Bildschirm ermöglicht die brillenfreie 3D-Darstellung
                 von Inhalten für Einzelbenutzer und Gruppen. Durch die autostereoskopische
@@ -283,7 +283,7 @@ export default function Home() {
               </FeatureGrid>
             </SubSection>
 
-            <SubSection title="3.2 Was kann der Benutzer mit dem Gerät tun?">
+            <SubSection title="3.2 Einsatzmöglichkeiten">
               <p className="text-slate-600 mb-6">
                 Der Benutzer kann digitale Inhalte räumlich betrachten und präsentieren –
                 allein oder in Gruppen, ohne durch Zusatzhardware eingeschränkt zu sein.
@@ -320,7 +320,7 @@ export default function Home() {
               </div>
             </SubSection>
 
-            <SubSection title="3.3 Welchen Nutzen hat der Benutzer vom Gerät?">
+            <SubSection title="3.3 Anwendervorteile">
               <p className="text-slate-600 mb-6">
                 Der Einsatz des 43&quot; MultiView 3D-Bildschirms steigert die Effizienz und
                 Qualität bei der Arbeit mit räumlichen Daten – sowohl für Einzelbenutzer
@@ -346,70 +346,70 @@ export default function Home() {
             title="4. Gerätebeschreibung"
             subtitle="Geräteansichten und Anschlüsse"
           >
-              <h4 className="font-semibold text-slate-700 mb-4">Vorderansicht</h4>
-              <SingleImage
-                src="/images/Vorderansicht.jpeg"
-                alt="Vorderansicht des Bildschirms"
-                caption="Vorderansicht des 43&quot; MultiView 3D-Bildschirms"
-              />
+            <h4 className="font-semibold text-slate-700 mb-4">Vorderansicht</h4>
+            <SingleImage
+              src="/images/Vorderansicht.jpeg"
+              alt="Vorderansicht des Bildschirms"
+              caption="Vorderansicht des 43&quot; MultiView 3D-Bildschirms"
+            />
 
-              <Table
-                headers={["Nr.", "Bezeichnung", "Funktion"]}
-                rows={[
-                  ["1", "Bildschirm-Panel", "Zeigt 3D-Inhalte als brillenfreie MultiView 3D-Darstellung an. Der Bildschirm erzeugt räumliche Bilder für mehrere Benutzer gleichzeitig."],
-                ]}
-              />
+            <Table
+              headers={["Nr.", "Bezeichnung", "Funktion"]}
+              rows={[
+                ["1", "Bildschirm-Panel", "Zeigt 3D-Inhalte als brillenfreie MultiView 3D-Darstellung an. Der Bildschirm erzeugt räumliche Bilder für mehrere Benutzer gleichzeitig."],
+              ]}
+            />
 
-              <h4 className="font-semibold text-slate-700 mt-8 mb-4">Rückansicht</h4>
-              <SingleImage
-                src="/images/rueckansicht.jpg"
-                alt="Rückansicht des Bildschirms"
-                caption="Rückansicht mit Anschlüssen"
-              />
+            <h4 className="font-semibold text-slate-700 mt-8 mb-4">Rückansicht</h4>
+            <SingleImage
+              src="/images/rueckansicht.jpg"
+              alt="Rückansicht des Bildschirms"
+              caption="Rückansicht mit Anschlüssen"
+            />
 
-              <Table
-                headers={["Nr.", "Bezeichnung", "Funktion"]}
-                rows={[
-                  ["3", "HDMI-Anschluss", "Verbindet den Bildschirm mit der Bildquelle (Computer, Laptop). Überträgt Bildsignale."],
-                  ["4", "USB-Anschluss", "Überträgt Daten. Ermöglicht die bidirektionale Kommunikation mit dem Computer."],
-                  ["5", "Netzteilanschluss", "Stromversorgung: Schließen Sie hier das mitgelieferte Netzteil an."],
-                  ["6", "VESA-Montagepunkte", "Standardisierte Befestigungspunkte für Wandhalterungen oder Standfüße."],
-                  ["7", "Typenschild", "Enthält wichtige Geräteinformationen: Seriennummer, Modellbezeichnung, elektrische Daten."],
-                  ["8", "Power-Taste", "Ein-/Ausschalten des Bildschirms."],
-                ]}
-              />
+            <Table
+              headers={["Nr.", "Bezeichnung", "Funktion"]}
+              rows={[
+                ["3", "HDMI-Anschluss", "Verbindet den Bildschirm mit der Bildquelle (Computer, Laptop). Überträgt Bildsignale."],
+                ["4", "USB-Anschluss", "Überträgt Daten. Ermöglicht die bidirektionale Kommunikation mit dem Computer."],
+                ["5", "Netzteilanschluss", "Stromversorgung: Schließen Sie hier das mitgelieferte Netzteil an."],
+                ["6", "VESA-Montagepunkte", "Standardisierte Befestigungspunkte für Wandhalterungen oder Standfüße."],
+                ["7", "Typenschild", "Enthält wichtige Geräteinformationen: Seriennummer, Modellbezeichnung, elektrische Daten."],
+                ["8", "Power-Taste", "Ein-/Ausschalten des Bildschirms."],
+              ]}
+            />
 
-              <h4 className="font-semibold text-slate-700 mt-8 mb-4">Fernbedienung</h4>
-              <SingleImage
-                src="/images/Fernbedienung.jpg"
-                alt="Fernbedienung"
-                caption="Fernbedienung des 3D-Bildschirms"
-              />
+            <h4 className="font-semibold text-slate-700 mt-8 mb-4">Fernbedienung</h4>
+            <SingleImage
+              src="/images/Fernbedienung.jpg"
+              alt="Fernbedienung"
+              caption="Fernbedienung des 3D-Bildschirms"
+            />
 
-              <Table
-                headers={["Nr.", "Bezeichnung", "Funktion"]}
-                rows={[
-                  ["14", "Power-Taste", "Bildschirm ein-/ausschalten. Befindet sich oben an der Fernbedienung."],
-                  ["15", "MENU-Taste", "Bildschirmmenü öffnen/schließen."],
-                  ["16", "Eingangsquellen-Taste", "Eingangsquelle wählen. Wechselt zwischen angeschlossenen Geräten."],
-                  ["17", "Pfeiltasten", "Navigation im Bildschirmmenü. Ermöglicht die Auswahl von Menüpunkten."],
-                  ["18", "OK-Taste", "Auswahl bestätigen. Befindet sich in der Mitte des Navigationskreuzes."],
-                  ["19", "Lautstärke-Tasten", "Lautstärke verringern (−) oder erhöhen (+)."],
-                  ["20", "Play/Pause-Taste", "Wiedergabe starten oder pausieren. Für Medieninhalte."],
-                  ["21", "Zurück-Taste", "Zurück zum vorherigen Menü oder Bildschirmmenü verlassen."],
-                  ["22", "Stumm-Taste", "Ton stumm schalten. Befindet sich unten an der Fernbedienung."],
-                ]}
-              />
+            <Table
+              headers={["Nr.", "Bezeichnung", "Funktion"]}
+              rows={[
+                ["14", "Power-Taste", "Bildschirm ein-/ausschalten. Befindet sich oben an der Fernbedienung."],
+                ["15", "MENU-Taste", "Bildschirmmenü öffnen/schließen."],
+                ["16", "Eingangsquellen-Taste", "Eingangsquelle wählen. Wechselt zwischen angeschlossenen Geräten."],
+                ["17", "Pfeiltasten", "Navigation im Bildschirmmenü. Ermöglicht die Auswahl von Menüpunkten."],
+                ["18", "OK-Taste", "Auswahl bestätigen. Befindet sich in der Mitte des Navigationskreuzes."],
+                ["19", "Lautstärke-Tasten", "Lautstärke verringern (−) oder erhöhen (+)."],
+                ["20", "Play/Pause-Taste", "Wiedergabe starten oder pausieren. Für Medieninhalte."],
+                ["21", "Zurück-Taste", "Zurück zum vorherigen Menü oder Bildschirmmenü verlassen."],
+                ["22", "Stumm-Taste", "Ton stumm schalten. Befindet sich unten an der Fernbedienung."],
+              ]}
+            />
 
-              <p className="text-slate-600 mt-4">
-                Die Bedienung des Bildschirmmenüs ist in <strong>Kapitel 5.8</strong> beschrieben.
-              </p>
+            <p className="text-slate-600 mt-4">
+              Die Bedienung des Bildschirmmenüs ist in <strong>Kapitel 5.8</strong> beschrieben.
+            </p>
 
-              <WarningBox type="hinweis" title="Beschädigung der Fernbedienung">
-                <p className="mb-2"><strong>Beschädigung der Fernbedienung durch unsachgemäße Bedienung.</strong></p>
-                <p className="mb-2">Defekte Tasten und Funktionsverlust können die Folge sein.</p>
-                <p>Drücken Sie die Tasten nicht mit spitzen Gegenständen. Verwenden Sie nur Ihre Finger.</p>
-              </WarningBox>
+            <WarningBox type="hinweis" title="Beschädigung der Fernbedienung">
+              <p className="mb-2"><strong>Beschädigung der Fernbedienung durch unsachgemäße Bedienung.</strong></p>
+              <p className="mb-2">Defekte Tasten und Funktionsverlust können die Folge sein.</p>
+              <p>Drücken Sie die Tasten nicht mit spitzen Gegenständen. Verwenden Sie nur Ihre Finger.</p>
+            </WarningBox>
           </Section>
 
           {/* Kapitel 4: Tätigkeitsbeschreibung */}
