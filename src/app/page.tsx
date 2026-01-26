@@ -96,7 +96,7 @@ export default function Home() {
                   </div>
                   {/* Floating badge */}
                   <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 bg-[#003E77] text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl shadow-lg">
-                    <p className="text-[10px] sm:text-xs font-medium">3DGlobal</p>
+                    <p className="text-[10px] sm:text-xs font-medium">3D Global</p>
                     <p className="text-xs sm:text-sm font-bold">2025 Serie</p>
                   </div>
                 </div>
@@ -186,6 +186,7 @@ export default function Home() {
                   "Gehäuse: Um die Gefahr von Stromschlägen oder Bränden zu vermeiden, öffnen Sie niemals das Gehäuse. Wartungsarbeiten dürfen nur von qualifiziertem Personal durchgeführt werden.",
                   "Überlastung: Schließen Sie nicht zu viele Geräte an dieselbe Steckdose oder Verlängerungsschnur an.",
                   "Feuchtigkeit: Betreiben Sie das Gerät niemals in der Nähe von Wasser oder im Freien. Schützen Sie es vor Tropf- und Spritzwasser.",
+                  "Fremdkörper: Schieben Sie niemals Fremdkörper in die Öffnungen am Monitorgehäuse. Dies kann Kurzschlüsse verursachen, welche zu Bränden oder Stromschlägen führen können.",
                 ]}
               />
             </SubSection>
@@ -204,6 +205,9 @@ export default function Home() {
                 items={[
                   "Tragfähigkeit: Die Halterung und ggf. die Wand selbst müssen das Gewicht des Bildschirms sicher tragen können.",
                   "Belüftung: Decken Sie die Lüftungsöffnungen niemals ab und achten Sie auf einen ausreichenden Abstand zur Wand. Ein Wärmestau kann das Gerät beschädigen oder Brände verursachen.",
+                  "Stabiler Standplatz: Achten Sie auf einen stabilen Standplatz, damit der Monitor nicht umkippt. Verwenden Sie nur vom Hersteller empfohlene Halterungen oder Tische, da instabile Unterlagen zu Unfällen und Geräteschäden führen können.",
+                  "Montage: Folgen Sie bei der Montage bitte genau der Anleitung und nutzen Sie das Original-Zubehör.",
+                  "Transport auf Wagen: Wenn Sie das Gerät auf einem Wagen bewegen, fahren Sie besonders vorsichtig, um ein Umfallen bei Unebenheiten zu vermeiden.",
                 ]}
               />
             </SubSection>
@@ -844,22 +848,21 @@ export default function Home() {
             <SubSection title="8.1 Herstellerinformationen und Kontakt">
               <SpecTable
                 specs={[
-                  { label: "Hersteller", value: "3DGlobal Displays GmbH" },
-                  { label: "Anschrift", value: "Musterstraße 123, 12345 Musterstadt, Deutschland" },
-                  { label: "Telefon", value: "+49 XXX XXXXXXX" },
-                  { label: "E-Mail", value: "support@3dglobal.de" },
-                  { label: "Website", value: "www.3dglobal.de" },
+                  { label: "Hersteller", value: "3D Global GmbH" },
+                  { label: "Anschrift", value: "Robert-Bosch-Str. 33, D – 73431 Aalen" },
+                  { label: "Telefon", value: "+49 7361 528299 – 0" },
+                  { label: "E-Mail", value: (<a href="mailto:info@3d-global.com" className="text-blue-600 hover:underline">info@3d-global.com</a>) },
                 ]}
               />
 
-              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Technischer Support</h4>
+              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Kontakt</h4>
               <p className="text-slate-600 mb-4">
-                Bei technischen Fragen oder Problemen wenden Sie sich an unseren Support:
+                Bei technischen Fragen oder Problemen wenden Sie sich an uns:
               </p>
               <ul className="list-disc list-inside text-slate-600 space-y-1 ml-4">
-                <li><strong>Hotline:</strong> +49 XXX XXXXXXX (Mo–Fr, 9:00–17:00 Uhr)</li>
-                <li><strong>E-Mail:</strong> support@3dglobal.de</li>
-                <li><strong>Online-Support:</strong> www.3dglobal.de/support</li>
+                <li><strong>Telefon:</strong> +49 7361 528299 – 0</li>
+                <li><strong>E-Mail:</strong> <a href="mailto:info@3d-global.com" className="text-blue-600 hover:underline">info@3d-global.com</a></li>
+                <li><strong>Kontaktformular:</strong> <a href="mailto:info@3d-global.com" className="text-blue-600 hover:underline">Anfrage senden</a></li>
               </ul>
 
               <div className="mt-4 p-4 bg-slate-100 rounded-lg">
@@ -974,7 +977,7 @@ export default function Home() {
                 />
                 <div>
                   <p className="text-slate-600 mb-4">
-                    Hiermit erklärt der Hersteller <strong>3DGlobal Displays GmbH</strong>, dass das Produkt
+                    Hiermit erklärt der Hersteller <strong>3D Global GmbH</strong>, dass das Produkt
                     <strong> 43&quot; MultiView 3D-Bildschirm</strong> den folgenden einschlägigen
                     Harmonisierungsrechtsvorschriften der Union entspricht:
                   </p>
