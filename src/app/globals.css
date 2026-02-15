@@ -147,6 +147,31 @@ section[id] {
   }
 }
 
+/* Print-specific title classes */
+.print-title {
+  color: #003E77;
+}
+
+.print-subtitle {
+  color: #4b5563;
+}
+
+@media print {
+  .print-title {
+    color: #003E77 !important;
+    -webkit-text-fill-color: #003E77 !important;
+    font-weight: 600 !important;
+    opacity: 1 !important;
+  }
+
+  .print-subtitle {
+    color: #333 !important;
+    -webkit-text-fill-color: #333 !important;
+    font-weight: 400 !important;
+    opacity: 1 !important;
+  }
+}
+
 /* Fade in animation */
 @keyframes fadeIn {
   from {
@@ -181,19 +206,29 @@ section[id] {
 }
 
 /* ===========================================
-   PDF / Print Styles
+   PDF / Print Styles - Hauptseite (Bedienungsanleitung)
+   Diese Styles gelten NICHT für die /print Seite (hat eigene Styles)
    =========================================== */
 @media print {
+  /* Page setup */
+  @page {
+    size: A4;
+    margin: 15mm 15mm 20mm 15mm;
+  }
+
   /* Hide navigation and footer for print */
   aside,
   nav,
-  .navigation {
+  .navigation,
+  footer,
+  .print-hide {
     display: none !important;
   }
 
   /* Remove margin for main content */
   main {
     margin-left: 0 !important;
+    padding: 0 !important;
   }
 
   /* Ensure backgrounds are printed */
@@ -203,48 +238,388 @@ section[id] {
     color-adjust: exact !important;
   }
 
+  /* General text sizing for print */
+  body {
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+    color: #333 !important;
+  }
+
   /* Disable hover effects */
   .btn-slant:hover,
   .image-zoom:hover {
     transform: none !important;
   }
 
+  /* ===== Title Page (Hero Section) ===== */
+  main > div:first-child {
+    min-height: 100vh !important;
+    page-break-after: always !important;
+    background: white !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 30mm 20mm !important;
+  }
+
+  /* Hide decorative elements on title page */
+  main > div:first-child > div:first-child,
+  main > div:first-child > div:nth-child(2),
+  main > div:first-child .animate-bounce,
+  main > div:first-child .absolute {
+    display: none !important;
+  }
+
+  /* Style the title page content */
+  main > div:first-child h1 {
+    font-size: 36pt !important;
+    text-align: center !important;
+    margin-bottom: 15mm !important;
+    color: #003E77 !important;
+  }
+
+  /* Hide quick navigation cards on title page */
+  main > div:first-child .grid.grid-cols-2 {
+    display: none !important;
+  }
+
+  /* Style title page image */
+  main > div:first-child img {
+    max-width: 120mm !important;
+    height: auto !important;
+    margin: 10mm auto !important;
+    display: block !important;
+  }
+
+  /* ===== Content Sections ===== */
+  .max-w-4xl {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Chapter styling - page break before main chapters */
+  section[id="sicherheit"],
+  section[id="leistung"],
+  section[id="taetigkeit"],
+  section[id="problemloesung"],
+  section[id="technisch"],
+  section[id="herstellerinfo"],
+  section[id="garantie"],
+  section[id="entsorgung"],
+  section[id="konformitaet"] {
+    page-break-before: always !important;
+  }
+
+  /* Section titles - force dark color */
+  section > div:first-child h2,
+  section h2 {
+    font-size: 18pt !important;
+    color: #003E77 !important;
+    -webkit-text-fill-color: #003E77 !important;
+    border-bottom: 2pt solid #003E77 !important;
+    padding-bottom: 3mm !important;
+    margin-bottom: 5mm !important;
+    font-weight: 600 !important;
+    opacity: 1 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Section subtitles - make them darker */
+  section > div:first-child > p {
+    color: #333 !important;
+    -webkit-text-fill-color: #333 !important;
+    font-size: 11pt !important;
+    font-weight: 400 !important;
+    opacity: 1 !important;
+  }
+
+  /* All headings must be dark and visible */
+  h1, h2, h3, h4, h5, h6 {
+    color: #003E77 !important;
+    -webkit-text-fill-color: #003E77 !important;
+    opacity: 1 !important;
+    font-weight: 600 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Subsection titles */
+  h3 {
+    font-size: 13pt !important;
+    color: #003E77 !important;
+    margin-top: 6mm !important;
+    margin-bottom: 3mm !important;
+    font-weight: 600 !important;
+  }
+
+  h4 {
+    font-size: 11pt !important;
+    margin-top: 4mm !important;
+    margin-bottom: 2mm !important;
+    color: #003E77 !important;
+    font-weight: 600 !important;
+  }
+
+  /* Paragraphs */
+  p {
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+    margin-bottom: 3mm !important;
+    text-align: justify !important;
+    color: #333 !important;
+  }
+
+  /* Gray text classes should be darker for print */
+  [class*="text-gray"],
+  [class*="text-slate"] {
+    color: #333 !important;
+  }
+
+  /* Hide decorative elements in subsections for print */
+  h3 span[class*="bg-gradient"],
+  h3 > span:first-child {
+    display: none !important;
+  }
+
+  /* Fix h3 flex layout for print */
+  h3 {
+    display: block !important;
+  }
+
+  /* Border on subsection content */
+  [class*="border-slate"] {
+    border-color: #ccc !important;
+  }
+
+  /* Remove left border/padding from subsection content for cleaner print */
+  .prose > div[class*="border-l"] {
+    border-left: none !important;
+    padding-left: 0 !important;
+  }
+
+  /* Ensure all light/faded text is readable */
+  [class*="font-light"] {
+    font-weight: 400 !important;
+  }
+
+  /* Force text colors to be dark - override Tailwind arbitrary values */
+  [class*="text-[#003E77]"] {
+    color: #003E77 !important;
+    -webkit-text-fill-color: #003E77 !important;
+  }
+
+  /* Make sure prose content is dark */
+  .prose,
+  .prose p,
+  .prose li,
+  .prose span {
+    color: #333 !important;
+  }
+
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    color: #003E77 !important;
+  }
+
+  /* Lists */
+  ul, ol {
+    margin: 2mm 0 4mm 0 !important;
+    padding-left: 6mm !important;
+  }
+
+  li {
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+    margin-bottom: 1.5mm !important;
+  }
+
+  /* Tables */
+  table {
+    width: 100% !important;
+    font-size: 9pt !important;
+    margin: 4mm 0 !important;
+    border-collapse: collapse !important;
+  }
+
+  th, td {
+    padding: 2mm 3mm !important;
+    border: 0.5pt solid #ccc !important;
+    vertical-align: top !important;
+  }
+
+  th {
+    background: #003E77 !important;
+    color: white !important;
+    font-weight: 600 !important;
+  }
+
+  /* Warning boxes */
+  [class*="border-red"],
+  [class*="border-orange"],
+  [class*="border-yellow"],
+  [class*="border-blue"] {
+    border-width: 2pt !important;
+    padding: 3mm 4mm !important;
+    margin: 4mm 0 !important;
+    background: #fafafa !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Images */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 80mm !important;
+    margin: 4mm auto !important;
+    display: block !important;
+  }
+
+  figure {
+    margin: 4mm 0 !important;
+    page-break-inside: avoid !important;
+  }
+
+  figcaption {
+    font-size: 9pt !important;
+    text-align: center !important;
+    font-style: italic !important;
+    color: #666 !important;
+    margin-top: 2mm !important;
+  }
+
+  /* Feature cards grid */
+  .grid.md\:grid-cols-2,
+  .grid.md\:grid-cols-3 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 3mm !important;
+  }
+
+  /* Feature cards */
+  [class*="rounded-lg"][class*="border"] {
+    padding: 3mm !important;
+    page-break-inside: avoid !important;
+  }
+
   /* Page break utilities */
   .page-break-before {
-    page-break-before: always;
+    page-break-before: always !important;
   }
 
   .page-break-after {
-    page-break-after: always;
+    page-break-after: always !important;
   }
 
   .avoid-break {
-    page-break-inside: avoid;
+    page-break-inside: avoid !important;
   }
 
   /* Keep headings with following content */
   h2, h3, h4 {
-    page-break-after: avoid;
+    page-break-after: avoid !important;
   }
 
   /* Avoid breaking inside certain elements */
-  section,
+  section > div,
   .warning-box,
   table,
   .feature-card {
-    page-break-inside: avoid;
+    page-break-inside: avoid !important;
   }
 
-  /* Fixed width for consistent layout */
-  body {
-    width: 210mm;
-    margin: 0 auto;
+  /* Links - show URL for print */
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #666;
+  }
+
+  /* Internal links - no URL */
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  a[href^="mailto"]:after {
+    content: "";
   }
 
   /* Hide scroll indicators */
   ::-webkit-scrollbar {
     display: none;
   }
+
+  /* Remove gradients and shadows */
+  [class*="shadow"],
+  [class*="gradient"] {
+    box-shadow: none !important;
+  }
+
+  /* Spec tables */
+  .spec-table td:first-child {
+    font-weight: 600 !important;
+    width: 40% !important;
+  }
+
+  /* ===== Print Icons in Warning Boxes ===== */
+  .print-icon {
+    width: 40px !important;
+    height: 40px !important;
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  /* Ensure warning box icons are visible */
+  [class*="border-red"] img,
+  [class*="border-orange"] img,
+  [class*="border-yellow"] img,
+  [class*="border-\[#003E77\]"] img {
+    width: 40px !important;
+    height: 40px !important;
+    display: block !important;
+    visibility: visible !important;
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  /* Icon container in warning boxes */
+  [class*="border-red"] > div > div:first-child,
+  [class*="border-orange"] > div > div:first-child,
+  [class*="border-yellow"] > div > div:first-child,
+  [class*="border-\[#003E77\]"] > div > div:first-child {
+    padding: 2mm !important;
+    background: white !important;
+    border-radius: 4px !important;
+  }
+
+  /* ===== Print Footer ===== */
+  .print-footer {
+    display: block !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 10mm !important;
+    background: white !important;
+    border-top: 0.5pt solid #ccc !important;
+    padding: 2mm 15mm !important;
+    font-size: 8pt !important;
+    color: #666 !important;
+    text-align: center !important;
+  }
+
+  .print-footer-content {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+}
+
+/* Print footer - hidden on screen */
+.print-footer {
+  display: none;
 }
 
 /* PDF Document specific styles (for /pdf route) */
@@ -291,6 +666,292 @@ section[id] {
 .pdf-document img {
   max-width: 100%;
   height: auto;
+}
+
+/* ===========================================
+   QuickIn Print Styles
+   =========================================== */
+@media print {
+  /* Hide elements that shouldn't be printed */
+  .print-hide,
+  footer,
+  .back-link {
+    display: none !important;
+  }
+
+  /* Page setup with page numbers */
+  @page {
+    size: A4;
+    margin: 12mm 12mm 18mm 12mm;
+
+    @bottom-center {
+      content: counter(page);
+      font-size: 9pt;
+      color: #666;
+    }
+  }
+
+  /* First page without page number */
+  @page :first {
+    @bottom-center {
+      content: "";
+    }
+  }
+
+  /* QuickIn specific print styles */
+  .quickin-print {
+    font-size: 9pt !important;
+    line-height: 1.3 !important;
+  }
+
+  .quickin-print main {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Compact Hero Section */
+  .quickin-print .hero-section {
+    background: none !important;
+    border: none !important;
+    border-bottom: 2px solid #003E77 !important;
+    padding: 5mm 0 4mm 0 !important;
+    min-height: auto !important;
+    margin-bottom: 4mm !important;
+  }
+
+  .quickin-print .hero-section .decorative {
+    display: none !important;
+  }
+
+  .quickin-print .hero-section > div {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .quickin-print .hero-section h1 {
+    font-size: 22pt !important;
+    margin-bottom: 2mm !important;
+    color: #003E77 !important;
+  }
+
+  .quickin-print .hero-section p {
+    font-size: 10pt !important;
+    color: #333 !important;
+    margin: 0 !important;
+  }
+
+  /* Compact Content Section */
+  .quickin-print .content-section {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Very compact sections */
+  .quickin-print .content-section > section,
+  .quickin-print .content-section > div > section {
+    margin-bottom: 4mm !important;
+    padding: 0 !important;
+  }
+
+  /* Section component styling */
+  .quickin-print section > div:first-child {
+    margin-bottom: 2mm !important;
+  }
+
+  /* Compact headings */
+  .quickin-print h2 {
+    font-size: 12pt !important;
+    color: #003E77 !important;
+    border-bottom: 1px solid #003E77 !important;
+    padding-bottom: 1mm !important;
+    margin-bottom: 2mm !important;
+    margin-top: 0 !important;
+  }
+
+  .quickin-print h3 {
+    font-size: 11pt !important;
+    margin-bottom: 1.5mm !important;
+    margin-top: 2mm !important;
+  }
+
+  .quickin-print h4 {
+    font-size: 10pt !important;
+    margin-top: 2mm !important;
+    margin-bottom: 1mm !important;
+    font-weight: 600 !important;
+  }
+
+  /* Compact text */
+  .quickin-print p {
+    font-size: 9pt !important;
+    line-height: 1.3 !important;
+    margin-bottom: 1.5mm !important;
+  }
+
+  .quickin-print li {
+    font-size: 9pt !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.8mm !important;
+  }
+
+  /* Compact Warning boxes */
+  .quickin-print [class*="border-orange"],
+  .quickin-print [class*="border-yellow"],
+  .quickin-print [class*="border-red"],
+  .quickin-print [class*="border-blue"] {
+    border-width: 1px !important;
+    padding: 2mm 3mm !important;
+    margin: 2mm 0 !important;
+    background: #fafafa !important;
+  }
+
+  .quickin-print [class*="border-orange"] p,
+  .quickin-print [class*="border-yellow"] p,
+  .quickin-print [class*="border-red"] p,
+  .quickin-print [class*="border-blue"] p {
+    margin: 0 !important;
+    font-size: 8.5pt !important;
+  }
+
+  /* Compact Tables */
+  .quickin-print table {
+    font-size: 8pt !important;
+    width: 100% !important;
+    margin: 2mm 0 !important;
+    border-collapse: collapse !important;
+  }
+
+  .quickin-print th,
+  .quickin-print td {
+    padding: 1.5mm 2mm !important;
+    border: 0.5pt solid #999 !important;
+    vertical-align: top !important;
+  }
+
+  .quickin-print th {
+    background: #003E77 !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 8pt !important;
+  }
+
+  .quickin-print td {
+    font-size: 8pt !important;
+  }
+
+  /* Compact Images */
+  .quickin-print img {
+    max-width: 60% !important;
+    max-height: 50mm !important;
+    margin: 2mm auto !important;
+    display: block !important;
+  }
+
+  .quickin-print figure {
+    margin: 2mm 0 !important;
+  }
+
+  .quickin-print figcaption {
+    font-size: 8pt !important;
+    text-align: center !important;
+    margin-top: 1mm !important;
+  }
+
+  /* Compact Checklist */
+  .quickin-print ul {
+    margin: 1mm 0 2mm 0 !important;
+    padding-left: 4mm !important;
+  }
+
+  .quickin-print ul li {
+    margin-bottom: 0.5mm !important;
+    padding-left: 1mm !important;
+  }
+
+  /* Compact Step list */
+  .quickin-print ol {
+    margin: 1mm 0 2mm 0 !important;
+    padding-left: 5mm !important;
+  }
+
+  .quickin-print ol li {
+    margin-bottom: 0.8mm !important;
+  }
+
+  /* Result text after steps */
+  .quickin-print .text-green-700,
+  .quickin-print [class*="text-green"] {
+    font-size: 8.5pt !important;
+    margin-top: 1mm !important;
+    padding: 1mm 2mm !important;
+    background: #f0fdf4 !important;
+    border-left: 2px solid #22c55e !important;
+  }
+
+  /* Remove extra spacing */
+  .quickin-print .space-y-4 > * + *,
+  .quickin-print .space-y-6 > * + *,
+  .quickin-print .space-y-8 > * + * {
+    margin-top: 2mm !important;
+  }
+
+  .quickin-print .mb-4,
+  .quickin-print .mb-6,
+  .quickin-print .mb-8,
+  .quickin-print .mb-12 {
+    margin-bottom: 2mm !important;
+  }
+
+  .quickin-print .mt-4,
+  .quickin-print .mt-6,
+  .quickin-print .mt-8 {
+    margin-top: 2mm !important;
+  }
+
+  .quickin-print .py-8,
+  .quickin-print .py-12 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Two column layout for some sections if space allows */
+  .quickin-print .two-col-print {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4mm !important;
+  }
+
+  /* Avoid page breaks inside important elements */
+  .quickin-print section {
+    page-break-inside: avoid;
+  }
+
+  .quickin-print table {
+    page-break-inside: auto;
+  }
+
+  .quickin-print tr {
+    page-break-inside: avoid;
+  }
+
+  /* Keep headings with content */
+  .quickin-print h2,
+  .quickin-print h3,
+  .quickin-print h4 {
+    page-break-after: avoid;
+  }
+
+  /* Footer with company info for print */
+  .quickin-print::after {
+    content: "3D Global GmbH | www.3d-global.com";
+    position: fixed;
+    bottom: 5mm;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 7pt;
+    color: #999;
+  }
 }
 
 /* Ensure warning boxes don't break */

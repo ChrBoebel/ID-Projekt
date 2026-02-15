@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 type WarningType = "gefahr" | "warnung" | "vorsicht" | "hinweis";
 
 // Vordefinierte ISO 7010 Icons für spezifische Gefahren
@@ -75,16 +73,17 @@ export default function WarningBox({ type, title, icon, children }: WarningBoxPr
 
   return (
     <div
-      className={`${config.bgColor} ${config.borderColor} border-l-4 rounded-r-lg sm:rounded-r-xl p-4 sm:p-6 my-4 sm:my-6 animate-fadeIn shadow-sm`}
+      className={`${config.bgColor} ${config.borderColor} border-2 rounded-lg sm:rounded-xl p-4 sm:p-6 my-4 sm:my-6 animate-fadeIn`}
     >
       <div className="flex items-center gap-4 sm:gap-6">
         <div className={`${config.iconBg} p-2 sm:p-3 rounded-xl shrink-0 shadow-sm`}>
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={iconSrc}
             alt={config.label}
             width={64}
             height={64}
-            className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
+            className="w-12 h-12 sm:w-16 sm:h-16 object-contain print-icon"
           />
         </div>
         <div className="flex-1 min-w-0">

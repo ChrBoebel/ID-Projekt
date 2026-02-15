@@ -87,7 +87,7 @@ export default function PDFPage() {
             { num: "1", title: "Sicherheit", page: "3" },
             { num: "2", title: "Leistungsbeschreibung", page: "7" },
             { num: "3", title: "Gerätebeschreibung", page: "11" },
-            { num: "4", title: "Tätigkeitsbeschreibung", page: "15" },
+            { num: "4", title: "Bedienung", page: "15" },
             { num: "5", title: "Problemlösung", page: "23" },
             { num: "6", title: "Technische Daten", page: "25" },
             { num: "7", title: "Anhang", page: "27" },
@@ -404,11 +404,11 @@ export default function PDFPage() {
           </Section>
         </div>
 
-        {/* Kapitel 4: Tätigkeitsbeschreibung */}
+        {/* Kapitel 4: Bedienung */}
         <div className="page-break-before">
           <Section
             id="taetigkeit"
-            title="5. Tätigkeitsbeschreibung"
+            title="5. Bedienung"
             subtitle="Schritt-für-Schritt-Anleitungen für alle Aufgaben"
           >
             <SubSection title="5.1 Bildschirm auspacken">

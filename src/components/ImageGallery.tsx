@@ -113,7 +113,7 @@ export function SingleImage({ src, alt, caption }: SingleImageProps) {
         className="my-4 sm:my-6 cursor-pointer group"
         onClick={() => setIsOpen(true)}
       >
-        <div className="relative overflow-hidden rounded-lg border border-slate-200 shadow-sm bg-white max-w-xs sm:max-w-md mx-auto">
+        <div className="relative overflow-hidden rounded-lg border border-slate-200 shadow-sm bg-white max-w-xs sm:max-w-md">
           <div className="p-2 sm:p-3">
             <img
               src={src}
@@ -128,7 +128,7 @@ export function SingleImage({ src, alt, caption }: SingleImageProps) {
           </div>
         </div>
         {caption && (
-          <p className="text-xs sm:text-sm text-slate-500 text-center mt-1.5 sm:mt-2">{caption}</p>
+          <p className="text-xs sm:text-sm text-slate-500 mt-1.5 sm:mt-2">{caption}</p>
         )}
       </div>
 

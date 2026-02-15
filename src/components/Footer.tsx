@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -40,8 +41,17 @@ export default function Footer() {
               <p className="text-white/60 text-xs pt-2 sm:pt-4">© 2024 3D Global GmbH</p>
             </div>
 
-            {/* Column 2: Legal & Downloads */}
+            {/* Column 2: Legal, Guides & Downloads */}
             <div className="space-y-6 sm:space-y-8">
+              {/* Guides Section */}
+              <div>
+                <p className="font-medium mb-3">Anleitungen</p>
+                <div className="space-y-2">
+                  <Link href="/" className="underline hover:text-[#73C7D4] transition-colors block">Bedienungsanleitung</Link>
+                  <Link href="/quickin" className="underline hover:text-[#73C7D4] transition-colors block">QuickIn Guide</Link>
+                </div>
+              </div>
+
               {/* Legal Links */}
               <div className="space-y-2">
                 <a href="#" className="underline hover:text-[#73C7D4] transition-colors block">Legal notice</a>

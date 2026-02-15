@@ -4,33 +4,90 @@ import { useState, useEffect, useRef } from "react";
 import {
   ShieldAlert,
   Sparkles,
-  Monitor,
   Wrench,
   Search as SearchIcon,
   BarChart3,
-  Paperclip,
   LucideIcon,
   X,
   Package,
-  SprayCan,
+  Building2,
+  FileCheck,
+  Recycle,
+  FileText,
+  ChevronDown,
+  Printer,
 } from "lucide-react";
+
+interface SubItem {
+  id: string;
+  title: string;
+}
 
 interface NavItem {
   id: string;
   title: string;
   icon: LucideIcon;
+  subItems?: SubItem[];
 }
 
 const navItems: NavItem[] = [
   { id: "lieferumfang", title: "Lieferumfang", icon: Package },
-  { id: "sicherheit", title: "Sicherheit", icon: ShieldAlert },
-  { id: "leistung", title: "Leistungsbeschreibung", icon: Sparkles },
-  { id: "geraet", title: "Gerätebeschreibung", icon: Monitor },
-  { id: "taetigkeit", title: "Tätigkeitsbeschreibung", icon: Wrench },
-  { id: "reinigung", title: "Reinigung", icon: SprayCan },
+  {
+    id: "sicherheit",
+    title: "Sicherheit",
+    icon: ShieldAlert,
+    subItems: [
+      { id: "bestimmung", title: "Bestimmungsgemäße Verwendung" },
+      { id: "gesundheit", title: "Gesundheitshinweise" },
+      { id: "elektrisch", title: "Elektrische Sicherheit" },
+      { id: "aufstellung", title: "Aufstellung und Montage" },
+      { id: "glasscheibe", title: "Umgang mit der Glasscheibe" },
+      { id: "betriebsumgebung", title: "Betriebsumgebung" },
+    ]
+  },
+  {
+    id: "leistung",
+    title: "Produktübersicht",
+    icon: Sparkles,
+    subItems: [
+      { id: "funktionen", title: "Zentrale Funktionen" },
+      { id: "einsatz", title: "Einsatzmöglichkeiten" },
+      { id: "vorteile", title: "Anwendervorteile" },
+      { id: "geraet", title: "Gerätebeschreibung" },
+    ]
+  },
+  {
+    id: "taetigkeit",
+    title: "Bedienung",
+    icon: Wrench,
+    subItems: [
+      { id: "auspacken", title: "3D-Display auspacken" },
+      { id: "positionieren", title: "3D-Display positionieren" },
+      { id: "verkabeln", title: "3D-Display verkabeln" },
+      { id: "einschalten", title: "3D-Display einschalten" },
+      { id: "ausschalten", title: "3D-Display ausschalten" },
+      { id: "eingangsquelle", title: "Eingangsquelle wählen" },
+      { id: "displaymenue", title: "3D-Displaymenü bedienen" },
+      { id: "reinigung", title: "3D-Display reinigen" },
+    ]
+  },
   { id: "problemloesung", title: "Problemlösung", icon: SearchIcon },
-  { id: "technisch", title: "Technische Daten", icon: BarChart3 },
-  { id: "anhang", title: "Anhang", icon: Paperclip },
+  {
+    id: "technisch",
+    title: "Technische Daten",
+    icon: BarChart3,
+    subItems: [
+      { id: "spezifikationen", title: "3D-Display-Spezifikationen" },
+      { id: "anschluesse", title: "Anschlüsse" },
+      { id: "stromversorgung", title: "Stromversorgung" },
+      { id: "umgebung", title: "Umgebungsbedingungen" },
+      { id: "normen", title: "Normen und Zertifizierungen" },
+    ]
+  },
+  { id: "herstellerinfo", title: "Herstellerinformationen", icon: Building2 },
+  { id: "garantie", title: "Garantie", icon: FileCheck },
+  { id: "entsorgung", title: "Entsorgung", icon: Recycle },
+  { id: "konformitaet", title: "Konformität", icon: FileText },
 ];
 
 interface SearchResult {
@@ -42,11 +99,20 @@ interface SearchResult {
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [activeSubSection, setActiveSubSection] = useState("");
   const [scrollProgress, setScrollProgress] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [isSearching, setIsSearching] = useState(false);
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const lastActiveSectionRef = useRef<string>("");
+
+  const toggleExpanded = (id: string) => {
+    setExpandedItems(prev =>
+      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+    );
+  };
 
   // Search function
   const performSearch = (query: string) => {
@@ -135,24 +201,59 @@ export default function Navigation() {
     searchInputRef.current?.focus();
   };
 
+  // Helper function to get absolute position of element
+  const getAbsoluteTop = (element: HTMLElement): number => {
+    return element.getBoundingClientRect().top + window.scrollY;
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map((item) => document.getElementById(item.id));
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + 120;
 
       // Calculate scroll progress
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = (window.scrollY / docHeight) * 100;
       setScrollProgress(progress);
 
-      // Find active section
+      // Find active section using absolute position
+      let activeSectionId = "";
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
-        if (section && section.offsetTop <= scrollPosition) {
+        if (section && getAbsoluteTop(section) <= scrollPosition) {
           setActiveSection(navItems[i].id);
+          activeSectionId = navItems[i].id;
+          // Auto-expand only the active section (collapse all others)
+          if (activeSectionId !== lastActiveSectionRef.current) {
+            lastActiveSectionRef.current = activeSectionId;
+            if (navItems[i].subItems) {
+              setExpandedItems([navItems[i].id]);
+            } else {
+              setExpandedItems([]);
+            }
+          }
           break;
         }
       }
+
+      // Find active sub-section - only check subsections of the active main section
+      const currentNavItem = navItems.find(item => item.id === activeSectionId);
+      let activeSubId = "";
+
+      if (currentNavItem?.subItems) {
+        const subElements = currentNavItem.subItems
+          .map(sub => ({ id: sub.id, element: document.getElementById(sub.id) }))
+          .filter(item => item.element !== null);
+
+        for (let i = subElements.length - 1; i >= 0; i--) {
+          const el = subElements[i].element;
+          if (el && getAbsoluteTop(el) <= scrollPosition) {
+            activeSubId = subElements[i].id;
+            break;
+          }
+        }
+      }
+      setActiveSubSection(activeSubId);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -291,14 +392,28 @@ export default function Navigation() {
                 </li>
               ))}
             </ul>
+
+            {/* Mobile Print Button */}
+            <div className="p-4 border-t border-gray-100">
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  window.print();
+                }}
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm text-[#003E77] bg-[#003E77]/5 hover:bg-[#003E77]/10 rounded-lg transition-colors"
+              >
+                <Printer className="w-4 h-4" strokeWidth={1.5} />
+                <span className="font-medium">Anleitung drucken</span>
+              </button>
+            </div>
           </nav>
         )}
       </header>
 
-      {/* Desktop Sidebar - Reverted per User Request, styled with 3D Global Aesthetic */}
+      {/* Desktop Sidebar */}
       <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-[280px] bg-white border-r border-slate-100 z-40 flex-col overflow-y-auto">
         <div className="p-8 pb-4">
-          {/* Logo - Original 3D Global SVG */}
+          {/* Logo */}
           <div className="mb-8">
             <img
               src="/images/3d-global-logo.svg"
@@ -359,28 +474,70 @@ export default function Navigation() {
 
           {/* Navigation */}
           <nav>
-            <ul className="space-y-6">
+            <ul className="space-y-2">
               {navItems.map((item) => (
                 <li key={item.id}>
-                  <button
-                    onClick={() => scrollToSection(item.id)}
-                    className={`w-full text-left text-lg font-heading transition-all duration-200 group flex items-center gap-3 ${activeSection === item.id
-                      ? "text-[#003E77] font-normal pl-2 border-l-2 border-[#73C7D4]"
-                      : "text-[#003E77] font-light hover:text-[#73C7D4] hover:pl-2 hover:border-l-2 hover:border-[#73C7D4]/50"
-                      }`}
-                  >
-                    {item.title}
-                  </button>
+                  <div className="flex items-center">
+                    <button
+                      onClick={() => scrollToSection(item.id)}
+                      className={`flex-1 text-left text-base font-heading transition-all duration-200 py-1 ${activeSection === item.id
+                        ? "text-[#003E77] font-medium pl-2 border-l-2 border-[#73C7D4]"
+                        : "text-[#003E77]/70 font-light hover:text-[#003E77] hover:pl-2"
+                        }`}
+                    >
+                      {item.title}
+                    </button>
+                    {item.subItems && (
+                      <button
+                        onClick={() => toggleExpanded(item.id)}
+                        className="p-1 hover:bg-slate-100 rounded transition-colors"
+                      >
+                        <ChevronDown
+                          className={`w-4 h-4 text-[#003E77]/50 transition-transform ${
+                            expandedItems.includes(item.id) ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Sub Items */}
+                  {item.subItems && expandedItems.includes(item.id) && (
+                    <ul className="ml-4 mt-1 space-y-1">
+                      {item.subItems.map((subItem, index) => (
+                        <li key={index}>
+                          <button
+                            onClick={() => scrollToSection(subItem.id)}
+                            className={`w-full text-left text-sm py-1 transition-all duration-200 ${
+                              activeSubSection === subItem.id
+                                ? "text-[#003E77] font-medium pl-2 border-l-2 border-[#73C7D4]"
+                                : "text-[#003E77]/60 font-light pl-3 hover:text-[#003E77] hover:pl-2 hover:border-l-2 hover:border-[#73C7D4]/50"
+                            }`}
+                          >
+                            {subItem.title}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
               ))}
             </ul>
           </nav>
         </div>
 
-        {/* Sidebar Footer / Lang */}
+        {/* Sidebar Footer */}
         <div className="mt-auto p-8 border-t border-slate-50">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center justify-between">
             <span className="text-[#003E77] font-light cursor-pointer hover:text-[#73C7D4]">DE</span>
+            <button
+              onClick={() => window.print()}
+              className="flex items-center gap-2 px-3 py-2 text-sm text-[#003E77] hover:bg-[#003E77]/5 rounded-lg transition-colors"
+              title="Seite drucken"
+            >
+              <Printer className="w-4 h-4" strokeWidth={1.5} />
+              <span className="font-light">Drucken</span>
+            </button>
           </div>
         </div>
       </aside>

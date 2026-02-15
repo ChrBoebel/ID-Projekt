@@ -81,25 +81,31 @@ export default function Home() {
 
               {/* Right: Title Image */}
               <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-                <div className="relative">
+                <a href="#einleitung" className="relative group cursor-pointer">
                   {/* Decorative elements */}
-                  <div className="absolute -inset-4 bg-gradient-to-br from-[#003E77]/10 to-[#73C7D4]/20 rounded-3xl blur-2xl opacity-60"></div>
-                  <div className="relative bg-white rounded-2xl shadow-2xl shadow-[#003E77]/10 overflow-hidden border border-slate-100">
+                  <div className="absolute -inset-4 bg-gradient-to-br from-[#003E77]/10 to-[#73C7D4]/20 rounded-3xl blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+                  <div className="relative bg-white rounded-2xl shadow-2xl shadow-[#003E77]/10 overflow-hidden border border-slate-100 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_rgba(115,199,212,0.25)] group-active:translate-y-0 group-active:scale-[0.98]">
                     <Image
                       src="/images/Titelblatt.jpeg"
-                      alt="3D Bildschirm - Bedienungsanleitung"
+                      alt="3D 3D-Display - Bedienungsanleitung"
                       width={400}
                       height={500}
                       className="w-full max-w-[160px] sm:max-w-[280px] lg:max-w-[380px] h-auto object-contain"
                       priority
                     />
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-[#003E77]/0 group-hover:bg-[#003E77]/10 transition-all duration-300 flex items-center justify-center pointer-events-none">
+                      <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#003E77]/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+                        Zur Anleitung
+                      </span>
+                    </div>
                   </div>
                   {/* Floating badge */}
                   <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 bg-[#003E77] text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl shadow-lg">
                     <p className="text-[10px] sm:text-xs font-medium">3D Global</p>
                     <p className="text-xs sm:text-sm font-bold">2025 Serie</p>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
 
@@ -121,6 +127,26 @@ export default function Home() {
         {/* Content */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
 
+          {/* Einleitung */}
+          <Section
+            id="einleitung"
+            title="Einleitung"
+            subtitle="Wichtige Informationen zur Bedienungsanleitung"
+          >
+            <p className="text-slate-600 mb-4">
+              Diese Bedienungsanleitung ist Bestandteil des Produkts Auto-Stereo-MultiView-Display und enthält alle erforderlichen Informationen für den sicheren, sachgerechten und bestimmungsgemäßen Betrieb des Auto-Stereo-MultiView-Display. Im weiteren Verlauf dieser Bedienungsanleitung wird das Auto-Stereo-MultiView-Display aus Gründen der besseren Lesbarkeit ausschließlich als 3D-Display bezeichnet.
+            </p>
+            <p className="text-slate-600 mb-4">
+              Die Bedienungsanleitung richtet sich an Betreiber und Anwender.
+            </p>
+            <p className="text-slate-600 mb-4">
+              Lesen Sie die Betriebsanleitung, bevor Sie das Gerät erstmals in Betrieb nehmen.
+            </p>
+            <p className="text-slate-600">
+              Die Nichtbeachtung der in dieser Bedienungsanleitung enthaltenen Hinweise kann zu Fehlbedienungen, Sachschäden, Funktionsstörungen oder Gefährdungen von Personen führen. Für Schäden, die durch unsachgemäße Verwendung oder durch Nichtbeachtung dieser Bedienungsanleitung entstehen, übernimmt der Hersteller keine Haftung.
+            </p>
+          </Section>
+
           {/* Kapitel 1: Lieferumfang */}
           <Section
             id="lieferumfang"
@@ -132,14 +158,14 @@ export default function Home() {
             </p>
 
             <Table
-              headers={["Anzahl", "Bezeichnung", "Verwendung"]}
+              headers={["Anzahl", "Abbildung", "Bezeichnung", "Verwendung"]}
               rows={[
-                ["1", "43\" MultiView 3D-Bildschirm", "Hauptgerät zur Darstellung von 3D-Inhalten"],
-                ["1", "Fernbedienung", "Steuerung des Bildschirms (inkl. Batterien)"],
-                ["1", "Netzteil", "Stromversorgung des Bildschirms"],
-                ["1", "HDMI-Kabel", "Verbindung zwischen Computer und Bildschirm"],
-                ["1", "USB-Kabel", "Datenverbindung zwischen Computer und Bildschirm"],
-                ["1", "Schnellstartanleitung", "Erste Schritte zur Inbetriebnahme"],
+                ["1", <Image key="display" src="/images/Vorderansicht.jpeg" alt="43 Zoll MultiView 3D-Display" width={80} height={80} className="object-contain" />, "43\" MultiView 3D-Display", "Hauptgerät zur Darstellung von 3D-Inhalten"],
+                ["1", <Image key="remote" src="/images/Fernbedienung.jpg" alt="Fernbedienung" width={80} height={80} className="object-contain" />, "Fernbedienung", "Steuerung des 3D-Displays (inkl. Batterien)"],
+                ["1", "", "Netzteil", "Stromversorgung des 3D-Displays"],
+                ["1", "", "HDMI-Kabel", "Verbindung zwischen Computer und 3D-Display"],
+                ["1", "", "USB-Kabel", "Datenverbindung zwischen Computer und 3D-Display"],
+                ["1", "", "Schnellstartanleitung", "Erste Schritte zur Inbetriebnahme"],
               ]}
             />
           </Section>
@@ -150,109 +176,203 @@ export default function Home() {
             title="2. Sicherheit"
             subtitle="Wichtige Sicherheitshinweise für den sicheren Betrieb"
           >
-            <SubSection title="Bestimmungsgemäße Verwendung">
+            <p className="text-slate-600 mb-6">
+              In dieser Bedienungsanleitung werden die folgenden Signalwörter und Symbole verwendet, um auf Gefahren und wichtige Informationen hinzuweisen. Lesen und beachten Sie stets alle Sicherheitshinweise.
+            </p>
+
+            <SubSection id="signalwoerter" title="Verwendete Signalwörter und Symbole">
+              <p className="text-slate-600 mb-4">
+                Damit Sie Gefahren schnell erkennen, werden vier farblich gekennzeichnete Warnstufen verwendet. Jeder Warnhinweis beschreibt, <strong>worin die Gefahr</strong> besteht, <strong>was passieren kann</strong> und <strong>wie Sie sich schützen</strong>.
+              </p>
+
+              <div className="space-y-4 mb-6">
+                <div className="bg-red-50 border-2 border-red-500 rounded-xl p-4 sm:p-5">
+                  <div className="flex items-center gap-4 sm:gap-5">
+                    <div className="bg-red-100 p-2 sm:p-3 rounded-xl shrink-0 shadow-sm">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/images/ISO_7010_W001.svg" alt="Gefahr" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="font-bold text-red-700 text-base sm:text-lg">GEFAHR</div>
+                      <p className="text-red-800 text-sm">
+                        Weist auf eine unmittelbar gefährliche Situation hin. Bei Nichtbeachtung <strong>werden</strong> Tod oder schwere Verletzungen die Folge sein.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-orange-50 border-2 border-orange-500 rounded-xl p-4 sm:p-5">
+                  <div className="flex items-center gap-4 sm:gap-5">
+                    <div className="bg-orange-100 p-2 sm:p-3 rounded-xl shrink-0 shadow-sm">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/images/ISO_7010_W001.svg" alt="Warnung" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="font-bold text-orange-700 text-base sm:text-lg">WARNUNG</div>
+                      <p className="text-orange-800 text-sm">
+                        Weist auf eine möglicherweise gefährliche Situation hin. Bei Nichtbeachtung <strong>können</strong> Tod oder schwere Verletzungen die Folge sein.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-yellow-50 border-2 border-yellow-500 rounded-xl p-4 sm:p-5">
+                  <div className="flex items-center gap-4 sm:gap-5">
+                    <div className="bg-yellow-100 p-2 sm:p-3 rounded-xl shrink-0 shadow-sm">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/images/ISO_7010_W001.svg" alt="Vorsicht" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="font-bold text-yellow-700 text-base sm:text-lg">VORSICHT</div>
+                      <p className="text-yellow-800 text-sm">
+                        Weist auf eine möglicherweise gefährliche Situation hin. Bei Nichtbeachtung können leichte bis mittelschwere Verletzungen die Folge sein.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-[#003E77]/5 border-2 border-[#003E77] rounded-xl p-4 sm:p-5">
+                  <div className="flex items-center gap-4 sm:gap-5">
+                    <div className="bg-white p-2 sm:p-3 rounded-xl shrink-0 shadow-sm">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/images/ISO_7010_M001.svg" alt="Hinweis" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="font-bold text-[#003E77] text-base sm:text-lg">HINWEIS</div>
+                      <p className="text-[#003E77] text-sm">
+                        Weist auf eine Situation hin, die zu Sachschäden führen kann. Enthält keine Warnung vor Personenschäden.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SubSection>
+
+            <SubSection id="bestimmung" title="2.1 Bestimmungsgemäße Verwendung">
               <p className="text-slate-600">
                 Dieses Gerät dient zur brillenlosen 3D-Visualisierung für Einzelnutzer und Gruppen
                 in trockenen Innenräumen. Der Betrieb ist montiert auf zertifizierten VESA-Halterungen zulässig.
               </p>
             </SubSection>
 
-            <SubSection title="Gesundheitshinweise (3D-spezifisch)">
-              <WarningBox type="warnung" title="Epilepsie" icon="auge">
+            <SubSection id="gesundheit" title="2.2 Gesundheitshinweise (3D-spezifisch)">
+              <WarningBox type="warnung" title="Epilepsie" icon="allgemein">
                 Bestimmte 3D-Muster können Anfälle auslösen. Bei Schwindel oder Muskelzuckungen
                 Nutzung sofort abbrechen. Bei einem länger als 15 Minuten andauernden epileptischen
                 Anfall einen Notruf absetzen.
               </WarningBox>
 
-              <Checklist
-                items={[
-                  "Visuelle Belastung: Die MultiView-Darstellung kann bei langem Gebrauch zu Augenermüdung führen. Tipp: 15 Minuten Pause nach 60 Minuten Betrieb.",
-                  "Unwohlsein: Die räumliche Darstellung kann Schwindel oder Übelkeit verursachen. Bei ersten Anzeichen von Unwohlsein die Betrachtung sofort beenden und den Blick dauerhaft vom Bildschirm abwenden. Nicht weiterverwenden, bis die Symptome vollständig abgeklungen sind.",
-                  "Altersbeschränkung: Nicht empfohlen für Kinder unter 6 Jahren, da sich das Sehvermögen noch in der Entwicklung befindet.",
-                ]}
-              />
+              <p className="text-slate-600 mb-4">
+                <strong>Visuelle Belastung:</strong> Die MultiView-Darstellung kann bei langem Gebrauch zu Augenermüdung führen, damit diese vermieden wird, empfehlen sich 15 Minuten Pause nach 60 Minuten Betrieb.
+              </p>
+              <p className="text-slate-600 mb-4">
+                <strong>Unwohlsein:</strong> Die räumliche Darstellung kann Schwindel oder Übelkeit verursachen, damit es nicht zu einer Verschlechterung kommt, ist die Betrachtung bei ersten Anzeichen von Unwohlsein sofort zu beenden und der Blick dauerhaft vom 3D-Display abzuwenden. Das Gerät darf nicht weiterverwendet werden, bis die Symptome vollständig abgeklungen sind.
+              </p>
+              <p className="text-slate-600">
+                <strong>Altersbeschränkung:</strong> Das Gerät ist nicht empfohlen für Kinder unter 6 Jahren, da sich das Sehvermögen noch in der Entwicklung befindet.
+              </p>
             </SubSection>
 
-            <SubSection title="Elektrische Sicherheit">
+            <SubSection id="elektrisch" title="2.3 Elektrische Sicherheit">
               <WarningBox type="gefahr" title="Stromschlag- und Brandgefahr" icon="strom">
                 Um die Gefahr von Stromschlägen oder Bränden zu vermeiden, beachten Sie
                 folgende Hinweise:
               </WarningBox>
 
-              <Checklist
-                items={[
-                  "Stromquelle: Schließen Sie das Gerät nur an eine ordnungsgemäß geerdete Steckdose mit der auf dem Typenschild angegebenen Spannung an.",
-                  "Netzkabel: Achten Sie darauf, dass das Netzkabel nicht eingeklemmt, geknickt oder über scharfe Kanten geführt wird. Ziehen Sie das Kabel immer am Stecker aus der Steckdose, niemals am Kabel selbst.",
-                  "Gehäuse: Um die Gefahr von Stromschlägen oder Bränden zu vermeiden, öffnen Sie niemals das Gehäuse. Wartungsarbeiten dürfen nur von qualifiziertem Personal durchgeführt werden.",
-                  "Überlastung: Schließen Sie nicht zu viele Geräte an dieselbe Steckdose oder Verlängerungsschnur an.",
-                  "Feuchtigkeit: Betreiben Sie das Gerät niemals in der Nähe von Wasser oder im Freien. Schützen Sie es vor Tropf- und Spritzwasser.",
-                  "Fremdkörper: Schieben Sie niemals Fremdkörper in die Öffnungen am Monitorgehäuse. Dies kann Kurzschlüsse verursachen, welche zu Bränden oder Stromschlägen führen können.",
-                ]}
-              />
+              <p className="text-slate-600 mb-4">
+                <strong>Stromquelle:</strong> Das Gerät darf nur an eine ordnungsgemäß geerdete Steckdose mit der auf dem Typenschild angegebenen Spannung angeschlossen werden.
+              </p>
+              <p className="text-slate-600 mb-4">
+                <strong>Netzkabel:</strong> Es ist darauf zu achten, dass das Netzkabel nicht eingeklemmt, geknickt oder über scharfe Kanten geführt wird. Das Kabel ist immer am Stecker aus der Steckdose zu ziehen, niemals am Kabel selbst.
+              </p>
+              <p className="text-slate-600 mb-4">
+                <strong>Gehäuse:</strong> Damit die Gefahr von Stromschlägen oder Bränden vermieden wird, darf das Gehäuse niemals geöffnet werden. Wartungsarbeiten dürfen nur von qualifiziertem Personal durchgeführt werden.
+              </p>
+              <p className="text-slate-600 mb-4">
+                <strong>Überlastung:</strong> Es dürfen nicht zu viele Geräte an dieselbe Steckdose oder Verlängerungsschnur angeschlossen werden, damit eine Überlastung der Stromversorgung vermieden wird.
+              </p>
+              <p className="text-slate-600 mb-4">
+                <strong>Feuchtigkeit:</strong> Das Gerät darf niemals in der Nähe von Wasser oder im Freien betrieben werden, damit Kurzschlüsse durch Feuchtigkeit vermieden werden. Es ist vor Tropf- und Spritzwasser zu schützen.
+              </p>
+              <p className="text-slate-600">
+                <strong>Fremdkörper:</strong> Es dürfen niemals Fremdkörper in die Öffnungen am Displaygehäuse geschoben werden, da dies Kurzschlüsse verursachen kann, welche zu Bränden oder Stromschlägen führen können.
+              </p>
             </SubSection>
 
-            <SubSection title="Aufstellung und Montage">
+            <SubSection id="aufstellung" title="2.4 Aufstellung und Montage">
               <p className="text-slate-600 mb-4">
                 Das Gerät wird an einer VESA-kompatiblen Wandhalterung oder einem Standfuß montiert.
               </p>
 
               <WarningBox type="hinweis">
                 Verwenden Sie ausschließlich Halterungen, die für das VESA-Maß und das
-                spezifische Gewicht dieses 43&quot;-Bildschirms zertifiziert sind.
+                spezifische Gewicht dieses 43 Zoll-3D-Displays zertifiziert sind.
               </WarningBox>
 
-              <Checklist
-                items={[
-                  "Tragfähigkeit: Die Halterung und ggf. die Wand selbst müssen das Gewicht des Bildschirms sicher tragen können.",
-                  "Belüftung: Decken Sie die Lüftungsöffnungen niemals ab und achten Sie auf einen ausreichenden Abstand zur Wand. Ein Wärmestau kann das Gerät beschädigen oder Brände verursachen.",
-                  "Stabiler Standplatz: Achten Sie auf einen stabilen Standplatz, damit der Monitor nicht umkippt. Verwenden Sie nur vom Hersteller empfohlene Halterungen oder Tische, da instabile Unterlagen zu Unfällen und Geräteschäden führen können.",
-                  "Montage: Folgen Sie bei der Montage bitte genau der Anleitung und nutzen Sie das Original-Zubehör.",
-                  "Transport auf Wagen: Wenn Sie das Gerät auf einem Wagen bewegen, fahren Sie besonders vorsichtig, um ein Umfallen bei Unebenheiten zu vermeiden.",
-                ]}
-              />
+              <p className="text-slate-600 mb-4">
+                <strong>Tragfähigkeit:</strong> Die Halterung und gegebenenfalls die Wand selbst müssen das Gewicht des 3D-Displays sicher tragen können, damit ein Herabfallen des Geräts verhindert wird.
+              </p>
+              <p className="text-slate-600 mb-4">
+                <strong>Belüftung:</strong> Die Lüftungsöffnungen dürfen niemals abgedeckt werden, damit ein ausreichender Abstand zur Wand gewährleistet ist. Ein Wärmestau kann das Gerät beschädigen oder Brände verursachen.
+              </p>
+              <p className="text-slate-600 mb-4">
+                <strong>Stabiler Standplatz:</strong> Es ist auf einen stabilen Standplatz zu achten, damit der 3D-Display nicht umkippt. Es dürfen nur vom Hersteller empfohlene Halterungen oder Tische verwendet werden, da instabile Unterlagen zu Unfällen und Geräteschäden führen können.
+              </p>
+              <p className="text-slate-600 mb-4">
+                <strong>Montage:</strong> Bei der Montage ist genau der Anleitung zu folgen, damit eine sichere Befestigung gewährleistet wird. Es ist ausschließlich das Original-Zubehör zu verwenden.
+              </p>
+              <p className="text-slate-600">
+                <strong>Transport auf Wagen:</strong> Beim Bewegen des Geräts auf einem Wagen ist besonders vorsichtig zu fahren, damit ein Umfallen bei Unebenheiten vermieden wird.
+              </p>
             </SubSection>
 
-            <SubSection title="Umgang mit der Glasscheibe">
+            <SubSection id="glasscheibe" title="2.5 Umgang mit der Glasscheibe">
               <WarningBox type="vorsicht" title="Bruchgefahr" icon="allgemein">
                 Trotz der robusten Bauweise besteht bei massiver mechanischer Einwirkung Bruchgefahr.
               </WarningBox>
 
-              <Checklist
-                items={[
-                  "Bruchschäden: Sollte die Glasscheibe springen oder zerbrechen, ziehen Sie sofort den Netzstecker.",
-                  "Verletzungsgefahr: Berühren Sie keine Glassplitter mit bloßen Händen. Es besteht akute Schnittgefahr. Entsorgen Sie defekte Teile fachgerecht unter Verwendung von Schutzhandschuhen.",
-                  "Druckeinwirkung: Vermeiden Sie starken Druck oder Schläge auf die Oberfläche des Bildschirms.",
-                ]}
-              />
+              <p className="text-slate-600 mb-4">
+                <strong>Bruchschäden:</strong> Sollte die Glasscheibe springen oder zerbrechen, ist sofort der Netzstecker zu ziehen, damit keine weitere Gefährdung entsteht.
+              </p>
+              <p className="text-slate-600 mb-4">
+                <strong>Verletzungsgefahr:</strong> Glassplitter dürfen nicht mit bloßen Händen berührt werden, da akute Schnittgefahr besteht. Defekte Teile sind fachgerecht unter Verwendung von Schutzhandschuhen zu entsorgen.
+              </p>
+              <p className="text-slate-600">
+                <strong>Druckeinwirkung:</strong> Starker Druck oder Schläge auf die Oberfläche des 3D-Displays sind zu vermeiden, damit Beschädigungen der Glasscheibe verhindert werden.
+              </p>
             </SubSection>
 
-            <SubSection title="Betriebsumgebung und Belüftung">
-              <Checklist
-                items={[
-                  "Lüftungsschlitze: Decken Sie die Lüftungsöffnungen niemals ab (z. B. mit Zeitschriften oder Decken). Ein Wärmestau kann das Gerät beschädigen oder Brände verursachen.",
-                  "Wärmequellen: Stellen Sie das Gerät nicht in die Nähe von Heizkörpern, Öfen oder direkter Sonneneinstrahlung.",
-                ]}
-              />
+            <SubSection id="betriebsumgebung" title="2.6 Betriebsumgebung und Belüftung">
+              <WarningBox type="hinweis" title="Überhitzungsgefahr">
+                Unzureichende Belüftung oder die Nähe zu Wärmequellen kann zu einer Überhitzung des Geräts führen und Sachschäden verursachen.
+              </WarningBox>
+
+              <p className="text-slate-600 mb-4">
+                <strong>Lüftungsschlitze:</strong> Die Lüftungsöffnungen dürfen niemals abgedeckt werden (z. B. mit Zeitschriften oder Decken), damit eine ausreichende Belüftung sichergestellt ist. Ein Wärmestau kann das Gerät beschädigen oder Brände verursachen.
+              </p>
+              <p className="text-slate-600">
+                <strong>Wärmequellen:</strong> Das Gerät darf nicht in die Nähe von Heizkörpern, Öfen oder direkter Sonneneinstrahlung gestellt werden, damit eine Überhitzung vermieden wird.
+              </p>
             </SubSection>
           </Section>
 
-          {/* Kapitel 2: Leistungsbeschreibung */}
+          {/* Kapitel 3: Produktübersicht */}
           <Section
             id="leistung"
-            title="3. Leistungsbeschreibung"
+            title="3. Produktübersicht"
             subtitle="Was kann das Gerät und welchen Nutzen bietet es?"
           >
-            <SubSection title="3.1 Zentrale Funktionen">
+            <SubSection id="funktionen" title="3.1 Zentrale Funktionen">
               <p className="text-slate-600 mb-6">
-                Der 43&quot; MultiView 3D-Bildschirm ermöglicht die brillenfreie 3D-Darstellung
+                Der 43 Zoll MultiView 3D-Display ermöglicht die brillenfreie 3D-Darstellung
                 von Inhalten für Einzelbenutzer und Gruppen. Durch die autostereoskopische
-                Technologie (spezielle Linsen im Bildschirm) sehen Sie 3D-Bilder ohne 3D-Brille.
-                Mehrere Benutzer können gleichzeitig dreidimensionale Bilder aus verschiedenen
+                Technologie (spezielle Linsen im 3D-Display) sehen Sie 3D-Bilder ohne 3D-Brille.
+                Mehrere Benutzer können gleichzeitig 3D-Bilder aus verschiedenen
                 Positionen sehen.
               </p>
 
               <SingleImage
-                src="/images/Leistungsbeschreibung.jpeg"
+                src="/images/quickin-img-1-1.jpeg"
                 alt="MultiView 3D-Technologie"
                 caption="MultiView 3D-Technologie ermöglicht mehreren Benutzern gleichzeitig den 3D-Effekt"
               />
@@ -287,7 +407,7 @@ export default function Home() {
               </FeatureGrid>
             </SubSection>
 
-            <SubSection title="3.2 Einsatzmöglichkeiten">
+            <SubSection id="einsatz" title="3.2 Einsatzmöglichkeiten">
               <p className="text-slate-600 mb-6">
                 Der Benutzer kann digitale Inhalte räumlich betrachten und präsentieren –
                 allein oder in Gruppen, ohne durch Zusatzhardware eingeschränkt zu sein.
@@ -324,112 +444,117 @@ export default function Home() {
               </div>
             </SubSection>
 
-            <SubSection title="3.3 Anwendervorteile">
+            <SubSection id="vorteile" title="3.3 Anwendervorteile">
               <p className="text-slate-600 mb-6">
-                Der Einsatz des 43&quot; MultiView 3D-Bildschirms steigert die Effizienz und
+                Der Einsatz des 43 Zoll MultiView 3D-Displays steigert die Effizienz und
                 Qualität bei der Arbeit mit räumlichen Daten – sowohl für Einzelbenutzer
                 als auch für Teams.
               </p>
 
               <h4 className="font-semibold text-slate-700 mb-4">Vorteile:</h4>
-              <Checklist
-                items={[
-                  "Komfort & Freiheit: brillenfreie 3D-Darstellung macht längeres Arbeiten angenehmer, da keine störende 3D-Brille erforderlich ist.",
-                  "MultiView für Gruppen: Mehrere Personen können gleichzeitig den 3D-Effekt erleben – ideal für Präsentationen und Teamarbeit.",
-                  "Intuitives Verständnis: Räumliche Zusammenhänge werden schneller und natürlicher erfasst als auf flachen 2D-Bildschirmen.",
-                  "Flexibilität: Ein einziges Gerät für Standard-Büroaufgaben (2D) und spezialisierte 3D-Anwendungen.",
-                  "Professionelle Ergebnisse: Präzise Beurteilung von Proportionen und Tiefe vermeidet Fehler in frühen Entwicklungsphasen.",
-                ]}
-              />
+              <p className="text-slate-600 mb-4">
+                <strong>Komfort & Freiheit:</strong> Durch die brillenfreie 3D-Darstellung wird längeres Arbeiten angenehmer, da keine störende 3D-Brille erforderlich ist.
+              </p>
+              <p className="text-slate-600 mb-4">
+                <strong>MultiView für Gruppen:</strong> Mehrere Personen können gleichzeitig den 3D-Effekt erleben, damit ist das Gerät ideal für Präsentationen und Teamarbeit geeignet.
+              </p>
+              <p className="text-slate-600 mb-4">
+                <strong>Intuitives Verständnis:</strong> Räumliche Zusammenhänge werden schneller und natürlicher erfasst als auf flachen 2D-Displays, damit wird die Informationsaufnahme deutlich verbessert.
+              </p>
+              <p className="text-slate-600 mb-4">
+                <strong>Flexibilität:</strong> Ein einziges Gerät kann sowohl für Standard-Büroaufgaben (2D) als auch für spezialisierte 3D-Anwendungen verwendet werden.
+              </p>
+              <p className="text-slate-600">
+                <strong>Professionelle Ergebnisse:</strong> Durch die präzise Beurteilung von Proportionen und Tiefe werden Fehler in frühen Entwicklungsphasen vermieden.
+              </p>
             </SubSection>
-          </Section>
 
-          {/* Kapitel 4: Gerätebeschreibung */}
-          <Section
-            id="geraet"
-            title="4. Gerätebeschreibung"
-            subtitle="Geräteansichten und Anschlüsse"
-          >
-            <h4 className="font-semibold text-slate-700 mb-4">Vorderansicht</h4>
+            <SubSection id="geraet" title="3.4 Gerätebeschreibung">
+              <p className="text-slate-600 mb-6">
+                Geräteansichten und Anschlüsse des 3D-Displays.
+              </p>
+
+              <h4 className="font-semibold text-slate-700 mb-4">Vorderansicht</h4>
             <SingleImage
               src="/images/Vorderansicht.jpeg"
-              alt="Vorderansicht des Bildschirms"
-              caption="Vorderansicht des 43&quot; MultiView 3D-Bildschirms"
+              alt="Vorderansicht des 3D-Displays"
+              caption="Vorderansicht des 43 Zoll MultiView 3D-Displays"
             />
 
             <Table
               headers={["Nr.", "Bezeichnung", "Funktion"]}
               rows={[
-                ["1", "Bildschirm-Panel", "Zeigt 3D-Inhalte als brillenfreie MultiView 3D-Darstellung an. Der Bildschirm erzeugt räumliche Bilder für mehrere Benutzer gleichzeitig."],
+                ["1", "3D-Display-Panel", "Zeigt 3D-Inhalte als brillenfreie MultiView 3D-Darstellung an. Der 3D-Display erzeugt räumliche Bilder für mehrere Benutzer gleichzeitig."],
               ]}
             />
 
             <h4 className="font-semibold text-slate-700 mt-8 mb-4">Rückansicht</h4>
             <SingleImage
               src="/images/rueckansicht.jpg"
-              alt="Rückansicht des Bildschirms"
+              alt="Rückansicht des 3D-Displays"
               caption="Rückansicht mit Anschlüssen"
             />
 
             <Table
               headers={["Nr.", "Bezeichnung", "Funktion"]}
               rows={[
-                ["3", "HDMI-Anschluss", "Verbindet den Bildschirm mit der Bildquelle (Computer, Laptop). Überträgt Bildsignale."],
-                ["4", "USB-Anschluss", "Überträgt Daten. Ermöglicht die bidirektionale Kommunikation mit dem Computer."],
-                ["5", "Netzteilanschluss", "Stromversorgung: Schließen Sie hier das mitgelieferte Netzteil an."],
-                ["6", "VESA-Montagepunkte", "Standardisierte Befestigungspunkte für Wandhalterungen oder Standfüße."],
-                ["7", "Typenschild", "Enthält wichtige Geräteinformationen: Seriennummer, Modellbezeichnung, elektrische Daten."],
-                ["8", "Power-Taste", "Ein-/Ausschalten des Bildschirms."],
+                ["2", "HDMI-Anschluss", "Verbindet den 3D-Display mit der Bildquelle (Computer, Laptop). Überträgt Bildsignale."],
+                ["3", "USB-Anschluss", "Überträgt Daten. Ermöglicht die bidirektionale Kommunikation mit dem Computer."],
+                ["4", "Netzteilanschluss", "Stromversorgung: Schließen Sie hier das mitgelieferte Netzteil an."],
+                ["5", "VESA-Montagepunkte", "Standardisierte Befestigungspunkte für Wandhalterungen oder Standfüße."],
+                ["6", "Typenschild", "Enthält wichtige Geräteinformationen: Seriennummer, Modellbezeichnung, elektrische Daten."],
+                ["7", "Power-Taste", "Ein-/Ausschalten des 3D-Displays."],
               ]}
             />
 
             <h4 className="font-semibold text-slate-700 mt-8 mb-4">Fernbedienung</h4>
-            <SingleImage
-              src="/images/Fernbedienung.jpg"
-              alt="Fernbedienung"
-              caption="Fernbedienung des 3D-Bildschirms"
-            />
-
-            <Table
-              headers={["Nr.", "Bezeichnung", "Funktion"]}
-              rows={[
-                ["14", "Power-Taste", "Bildschirm ein-/ausschalten. Befindet sich oben an der Fernbedienung."],
-                ["15", "MENU-Taste", "Bildschirmmenü öffnen/schließen."],
-                ["16", "Eingangsquellen-Taste", "Eingangsquelle wählen. Wechselt zwischen angeschlossenen Geräten."],
-                ["17", "Pfeiltasten", "Navigation im Bildschirmmenü. Ermöglicht die Auswahl von Menüpunkten."],
-                ["18", "OK-Taste", "Auswahl bestätigen. Befindet sich in der Mitte des Navigationskreuzes."],
-                ["19", "Lautstärke-Tasten", "Lautstärke verringern (−) oder erhöhen (+)."],
-                ["20", "Play/Pause-Taste", "Wiedergabe starten oder pausieren. Für Medieninhalte."],
-                ["21", "Zurück-Taste", "Zurück zum vorherigen Menü oder Bildschirmmenü verlassen."],
-                ["22", "Stumm-Taste", "Ton stumm schalten. Befindet sich unten an der Fernbedienung."],
-              ]}
-            />
-
-            <p className="text-slate-600 mt-4">
-              Die Bedienung des Bildschirmmenüs ist in <strong>Kapitel 5.8</strong> beschrieben.
-            </p>
-
             <WarningBox type="hinweis" title="Beschädigung der Fernbedienung">
               <p className="mb-2"><strong>Beschädigung der Fernbedienung durch unsachgemäße Bedienung.</strong></p>
               <p className="mb-2">Defekte Tasten und Funktionsverlust können die Folge sein.</p>
               <p>Drücken Sie die Tasten nicht mit spitzen Gegenständen. Verwenden Sie nur Ihre Finger.</p>
             </WarningBox>
+            <SingleImage
+              src="/images/Fernbedienung.jpg"
+              alt="Fernbedienung"
+              caption="Fernbedienung des 3D-Displays"
+            />
+
+            <Table
+              headers={["Nr.", "Bezeichnung", "Funktion"]}
+              rows={[
+                ["8", "Power-Taste", "3D-Display ein-/ausschalten. Befindet sich oben an der Fernbedienung."],
+                ["9", "MENU-Taste", "3D-Displaymenü öffnen/schließen."],
+                ["10", "Eingangsquellen-Taste", "Eingangsquelle wählen. Wechselt zwischen angeschlossenen Geräten."],
+                ["11", "Pfeiltasten", "Navigation im 3D-Displaymenü. Ermöglicht die Auswahl von Menüpunkten."],
+                ["12", "OK-Taste", "Auswahl bestätigen. Befindet sich in der Mitte des Navigationskreuzes."],
+                ["13", "Lautstärke-Tasten", "Lautstärke verringern (−) oder erhöhen (+)."],
+                ["14", "Play/Pause-Taste", "Wiedergabe starten oder pausieren. Für Medieninhalte."],
+                ["15", "Zurück-Taste", "Zurück zum vorherigen Menü oder 3D-Displaymenü verlassen."],
+                ["16", "Stumm-Taste", "Ton stumm schalten. Befindet sich unten an der Fernbedienung."],
+              ]}
+            />
+
+            <p className="text-slate-600 mt-4">
+              Die Bedienung des 3D-Displaymenüs ist in <a href="#displaymenue" className="text-[#003E77] hover:underline font-medium">Kapitel 4.7</a> beschrieben.
+            </p>
+            </SubSection>
           </Section>
 
-          {/* Kapitel 4: Tätigkeitsbeschreibung */}
+          {/* Kapitel 4: Bedienung */}
           <Section
             id="taetigkeit"
-            title="5. Tätigkeitsbeschreibung"
+            title="4. Bedienung"
             subtitle="Schritt-für-Schritt-Anleitungen für alle Aufgaben"
           >
-            <SubSection title="5.1 Bildschirm auspacken">
+            <SubSection id="auspacken" title="4.1 3D-Display auspacken">
               <p className="text-slate-600 mb-4">
-                Nehmen Sie den Bildschirm sicher aus der Verpackung und prüfen Sie alle Komponenten.
+                Nehmen Sie den 3D-Display sicher aus der Verpackung und prüfen Sie alle Komponenten.
               </p>
 
               <h4 className="font-semibold text-slate-700 mb-3">Voraussetzungen:</h4>
               <Checklist
                 items={[
+                  "Zwei Personen sind für das Auspacken und Anheben erforderlich",
                   "Sie haben eine saubere, ebene Arbeitsfläche",
                   "Sie öffnen die Verpackung nicht mit scharfen Gegenständen",
                   "Sie haben Platz für alle Komponenten",
@@ -441,109 +566,77 @@ export default function Home() {
                 steps={[
                   { content: "Öffnen Sie den Versandkarton vorsichtig von oben." },
                   { content: "Entnehmen Sie die Schnellstartanleitung und legen Sie diese bereit." },
-                  { content: "Nehmen Sie den Bildschirm mit beiden Händen aus der Verpackung." },
+                  { content: "Nehmen Sie den 3D-Display mit beiden Händen aus der Verpackung." },
                   { content: "Entnehmen Sie alle weiteren Komponenten aus der Verpackung." },
                   { content: "Vergleichen Sie den Inhalt mit der Tabelle im Kapitel 1 (Lieferumfang) und prüfen Sie alle Teile auf sichtbare Transportschäden." },
                   { content: "Bei fehlenden oder beschädigten Teilen: Kontaktieren Sie umgehend den Händler." },
                 ]}
-                result="Jetzt haben Sie den Bildschirm ausgepackt und den Lieferumfang geprüft."
+                result="Jetzt haben Sie den 3D-Display ausgepackt und den Lieferumfang geprüft."
               />
             </SubSection>
 
-            <SubSection title="5.2 Bildschirm positionieren">
+            <SubSection id="positionieren" title="4.2 3D-Display positionieren">
               <p className="text-slate-600 mb-4">
-                Positionieren Sie den Bildschirm für den optimalen MultiView 3D-Effekt.
+                Positionieren Sie den 3D-Display für den optimalen MultiView 3D-Effekt.
                 Abstand, Höhe und Neigung sind entscheidend.
               </p>
 
               <h4 className="font-semibold text-slate-700 mb-3">Voraussetzungen:</h4>
               <Checklist
                 items={[
-                  "Der Bildschirm ist an einer geeigneten Halterung montiert",
-                  "Ausreichend Platz für mehrere Benutzer ist vorhanden",
-                  "Keine direkte Sonneneinstrahlung fällt auf den Bildschirm",
+                  "Der 3D-Display ist an einer geeigneten Halterung montiert",
+                  "Mindestabstand von 2,5 m zum 3D-Display ist gewährleistet",
+                  "Eine Fläche von mindestens 3 m² für die Betrachtung ist vorhanden",
+                  "Keine direkte Sonneneinstrahlung fällt auf den 3D-Display",
                 ]}
               />
 
               <h4 className="font-semibold text-slate-700 mt-6 mb-3">Schritte:</h4>
               <StepList
                 steps={[
-                  { content: "Positionieren Sie den Bildschirm so, dass der optimale Betrachtungsabstand eingehalten werden kann." },
-                  { content: "Stellen Sie den Bildschirm so auf, dass die Bildschirm-Mitte auf Augenhöhe der stehenden oder sitzenden Benutzer liegt." },
-                  { content: "Neigen Sie den Bildschirm bei Bedarf leicht (5 bis 10 Grad) für einen optimalen Betrachtungswinkel." },
-                  { content: "Prüfen Sie, ob von den Betrachtungspositionen aus kein störendes Licht auf dem Bildschirm reflektiert." },
-                  { content: "Bei Gruppenbetrachtung: Stellen Sie sicher, dass alle Benutzer innerhalb des MultiView-Bereichs positioniert sind (siehe Bild in Kapitel 3)." },
+                  { content: "Positionieren Sie den 3D-Display so, dass der Mindestabstand von 2,5 m eingehalten werden kann." },
+                  { content: "Stellen Sie den 3D-Display so auf, dass die 3D-Display-Mitte auf Brusthöhe der stehenden oder sitzenden Benutzer liegt." },
+                  { content: "Neigen Sie den 3D-Display bei Bedarf leicht (5° bis 10°) für einen optimalen Betrachtungswinkel." },
+                  { content: "Prüfen Sie, ob von den Betrachtungspositionen aus kein störendes Licht auf dem 3D-Display reflektiert." },
                 ]}
+              />
+
+              <SingleImage
+                src="/images/Leistungsbeschreibung.jpeg"
+                alt="MultiView-Bereich für Gruppenbetrachtung"
+                caption="Optimaler Betrachtungsbereich für mehrere Benutzer"
               />
             </SubSection>
 
-            <SubSection title="5.3 Bildschirm verkabeln">
+            <SubSection id="verkabeln" title="4.3 3D-Display verkabeln">
               <p className="text-slate-600 mb-4">
-                Verbinden Sie den Bildschirm mit einem Computer und schließen Sie die Stromversorgung an.
+                Verbinden Sie den 3D-Display mit einem Computer und schließen Sie die Stromversorgung an.
               </p>
 
               <h4 className="font-semibold text-slate-700 mb-3">Voraussetzungen:</h4>
               <Checklist
                 items={[
-                  "Der Bildschirm ist montiert",
+                  "Der 3D-Display ist montiert",
                   "Eine Steckdose (230 V) ist in Reichweite",
-                  "Alle Kabel liegen bereit (HDMI, USB, Netzteil)",
+                  "Alle Kabel liegen bereit (HDMI, Netzteil)",
                 ]}
               />
 
               <h4 className="font-semibold text-slate-700 mt-6 mb-3">Schritte:</h4>
               <StepList
                 steps={[
-                  { content: "Verbinden Sie den Computer per HDMI-Kabel mit dem Bildschirm." },
-                  {
-                    content: "Verbinden Sie den Computer per USB-Kabel mit dem Bildschirm.",
-                    substeps: ["Hintergrund: Die USB-Verbindung ist notwendig für die Datenübertragung."]
-                  },
-                  { content: "Verbinden Sie das Netzkabel mit dem Bildschirm-Netzteil und stecken Sie den runden Stecker in den Netzteilanschluss an der Rückseite des Bildschirms." },
+                  { content: "Verbinden Sie den Computer per HDMI-Kabel mit dem 3D-Display." },
+                  { content: "Verbinden Sie das Netzkabel mit dem 3D-Display-Netzteil und stecken Sie den runden Stecker in den Netzteilanschluss an der Rückseite des 3D-Displays." },
                   { content: "Stecken Sie das Netzkabel in die Steckdose." },
                 ]}
               />
             </SubSection>
 
-            <SubSection title="5.4 Ersteinrichtung durchführen">
-              <p className="text-slate-600 mb-4">
-                Konfigurieren Sie Sprache und Bildqualität nach dem ersten Einschalten.
-              </p>
-
+            <SubSection id="einschalten" title="4.4 3D-Display einschalten">
               <h4 className="font-semibold text-slate-700 mb-3">Voraussetzungen:</h4>
               <Checklist
                 items={[
-                  "Der Bildschirm ist verkabelt (siehe vorherige Abschnitte)",
-                  "Die Fernbedienung liegt bereit",
-                ]}
-              />
-
-              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Schritte:</h4>
-              <StepList
-                steps={[
-                  { content: "Drücken Sie die Power-Taste am Bildschirm." },
-                  { content: "Schalten Sie den angeschlossenen Computer ein." },
-                  {
-                    title: "Sprache wählen",
-                    content: "Der Bildschirm zeigt beim ersten Start automatisch die Sprachauswahl. Wählen Sie mit den Pfeiltasten ▲/▼ Ihre bevorzugte Sprache und bestätigen Sie mit OK."
-                  },
-                  { content: "Drücken Sie die Taste MENU auf der Fernbedienung, um das Bildschirmmenü zu öffnen." },
-                  { content: "Navigieren Sie mit den Pfeiltasten zu Bild und drücken Sie OK." },
-                  {
-                    content: "Passen Sie Helligkeit und Kontrast mit den Tasten ◄/► an Ihre Umgebung an.",
-                    substeps: ["Hintergrund: In hellen Räumen empfiehlt sich eine höhere Helligkeit, in dunklen Räumen eine niedrigere."]
-                  },
-                  { content: "Drücken Sie BACK oder MENU, um das Menü zu schließen." },
-                ]}
-                result="Der Bildschirm ist eingerichtet und einsatzbereit."
-              />
-            </SubSection>
-
-            <SubSection title="5.5 Bildschirm einschalten">
-              <h4 className="font-semibold text-slate-700 mb-3">Voraussetzungen:</h4>
-              <Checklist
-                items={[
-                  "Das Netzteil ist mit dem Bildschirm verbunden",
+                  "Das Netzteil ist mit dem 3D-Display verbunden",
                   "Das Netzteil ist an eine funktionierende Steckdose angeschlossen",
                 ]}
               />
@@ -551,39 +644,39 @@ export default function Home() {
               <h4 className="font-semibold text-slate-700 mt-6 mb-3">Schritte:</h4>
               <StepList
                 steps={[
-                  { content: "Drücken Sie die Power-Taste am rechten Rand des Bildschirms kurz." },
+                  { content: "Drücken Sie die Power-Taste am rechten Rand des 3D-Displays kurz." },
                   { content: "Schalten Sie den angeschlossenen Computer ein." },
                 ]}
-                result="Der Bildschirm zeigt nach wenigen Sekunden das Bild des angeschlossenen Computers."
+                result="Der 3D-Display zeigt nach wenigen Sekunden das Bild des angeschlossenen Computers."
               />
             </SubSection>
 
-            <SubSection title="5.6 Bildschirm ausschalten">
+            <SubSection id="ausschalten" title="4.5 3D-Display ausschalten">
               <p className="text-slate-600 mb-4">
-                Versetzen Sie den Bildschirm in den Bereitschaftsmodus oder schalten Sie ihn vollständig aus.
+                Versetzen Sie den 3D-Display in den Bereitschaftsmodus oder schalten Sie ihn vollständig aus.
               </p>
 
               <h4 className="font-semibold text-slate-700 mt-6 mb-3">Schritte:</h4>
               <StepList
                 steps={[
-                  { content: "Drücken Sie die Power-Taste am rechten Rand des Bildschirms kurz (weniger als 2 Sekunden)." },
-                  { content: "Warten Sie, bis der Bildschirm dunkel wird." },
+                  { content: "Drücken Sie die Power-Taste am rechten Rand des 3D-Displays kurz (weniger als 2 Sekunden)." },
+                  { content: "Warten Sie, bis der 3D-Display dunkel wird." },
                 ]}
-                result="Der Bildschirm befindet sich im Bereitschaftsmodus und verbraucht minimal Strom."
+                result="Der 3D-Display befindet sich im Bereitschaftsmodus und verbraucht minimal Strom."
               />
 
             </SubSection>
 
-            <SubSection title="5.7 Eingangsquelle wählen">
+            <SubSection id="eingangsquelle" title="4.6 Eingangsquelle wählen">
               <p className="text-slate-600 mb-4">
                 Wechseln Sie zwischen angeschlossenen Geräten. In den meisten Fällen erkennt
-                der Bildschirm das aktive Signal automatisch.
+                der 3D-Display das aktive Signal automatisch.
               </p>
 
               <h4 className="font-semibold text-slate-700 mb-3">Voraussetzungen:</h4>
               <Checklist
                 items={[
-                  "Mindestens ein Gerät ist mit dem Bildschirm verbunden und eingeschaltet",
+                  "Mindestens ein Gerät ist mit dem 3D-Display verbunden und eingeschaltet",
                   "Die Fernbedienung ist einsatzbereit",
                 ]}
               />
@@ -593,23 +686,23 @@ export default function Home() {
                 steps={[
                   { content: "Drücken Sie auf der Fernbedienung die Eingangsquellen-Taste. Ein Auswahlmenü erscheint." },
                   { content: "Drücken Sie die Eingangsquellen-Taste wiederholt, um durch die Quellen zu schalten." },
-                  { content: "Warten Sie 3 Sekunden, ohne eine Taste zu drücken. Der Bildschirm wechselt zur ausgewählten Quelle." },
+                  { content: "Warten Sie 3 Sekunden, ohne eine Taste zu drücken. Der 3D-Display wechselt zur ausgewählten Quelle." },
                 ]}
               />
             </SubSection>
 
-            <SubSection title="5.8 Bildschirmmenü bedienen">
+            <SubSection id="displaymenue" title="4.7 3D-Displaymenü bedienen">
               <p className="text-slate-600 mb-4">
-                Das Bildschirmmenü ist die zentrale Steuerungsebene für Bild-, Ton- und Systemeinstellungen.
+                Das 3D-Displaymenü ist die zentrale Steuerungsebene für Bild-, Ton- und Systemeinstellungen.
               </p>
 
-              <h4 className="font-semibold text-slate-700 mb-3">Bildschirmmenü öffnen und schließen:</h4>
+              <h4 className="font-semibold text-slate-700 mb-3">3D-Displaymenü öffnen und schließen:</h4>
               <StepList
                 steps={[
                   { content: "Drücken Sie die Taste MENU auf der Fernbedienung." },
                   { content: "Um das Menü zu schließen, drücken Sie erneut MENU oder BACK." },
                 ]}
-                result="Das Hauptmenü erscheint auf der linken Seite des Bildschirms."
+                result="Das Hauptmenü erscheint auf der linken Seite des 3D-Displays."
               />
 
               <div className="mt-4 p-4 bg-[#0B3D5C]/5 border border-[#4A90A4]/30 rounded-lg">
@@ -618,7 +711,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Im Bildschirmmenü navigieren:</h4>
+              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Im 3D-Displaymenü navigieren:</h4>
               <div className="space-y-2 text-slate-600">
                 <p>Verwenden Sie die Pfeiltasten zur Navigation:</p>
                 <ul className="list-disc list-inside ml-4 space-y-1">
@@ -632,42 +725,30 @@ export default function Home() {
               </div>
             </SubSection>
 
-            <SubSection id="reinigung" title="5.9 Bildschirm reinigen">
+            <SubSection id="reinigung" title="4.8 3D-Display reinigen">
               <p className="text-slate-600 mb-4">
-                Halten Sie den Bildschirm sauber für optimale Bildqualität. Reinigen Sie das Gehäuse
+                Halten Sie den 3D-Display sauber für optimale Bildqualität. Reinigen Sie das Gehäuse
                 regelmäßig mit einem weichen Tuch.
               </p>
 
-              <WarningBox type="vorsicht" title="Vor der Reinigung">
-                <p>
-                  <strong>Bitte ziehen Sie das Netzkabel, bevor Sie den Bildschirm reinigen.</strong>
-                </p>
+              <WarningBox type="vorsicht" title="Stromschlaggefahr bei der Reinigung" icon="strom">
+                <p className="mb-1">Reinigung bei eingeschaltetem Gerät kann zu einem Stromschlag führen.</p>
+                <p>Ziehen Sie das Netzkabel und warten Sie, bis das Gerät abgekühlt ist, bevor Sie mit der Reinigung beginnen.</p>
               </WarningBox>
 
               <WarningBox type="hinweis" title="Beschädigung durch falsche Reinigung">
-                <p className="mb-2"><strong>Beschädigung des Bildschirms durch falsche Reinigung.</strong></p>
-                <p className="mb-2">Kratzer, Trübung und dauerhafter Funktionsverlust können die Folge sein.</p>
-                <p className="mb-2">
-                  Sprühen Sie niemals direkt auf den Bildschirm. Üben Sie niemals starken Druck aus.
-                  Verwenden Sie niemals scharfe Gegenstände. Reinigen Sie den Bildschirm nur bei
-                  ausgeschaltetem und abgekühltem Gerät.
-                </p>
-                <p className="mb-2">
-                  <strong>Achten Sie darauf, dass kein Reinigungsmittel in das Gerät gelangt.</strong> Verwenden
-                  Sie ein möglichst weiches Tuch, damit es nicht zu Kratzern auf dem Bildschirm kommt.
-                </p>
+                <p className="mb-2">Unsachgemäße Reinigung kann zu Kratzern, Trübung oder dauerhaftem Funktionsverlust führen.</p>
                 <p>
-                  Bei hartnäckigen Verschmutzungen können Sie ein mildes Reinigungsmittel verwenden.
-                  Aggressive Reinigungsmittel können das Gehäuse beschädigen.
+                  Nur bei ausgeschaltetem Gerät reinigen. Weiches Tuch verwenden, nie direkt auf das Display sprühen. Keinen Druck ausüben, keine scharfen Gegenstände oder aggressive Reinigungsmittel verwenden. Bei hartnäckigen Verschmutzungen nur milde Reinigungsmittel nutzen.
                 </p>
               </WarningBox>
 
               <h4 className="font-semibold text-slate-700 mt-6 mb-3">Voraussetzungen:</h4>
               <Checklist
                 items={[
-                  "Der Bildschirm ist ausgeschaltet",
+                  "Der 3D-Display ist ausgeschaltet",
                   "Das Netzkabel ist getrennt",
-                  "Der Bildschirm ist abgekühlt (mindestens 5 Minuten warten)",
+                  "Der 3D-Display ist abgekühlt (mindestens 5 Minuten warten)",
                 ]}
               />
 
@@ -676,11 +757,11 @@ export default function Home() {
                 steps={[
                   {
                     title: "Staub entfernen",
-                    content: "Wischen Sie mit einem weichen, trockenen Mikrofasertuch vorsichtig über Bildschirm und Gehäuse. Üben Sie nur leichten Druck aus."
+                    content: "Wischen Sie mit einem weichen, trockenen Mikrofasertuch vorsichtig über 3D-Display und Gehäuse. Üben Sie nur leichten Druck aus."
                   },
                   {
                     title: "Flecken entfernen",
-                    content: "Befeuchten Sie das Tuch leicht mit destilliertem Wasser oder speziellem Bildschirmreiniger. Wischen Sie in kreisenden Bewegungen.",
+                    content: "Befeuchten Sie das Tuch leicht mit destilliertem Wasser oder speziellem 3D-Displayreiniger. Wischen Sie in kreisenden Bewegungen.",
                     substeps: ["Wichtig: Sprühen Sie niemals direkt auf das Gerät."]
                   },
                   {
@@ -688,7 +769,7 @@ export default function Home() {
                     content: "Entfernen Sie Staub aus den Lüftungsöffnungen vorsichtig mit einem weichen Pinsel oder Druckluft."
                   },
                 ]}
-                result="Der Bildschirm ist sauber und die Luftzirkulation sichergestellt."
+                result="Der 3D-Display ist sauber und die Luftzirkulation sichergestellt."
               />
 
               <h4 className="font-semibold text-slate-700 mt-6 mb-4">Geeignete Reinigungsmittel:</h4>
@@ -697,7 +778,7 @@ export default function Home() {
                   <h5 className="font-semibold text-green-800 mb-2">✓ Empfohlen</h5>
                   <ul className="text-green-700 text-sm space-y-1">
                     <li>• Destilliertes Wasser</li>
-                    <li>• Bildschirmreiniger für TFT/LCD (alkoholfrei)</li>
+                    <li>• 3D-Displayreiniger für TFT/LCD (alkoholfrei)</li>
                     <li>• Mikrofasertücher (fusselfrei)</li>
                     <li>• Weiches, antistatisches Tuch</li>
                   </ul>
@@ -717,7 +798,7 @@ export default function Home() {
               <div className="mt-4 p-4 bg-slate-100 rounded-lg">
                 <p className="text-slate-600 text-sm">
                   <strong>Hintergrund:</strong> Diese Mittel können das spezielle Linsenraster
-                  des 3D-Bildschirms dauerhaft beschädigen.
+                  des 3D-Displays dauerhaft beschädigen.
                 </p>
               </div>
             </SubSection>
@@ -726,12 +807,12 @@ export default function Home() {
           {/* Kapitel 5: Problemlösung */}
           <Section
             id="problemloesung"
-            title="6. Problemlösung"
+            title="5. Problemlösung"
             subtitle="Häufige Probleme und ihre Lösungen"
           >
             <p className="text-slate-600 mb-6">
               Sie finden hier schnell Lösungen für häufig auftretende Probleme mit Ihrem
-              3D-Bildschirm. Die Tabelle hilft Ihnen, die Ursache zu identifizieren und
+              3D-Display. Die Tabelle hilft Ihnen, die Ursache zu identifizieren und
               das Problem zu beheben. Arbeiten Sie die Lösungen in der angegebenen
               Reihenfolge durch.
             </p>
@@ -740,16 +821,16 @@ export default function Home() {
               headers={["Problem", "Mögliche Ursache", "Lösung"]}
               rows={[
                 ["Kein Bild", "Stromversorgung unterbrochen", "Prüfen Sie, ob das Netzteil korrekt angeschlossen ist."],
-                ["Kein Bild", "Kabelverbindung fehlerhaft", "Prüfen Sie die HDMI-Verbindung zwischen Computer und Bildschirm."],
+                ["Kein Bild", "Kabelverbindung fehlerhaft", "Prüfen Sie die HDMI-Verbindung zwischen Computer und 3D-Display."],
                 ["Kein Bild", "Computer nicht aktiv", "Schalten Sie den Computer ein oder wecken Sie ihn aus dem Ruhezustand."],
                 ["Kein 3D-Effekt", "Falsche Inhalte", "Spielen Sie am Computer die vorgesehene 3D-Datei ab."],
-                ["Kein 3D-Effekt", "USB-Verbindung fehlt", "Prüfen Sie die USB-Verbindung zwischen Computer und Bildschirm."],
-                ["Kein 3D-Effekt", "Falscher Betrachtungsabstand", "Korrigieren Sie den Abstand zum Bildschirm (siehe Kapitel 6.1)."],
+                ["Kein 3D-Effekt", "USB-Verbindung fehlt", "Prüfen Sie die USB-Verbindung zwischen Computer und 3D-Display."],
+                ["Kein 3D-Effekt", "Falscher Betrachtungsabstand", (<>Korrigieren Sie den Abstand zum 3D-Display (siehe <a href="#positionieren" className="text-[#003E77] hover:underline">Kapitel 4.2</a>).</>)],
                 ["Flackern/Streifen", "Lose Kabelverbindung", "Prüfen Sie alle Kabelverbindungen auf festen Sitz."],
                 ["Flackern/Streifen", "Defektes Kabel", "Verwenden Sie ein hochwertiges HDMI-Kabel."],
                 ["Flackern/Streifen", "Falsche Bildwiederholrate", "Stellen Sie am Computer 60 Hz ein."],
                 ["Unscharfes Bild", "Falsche Auflösung", "Stellen Sie die native Auflösung (3840 x 2160) am Computer ein."],
-                ["Unscharfes Bild", "Verschmutzter Bildschirm", "Reinigen Sie den Bildschirm (siehe Kapitel 4.9)."],
+                ["Unscharfes Bild", "Verschmutzter 3D-Display", (<>Reinigen Sie das 3D-Display (siehe <a href="#reinigung" className="text-[#003E77] hover:underline">Kapitel 4.8</a>).</>)],
                 ["Kopfschmerzen", "Zu lange Nutzung", "Legen Sie regelmäßig Pausen ein (15 Min. nach 60 Min. Betrieb)."],
                 ["Kopfschmerzen", "Falsche Sitzposition", "Korrigieren Sie Ihre Sitzposition und den Betrachtungswinkel."],
                 ["Menü reagiert nicht", "Softwarefehler", "Führen Sie einen Neustart durch (Power-Taste 5 Sek. halten)."],
@@ -760,13 +841,13 @@ export default function Home() {
           {/* Kapitel 6: Technische Daten */}
           <Section
             id="technisch"
-            title="7. Technische Daten"
+            title="6. Technische Daten"
             subtitle="Spezifikationen und Anforderungen"
           >
-            <SubSection title="7.1 Bildschirm-Spezifikationen">
+            <SubSection id="spezifikationen" title="6.1 3D-Display-Spezifikationen">
               <SpecTable
                 specs={[
-                  { label: "Bildschirmgröße", value: "43 Zoll (109 cm) diagonal" },
+                  { label: "3D-Displaygröße", value: "43 Zoll (109 cm) diagonal" },
                   { label: "Auflösung", value: "3840 x 2160 (4K)" },
                   { label: "Seitenverhältnis", value: "16:9" },
                   { label: "Panel-Technologie", value: "IPS (weiter Blickwinkel, natürliche Farben)" },
@@ -777,7 +858,7 @@ export default function Home() {
               />
             </SubSection>
 
-            <SubSection title="7.2 Anschlüsse und Schnittstellen">
+            <SubSection id="anschluesse" title="6.2 Anschlüsse und Schnittstellen">
               <SpecTable
                 specs={[
                   { label: "HDMI", value: "HDMI 2.0" },
@@ -786,7 +867,7 @@ export default function Home() {
               />
             </SubSection>
 
-            <SubSection title="7.3 Stromversorgung">
+            <SubSection id="stromversorgung" title="6.3 Stromversorgung">
               <SpecTable
                 specs={[
                   { label: "Eingangsspannung", value: "100-240V AC, 50/60 Hz" },
@@ -794,7 +875,7 @@ export default function Home() {
               />
             </SubSection>
 
-            <SubSection title="7.4 Umgebungsbedingungen">
+            <SubSection id="umgebung" title="6.4 Umgebungsbedingungen">
               <h4 className="font-semibold text-slate-700 mb-3">Betrieb</h4>
               <SpecTable
                 specs={[
@@ -812,7 +893,7 @@ export default function Home() {
               />
             </SubSection>
 
-            <SubSection title="7.5 Normen und Zertifizierungen">
+            <SubSection id="normen" title="6.5 Normen und Zertifizierungen">
               <div className="grid md:grid-cols-3 gap-4">
                 <div className="bg-white p-6 rounded-lg border border-slate-200 text-center">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -854,14 +935,13 @@ export default function Home() {
             </SubSection>
           </Section>
 
-          {/* Kapitel 7: Anhang */}
+          {/* Kapitel 7: Herstellerinformationen */}
           <Section
-            id="anhang"
-            title="8. Anhang"
-            subtitle="Herstellerinformationen, Garantie und Entsorgung"
+            id="herstellerinfo"
+            title="7. Herstellerinformationen"
+            subtitle="Kontaktdaten und Support"
           >
-            <SubSection title="8.1 Herstellerinformationen und Kontakt">
-              <SpecTable
+            <SpecTable
                 specs={[
                   { label: "Hersteller", value: "3D Global GmbH" },
                   { label: "Anschrift", value: "Robert-Bosch-Str. 33, D – 73431 Aalen" },
@@ -891,9 +971,14 @@ export default function Home() {
                   <li>Beschreibung des Problems</li>
                 </ul>
               </div>
-            </SubSection>
+          </Section>
 
-            <SubSection title="8.2 Garantiebedingungen">
+          {/* Kapitel 8: Garantiebedingungen */}
+          <Section
+            id="garantie"
+            title="8. Garantiebedingungen"
+            subtitle="Garantieumfang und -abwicklung"
+          >
               <h4 className="font-semibold text-slate-700 mb-3">Garantieumfang</h4>
               <p className="text-slate-600 mb-4">
                 Der Hersteller gewährt auf dieses Produkt eine Garantie von <strong>24 Monaten</strong> ab
@@ -918,19 +1003,14 @@ export default function Home() {
                 <li>Verwendung nicht zugelassener Zubehörteile</li>
               </ul>
 
-              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Garantieabwicklung</h4>
-              <StepList
-                steps={[
-                  { content: "Kontaktieren Sie den Support (siehe Kapitel 7.1)." },
-                  { content: "Beschreiben Sie das Problem." },
-                  { content: "Sie erhalten eine RMA-Nummer (Rücksendenummer)." },
-                  { content: "Senden Sie das Gerät sicher verpackt mit Kaufbeleg an die angegebene Adresse." },
-                ]}
-              />
+          </Section>
 
-            </SubSection>
-
-            <SubSection title="8.3 Entsorgungshinweise">
+          {/* Kapitel 9: Entsorgungshinweise */}
+          <Section
+            id="entsorgung"
+            title="9. Entsorgungshinweise"
+            subtitle="Umweltgerechte Entsorgung"
+          >
               <h4 className="font-semibold text-slate-700 mb-3">Elektro- und Elektronik-Altgeräte (WEEE)</h4>
 
               <div className="flex items-start gap-4 mb-4">
@@ -944,31 +1024,25 @@ export default function Home() {
                 />
                 <div className="text-slate-600">
                   <p className="mb-2">
-                    Dieses Produkt ist mit dem Symbol der durchgestrichenen Mülltonne gekennzeichnet. Das bedeutet:
+                    Dieses Produkt ist mit dem Symbol der durchgestrichenen Mülltonne gekennzeichnet (gemäß ElektroG). Sie sind als Endnutzer <strong>gesetzlich verpflichtet</strong>, dieses Gerät getrennt vom Hausmüll zu entsorgen.
                   </p>
                   <ul className="list-disc list-inside space-y-1 ml-4">
-                    <li>Entsorgen Sie dieses Gerät <strong>nicht</strong> über den Hausmüll.</li>
-                    <li>Geben Sie das Altgerät bei einer kommunalen Sammelstelle oder beim Händler ab.</li>
-                    <li>Die Rückgabe ist kostenlos.</li>
+                    <li>Geben Sie das Altgerät <strong>kostenlos</strong> bei einer kommunalen Sammelstelle ab.</li>
+                    <li>Händler sind zur Rücknahme verpflichtet: Kleingeräte (Kantenlänge &lt; 25 cm) ohne Neukauf, größere Geräte beim Kauf eines gleichartigen Neugeräts (1:1-Rücknahme).</li>
+                    <li>Entfernen Sie vor der Rückgabe alle Batterien, die zerstörungsfrei entnommen werden können.</li>
+                    <li>Löschen Sie vor der Entsorgung alle persönlichen Daten vom Gerät.</li>
                   </ul>
                 </div>
               </div>
 
-              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Warum getrennte Entsorgung?</h4>
-              <p className="text-slate-600 mb-4">
-                Elektrogeräte enthalten wertvolle Rohstoffe, die recycelt werden können.
-                Gleichzeitig können sie Schadstoffe enthalten, die bei unsachgemäßer
-                Entsorgung die Umwelt belasten.
+              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Batterien und Akkus</h4>
+              <p className="text-slate-600 mb-2">
+                Sie sind <strong>gesetzlich verpflichtet</strong>, verbrauchte Batterien zurückzugeben (gemäß BattG). Die Rückgabe ist kostenlos.
               </p>
-
-              <h4 className="font-semibold text-slate-700 mb-3">Batterien und Akkus</h4>
-              <WarningBox type="hinweis">
-                Entnehmen Sie vor der Entsorgung alle Batterien aus der Fernbedienung.
-              </WarningBox>
-              <ul className="list-disc list-inside text-slate-600 space-y-1 ml-4 mt-4">
+              <ul className="list-disc list-inside text-slate-600 space-y-1 ml-4">
                 <li>Entsorgen Sie Batterien <strong>nicht</strong> über den Hausmüll.</li>
                 <li>Geben Sie Batterien bei Sammelstellen im Handel oder bei kommunalen Wertstoffhöfen ab.</li>
-                <li>Batterien können Schwermetalle enthalten (siehe Kennzeichnung auf der Batterie).</li>
+                <li>Chemische Symbole auf der Batterie weisen auf enthaltene Schwermetalle hin: <strong>Pb</strong> = Blei, <strong>Cd</strong> = Cadmium, <strong>Hg</strong> = Quecksilber.</li>
               </ul>
 
               <h4 className="font-semibold text-slate-700 mt-6 mb-3">Verpackung</h4>
@@ -978,9 +1052,14 @@ export default function Home() {
                 <li><strong>Kunststofffolien:</strong> Gelber Sack/Wertstofftonne</li>
                 <li><strong>Styropor:</strong> Wertstoffhof</li>
               </ul>
-            </SubSection>
+          </Section>
 
-            <SubSection title="8.4 EU-Konformitätserklärung">
+          {/* Kapitel 10: EU-Konformitätserklärung */}
+          <Section
+            id="konformitaet"
+            title="10. EU-Konformitätserklärung"
+            subtitle="Rechtliche Konformität"
+          >
               <div className="flex items-start gap-4 mb-6">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -993,7 +1072,7 @@ export default function Home() {
                 <div>
                   <p className="text-slate-600 mb-4">
                     Hiermit erklärt der Hersteller <strong>3D Global GmbH</strong>, dass das Produkt
-                    <strong> 43&quot; MultiView 3D-Bildschirm</strong> den folgenden einschlägigen
+                    <strong> 43 Zoll MultiView 3D-Display</strong> den folgenden einschlägigen
                     Harmonisierungsrechtsvorschriften der Union entspricht:
                   </p>
                 </div>
@@ -1012,9 +1091,7 @@ export default function Home() {
                 <li>EN 55035:2017 – Störfestigkeit</li>
                 <li>EN 62368-1:2020 – Sicherheit von Audio-, Video- und IT-Geräten</li>
                 <li>EN IEC 63000:2018 – RoHS</li>
-              </ul>
-            </SubSection>
-
+            </ul>
           </Section>
 
         </div>
