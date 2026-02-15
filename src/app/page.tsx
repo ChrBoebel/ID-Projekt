@@ -153,21 +153,34 @@ export default function Home() {
             title="1. Lieferumfang"
             subtitle="Übersicht der mitgelieferten Komponenten"
           >
-            <p className="text-slate-600 mb-4">
+            <p className="text-slate-600 mb-8">
               Prüfen Sie nach dem Auspacken, ob alle Teile vollständig geliefert wurden.
             </p>
 
-            <Table
-              headers={["Anzahl", "Abbildung", "Bezeichnung", "Verwendung"]}
-              rows={[
-                ["1", <Image key="display" src="/images/Vorderansicht.jpeg" alt="43 Zoll MultiView 3D-Display" width={80} height={80} className="object-contain" />, "43\" MultiView 3D-Display", "Hauptgerät zur Darstellung von 3D-Inhalten"],
-                ["1", <Image key="remote" src="/images/Fernbedienung.jpg" alt="Fernbedienung" width={80} height={80} className="object-contain" />, "Fernbedienung", "Steuerung des 3D-Displays (inkl. Batterien)"],
-                ["1", "", "Netzteil", "Stromversorgung des 3D-Displays"],
-                ["1", "", "HDMI-Kabel", "Verbindung zwischen Computer und 3D-Display"],
-                ["1", "", "USB-Kabel", "Datenverbindung zwischen Computer und 3D-Display"],
-                ["1", "", "Schnellstartanleitung", "Erste Schritte zur Inbetriebnahme"],
-              ]}
-            />
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              {[
+                { src: "/images/Vorderansicht.jpeg", alt: "43 Zoll MultiView 3D-Display", title: "43\" MultiView 3D-Display", desc: "Hauptgerät zur Darstellung von 3D-Inhalten" },
+                { src: "/images/Fernbedienung.jpg", alt: "Fernbedienung", title: "Fernbedienung", desc: "Steuerung des 3D-Displays (inkl. Batterien)" },
+                { src: "/images/netzkabel.png", alt: "Netzteil", title: "Netzteil", desc: "Stromversorgung des 3D-Displays" },
+                { src: "/images/hdmikabel.png", alt: "HDMI-Kabel", title: "HDMI-Kabel", desc: "Verbindung zwischen Computer und 3D-Display" },
+                { src: "/images/usbkabel.png", alt: "USB-Kabel", title: "USB-Kabel", desc: "Datenverbindung zwischen Computer und 3D-Display" },
+                { src: null, alt: "", title: "Schnellstartanleitung", desc: "Erste Schritte zur Inbetriebnahme" },
+              ].map((item, i) => (
+                <div key={i} className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+                  <div className="bg-slate-50 flex items-center justify-center p-6 sm:p-8 aspect-square">
+                    {item.src ? (
+                      <Image src={item.src} alt={item.alt} width={200} height={200} className="object-contain max-h-[140px] sm:max-h-[180px]" />
+                    ) : (
+                      <svg className="w-16 h-16 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                    )}
+                  </div>
+                  <div className="p-4 sm:p-5">
+                    <p className="font-semibold text-[#003E77] text-sm sm:text-base">{item.title}</p>
+                    <p className="text-slate-500 text-xs sm:text-sm mt-1">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </Section>
 
           {/* Kapitel 2: Sicherheit */}
@@ -544,7 +557,7 @@ export default function Home() {
           <Section
             id="taetigkeit"
             title="4. Bedienung"
-            subtitle="Schritt-für-Schritt-Anleitungen für alle Aufgaben"
+            subtitle="Schritt-für-Schritt-Anleitungen für alle Aufgaben."
           >
             <SubSection id="auspacken" title="4.1 3D-Display auspacken">
               <p className="text-slate-600 mb-4">
@@ -561,7 +574,7 @@ export default function Home() {
                 ]}
               />
 
-              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Schritte:</h4>
+              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Vorgehen:</h4>
               <StepList
                 steps={[
                   { content: "Öffnen Sie den Versandkarton vorsichtig von oben." },
@@ -571,15 +584,21 @@ export default function Home() {
                   { content: "Vergleichen Sie den Inhalt mit der Tabelle im Kapitel 1 (Lieferumfang) und prüfen Sie alle Teile auf sichtbare Transportschäden." },
                   { content: "Bei fehlenden oder beschädigten Teilen: Kontaktieren Sie umgehend den Händler." },
                 ]}
-                result="Jetzt haben Sie den 3D-Display ausgepackt und den Lieferumfang geprüft."
+                result="Sie haben den 3D-Display ausgepackt und den Lieferumfang geprüft."
               />
             </SubSection>
 
             <SubSection id="positionieren" title="4.2 3D-Display positionieren">
-              <p className="text-slate-600 mb-4">
+              <p className="text-slate-600 mb-6">
                 Positionieren Sie den 3D-Display für den optimalen MultiView 3D-Effekt.
                 Abstand, Höhe und Neigung sind entscheidend.
               </p>
+
+              <SingleImage
+                src="/images/quickin-img-1-1.jpeg"
+                alt="MultiView-Bereich für Gruppenbetrachtung"
+                caption="Optimaler Betrachtungsbereich für mehrere Benutzer"
+              />
 
               <h4 className="font-semibold text-slate-700 mb-3">Voraussetzungen:</h4>
               <Checklist
@@ -591,7 +610,7 @@ export default function Home() {
                 ]}
               />
 
-              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Schritte:</h4>
+              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Vorgehen:</h4>
               <StepList
                 steps={[
                   { content: "Positionieren Sie den 3D-Display so, dass der Mindestabstand von 2,5 m eingehalten werden kann." },
@@ -601,11 +620,6 @@ export default function Home() {
                 ]}
               />
 
-              <SingleImage
-                src="/images/Leistungsbeschreibung.jpeg"
-                alt="MultiView-Bereich für Gruppenbetrachtung"
-                caption="Optimaler Betrachtungsbereich für mehrere Benutzer"
-              />
             </SubSection>
 
             <SubSection id="verkabeln" title="4.3 3D-Display verkabeln">
@@ -622,7 +636,7 @@ export default function Home() {
                 ]}
               />
 
-              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Schritte:</h4>
+              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Vorgehen:</h4>
               <StepList
                 steps={[
                   { content: "Verbinden Sie den Computer per HDMI-Kabel mit dem 3D-Display." },
@@ -641,7 +655,7 @@ export default function Home() {
                 ]}
               />
 
-              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Schritte:</h4>
+              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Vorgehen:</h4>
               <StepList
                 steps={[
                   { content: "Drücken Sie die Power-Taste am rechten Rand des 3D-Displays kurz." },
@@ -656,7 +670,7 @@ export default function Home() {
                 Versetzen Sie den 3D-Display in den Bereitschaftsmodus oder schalten Sie ihn vollständig aus.
               </p>
 
-              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Schritte:</h4>
+              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Vorgehen:</h4>
               <StepList
                 steps={[
                   { content: "Drücken Sie die Power-Taste am rechten Rand des 3D-Displays kurz (weniger als 2 Sekunden)." },
@@ -681,7 +695,7 @@ export default function Home() {
                 ]}
               />
 
-              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Schritte:</h4>
+              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Vorgehen:</h4>
               <StepList
                 steps={[
                   { content: "Drücken Sie auf der Fernbedienung die Eingangsquellen-Taste. Ein Auswahlmenü erscheint." },
@@ -752,7 +766,7 @@ export default function Home() {
                 ]}
               />
 
-              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Schritte:</h4>
+              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Vorgehen:</h4>
               <StepList
                 steps={[
                   {
@@ -985,9 +999,9 @@ export default function Home() {
                 Kaufdatum. Die Garantie umfasst Material- und Herstellungsfehler.
               </p>
 
-              <h4 className="font-semibold text-slate-700 mb-3">Garantieleistungen</h4>
+              <h4 className="font-semibold text-slate-700 mt-6 mb-3">Garantieleistungen</h4>
               <p className="text-slate-600 mb-2">Im Garantiefall wird das Gerät nach Wahl des Herstellers:</p>
-              <ul className="list-disc list-inside text-slate-600 ml-4 space-y-1">
+              <ul className="list-disc list-inside text-slate-600 ml-4 space-y-1 mb-4">
                 <li>repariert,</li>
                 <li>durch ein gleichwertiges Gerät ersetzt oder</li>
                 <li>der Kaufpreis erstattet.</li>
@@ -995,7 +1009,7 @@ export default function Home() {
 
               <h4 className="font-semibold text-slate-700 mt-6 mb-3">Garantieausschlüsse</h4>
               <p className="text-slate-600 mb-2">Die Garantie erlischt bei:</p>
-              <ul className="list-disc list-inside text-slate-600 ml-4 space-y-1">
+              <ul className="list-disc list-inside text-slate-600 ml-4 space-y-1 mb-4">
                 <li>Schäden durch unsachgemäße Handhabung oder Nichtbeachtung der Bedienungsanleitung</li>
                 <li>Schäden durch äußere Einwirkungen (Sturz, Feuchtigkeit, Überspannung)</li>
                 <li>Eingriffen durch nicht autorisierte Personen</li>
