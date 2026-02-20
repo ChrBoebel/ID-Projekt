@@ -137,7 +137,7 @@ export default function Home() {
               Diese Bedienungsanleitung ist Bestandteil des Produkts Auto-Stereo-MultiView-Display und enthält alle erforderlichen Informationen für den sicheren, sachgerechten und bestimmungsgemäßen Betrieb des Auto-Stereo-MultiView-Display. Im weiteren Verlauf dieser Bedienungsanleitung wird das Auto-Stereo-MultiView-Display aus Gründen der besseren Lesbarkeit ausschließlich als 3D-Display bezeichnet.
             </p>
             <p className="text-slate-600 mb-4">
-              Die Bedienungsanleitung richtet sich an Betreiber und Anwender.
+              Die Bedienungsanleitung richtet sich an die Nutzer des 3D-Displays.
             </p>
             <p className="text-slate-600 mb-4">
               Lesen Sie die Betriebsanleitung, bevor Sie das Gerät erstmals in Betrieb nehmen.
