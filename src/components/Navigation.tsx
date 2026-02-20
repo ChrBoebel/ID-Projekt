@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import {
   ShieldAlert,
@@ -103,7 +104,6 @@ export default function Navigation() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
-  const [isSearching, setIsSearching] = useState(false);
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const lastActiveSectionRef = useRef<string>("");
@@ -192,7 +192,6 @@ export default function Navigation() {
 
     setSearchQuery("");
     setSearchResults([]);
-    setIsSearching(false);
   };
 
   const clearSearch = () => {
@@ -283,9 +282,12 @@ export default function Navigation() {
       <header className="lg:hidden fixed top-1 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-3">
-            <img
+            <Image
               src="/images/3d-global-logo.svg"
               alt="3D Global Logo"
+              width={240}
+              height={80}
+              unoptimized
               className="h-8 w-auto"
             />
           </div>
@@ -415,9 +417,12 @@ export default function Navigation() {
         <div className="p-8 pb-4">
           {/* Logo */}
           <div className="mb-8">
-            <img
+            <Image
               src="/images/3d-global-logo.svg"
               alt="3D Global Logo"
+              width={300}
+              height={100}
+              unoptimized
               className="h-12 w-auto"
             />
           </div>
@@ -432,7 +437,6 @@ export default function Navigation() {
                 placeholder="Suchen..."
                 value={searchQuery}
                 onChange={handleSearchChange}
-                onFocus={() => setIsSearching(true)}
                 className="w-full pl-10 pr-8 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:border-[#003E77] focus:ring-1 focus:ring-[#003E77]/20 transition-colors"
               />
               {searchQuery && (

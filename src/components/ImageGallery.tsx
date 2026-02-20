@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 interface ImageItem {
@@ -33,9 +34,12 @@ export default function ImageGallery({ images, columns = 2 }: ImageGalleryProps)
           >
             <div className="relative overflow-hidden rounded-lg border border-slate-200 shadow-sm bg-white">
               <div className="p-2 sm:p-3">
-                <img
+                <Image
                   src={image.src}
                   alt={image.alt}
+                  width={1600}
+                  height={1200}
+                  unoptimized
                   className="w-full h-auto object-contain image-zoom max-h-48 sm:max-h-64"
                 />
               </div>
@@ -80,9 +84,12 @@ export default function ImageGallery({ images, columns = 2 }: ImageGalleryProps)
               </svg>
             </button>
             <div className="bg-white rounded-lg overflow-hidden p-2 sm:p-4">
-              <img
+              <Image
                 src={selectedImage.src}
                 alt={selectedImage.alt}
+                width={1600}
+                height={1200}
+                unoptimized
                 className="w-full h-auto object-contain max-h-[75vh] sm:max-h-[80vh]"
               />
               {selectedImage.caption && (
@@ -115,9 +122,12 @@ export function SingleImage({ src, alt, caption }: SingleImageProps) {
       >
         <div className="relative overflow-hidden rounded-lg border border-slate-200 shadow-sm bg-white max-w-xs sm:max-w-md">
           <div className="p-2 sm:p-3">
-            <img
+            <Image
               src={src}
               alt={alt}
+              width={1600}
+              height={1200}
+              unoptimized
               className="w-full h-auto object-contain image-zoom max-h-56 sm:max-h-72"
             />
           </div>
@@ -157,9 +167,12 @@ export function SingleImage({ src, alt, caption }: SingleImageProps) {
               </svg>
             </button>
             <div className="bg-white rounded-lg overflow-hidden p-2 sm:p-4">
-              <img
+              <Image
                 src={src}
                 alt={alt}
+                width={1600}
+                height={1200}
+                unoptimized
                 className="w-full h-auto object-contain max-h-[75vh] sm:max-h-[80vh]"
               />
               {caption && (

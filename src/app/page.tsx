@@ -363,7 +363,7 @@ export default function Home() {
               <p className="text-slate-600 mb-2">Alarmieren Sie bei Feuer oder starkem Rauch die Feuerwehr.</p>
               <p className="text-slate-600 mb-2"><strong>Stecker ziehen:</strong> Trennen Sie das Gerät sofort von der Steckdose, um die Stromzufuhr zu stoppen.</p>
               <p className="text-slate-600 mb-2"><strong>Kein Wasser verwenden:</strong> Wasser leitet Strom – es besteht Lebensgefahr durch Stromschlag. Nutzen Sie nur CO₂-Löscher.</p>
-              <p className="text-slate-600"><strong>Sichern:</strong> Markieren Sie das Gerät mit „DEFEKT", um eine Wiederinbetriebnahme durch Dritte zu verhindern.</p>
+              <p className="text-slate-600"><strong>Sichern:</strong> Markieren Sie das Gerät mit „DEFEKT“, um eine Wiederinbetriebnahme durch Dritte zu verhindern.</p>
             </SubSection>
           </Section>
 
