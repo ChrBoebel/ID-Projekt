@@ -10,10 +10,7 @@ import {
   Checklist,
   SingleImage,
   Footer,
-  FeatureCard,
-  FeatureGrid,
 } from "@/components";
-import { Users, Eye, Box, ImageIcon, Cable } from "lucide-react";
 
 export default function Home() {
   return (
@@ -374,112 +371,45 @@ export default function Home() {
           <Section
             id="leistung"
             title="3. Produktübersicht"
-            subtitle="Was kann das Gerät und welchen Nutzen bietet es?"
+            subtitle="Aufbau, Merkmale und Einsatzmöglichkeiten des Geräts"
           >
-            <SubSection id="funktionen" title="3.1 Zentrale Funktionen">
-              <p className="text-slate-600 mb-6">
-                Der 43 Zoll MultiView 3D-Display ermöglicht die brillenfreie 3D-Darstellung
-                von Inhalten für Einzelbenutzer und Gruppen. Durch die autostereoskopische
-                Technologie (spezielle Linsen im 3D-Display) sehen Sie 3D-Bilder ohne 3D-Brille.
-                Mehrere Benutzer können gleichzeitig 3D-Bilder aus verschiedenen
-                Positionen sehen.
-              </p>
+            <p className="text-slate-600 mb-6">
+              Das Gerät ist ein autostereoskopisches 3D-Display zur brillenfreien Darstellung von 3D-Inhalten. Durch ein integriertes Linsensystem (Lentikular-Technologie) wird eine räumliche Tiefenwirkung ohne Zusatzhardware erzielt.
+            </p>
 
-              <SingleImage
-                src="/images/quickin-img-1-1.jpeg"
-                alt="MultiView 3D-Technologie"
-                caption="MultiView 3D-Technologie ermöglicht mehreren Benutzern gleichzeitig den 3D-Effekt"
-              />
-
-              <h4 className="font-semibold text-slate-700 mt-8 mb-4">Hauptmerkmale:</h4>
-              <FeatureGrid>
-                <FeatureCard
-                  icon={<Users className="w-6 h-6 " strokeWidth={1.5} />}
-                  title="MultiView-Technologie"
-                  description="Mehrere Benutzer können gleichzeitig den 3D-Effekt aus verschiedenen Blickwinkeln erleben – ohne dass jeder eine bestimmte Position einnehmen muss."
-                />
-                <FeatureCard
-                  icon={<Eye className="w-6 h-6 " strokeWidth={1.5} />}
-                  title="Brillenfreie 3D-Darstellung"
-                  description="Spezielle Linsen sorgen für einen räumlichen Effekt ohne zusätzliche Hardware."
-                />
-                <FeatureCard
-                  icon={<Box className="w-6 h-6 " strokeWidth={1.5} />}
-                  title="3D-Effekt über Computer"
-                  description="Der 3D-Effekt entsteht durch passende Inhalte vom Computer. Spielen Sie die vorgesehene 3D-Datei ab."
-                />
-                <FeatureCard
-                  icon={<ImageIcon className="w-6 h-6 " strokeWidth={1.5} />}
-                  title="Hohe Bildqualität"
-                  description="Darstellung in 4K-Auflösung (3840 x 2160 Pixel) für scharfe Details."
-                />
-                <FeatureCard
-                  icon={<Cable className="w-6 h-6 " strokeWidth={1.5} />}
-                  title="Konnektivität"
-                  description="Anschluss über HDMI und USB für Bild- und Datenübertragung."
-                />
-              </FeatureGrid>
-            </SubSection>
-
-            <SubSection id="einsatz" title="3.2 Einsatzmöglichkeiten">
-              <p className="text-slate-600 mb-6">
-                Der Benutzer kann digitale Inhalte räumlich betrachten und präsentieren –
-                allein oder in Gruppen, ohne durch Zusatzhardware eingeschränkt zu sein.
+            <SubSection id="merkmale" title="3.1 Technische Hauptmerkmale">
+              <p className="text-slate-600 mb-2">
+                <strong>MultiView-Technologie:</strong> Ermöglicht die gleichzeitige 3D-Wahrnehmung für mehrere Personen aus unterschiedlichen Betrachtungswinkeln.
               </p>
-
-              <h4 className="font-semibold text-slate-700 mb-4">Anwendungsmöglichkeiten:</h4>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="p-4 bg-gradient-to-br from-[#0B3D5C]/5 to-[#00B4D8]/10 rounded-lg border border-[#4A90A4]/20">
-                  <h5 className="font-semibold text-[#0B3D5C] mb-2">Visualisieren</h5>
-                  <p className="text-slate-600 text-sm">
-                    Betrachten von 3D-Modellen, CAD-Zeichnungen oder medizinischen Daten
-                    (z. B. MRT-Scans) mit realer Tiefenwirkung.
-                  </p>
-                </div>
-                <div className="p-4 bg-gradient-to-br from-[#0B3D5C]/5 to-[#00B4D8]/10 rounded-lg border border-[#4A90A4]/20">
-                  <h5 className="font-semibold text-[#0B3D5C] mb-2">Präsentieren</h5>
-                  <p className="text-slate-600 text-sm">
-                    Vorführung von Design-Entwürfen und Produkten in 3D für Kunden,
-                    Kollegen oder Gruppen.
-                  </p>
-                </div>
-                <div className="p-4 bg-gradient-to-br from-[#0B3D5C]/5 to-[#00B4D8]/10 rounded-lg border border-[#4A90A4]/20">
-                  <h5 className="font-semibold text-[#0B3D5C] mb-2">Unterhaltung</h5>
-                  <p className="text-slate-600 text-sm">
-                    Wiedergabe von stereoskopischen Spielen und Filmen.
-                  </p>
-                </div>
-                <div className="p-4 bg-gradient-to-br from-[#0B3D5C]/5 to-[#00B4D8]/10 rounded-lg border border-[#4A90A4]/20">
-                  <h5 className="font-semibold text-[#0B3D5C] mb-2">Gruppenarbeit</h5>
-                  <p className="text-slate-600 text-sm">
-                    Gemeinsame Betrachtung und Diskussion von 3D-Inhalten im Team.
-                  </p>
-                </div>
-              </div>
-            </SubSection>
-
-            <SubSection id="vorteile" title="3.3 Anwendervorteile">
-              <p className="text-slate-600 mb-6">
-                Der Einsatz des 43 Zoll MultiView 3D-Displays steigert die Effizienz und
-                Qualität bei der Arbeit mit räumlichen Daten – sowohl für Einzelbenutzer
-                als auch für Teams.
-              </p>
-
-              <h4 className="font-semibold text-slate-700 mb-4">Vorteile:</h4>
-              <p className="text-slate-600 mb-4">
-                <strong>Komfort & Freiheit:</strong> Durch die brillenfreie 3D-Darstellung wird längeres Arbeiten angenehmer, da keine störende 3D-Brille erforderlich ist.
-              </p>
-              <p className="text-slate-600 mb-4">
-                <strong>MultiView für Gruppen:</strong> Mehrere Personen können gleichzeitig den 3D-Effekt erleben, damit ist das Gerät ideal für Präsentationen und Teamarbeit geeignet.
-              </p>
-              <p className="text-slate-600 mb-4">
-                <strong>Intuitives Verständnis:</strong> Räumliche Zusammenhänge werden schneller und natürlicher erfasst als auf flachen 2D-Displays, damit wird die Informationsaufnahme deutlich verbessert.
-              </p>
-              <p className="text-slate-600 mb-4">
-                <strong>Flexibilität:</strong> Ein einziges Gerät kann sowohl für Standard-Büroaufgaben (2D) als auch für spezialisierte 3D-Anwendungen verwendet werden.
+              <p className="text-slate-600 mb-2">
+                <strong>Hybrid-Betrieb:</strong> 2D-Modus (Full 4K) und 3D-Modus möglich.
               </p>
               <p className="text-slate-600">
-                <strong>Professionelle Ergebnisse:</strong> Durch die präzise Beurteilung von Proportionen und Tiefe werden Fehler in frühen Entwicklungsphasen vermieden.
+                <strong>Autostereoskopie:</strong> Räumliche Darstellung erfolgt direkt über die Displayoberfläche; keine 3D-Brillen erforderlich.
+              </p>
+            </SubSection>
+
+            <SubSection id="schnittstellen" title="3.2 Schnittstellen und Signalübertragung">
+              <p className="text-slate-600 mb-4">
+                Für den Betrieb sind zwei Verbindungen zum Quellgerät (PC) zwingend erforderlich:
+              </p>
+              <p className="text-slate-600 mb-2">
+                <strong>1. HDMI-Anschluss:</strong> Übertragung des Bildsignals (Video-Daten).
+              </p>
+              <p className="text-slate-600">
+                <strong>2. USB-Anschluss:</strong> Übertragung der PC-Steuerung.
+              </p>
+            </SubSection>
+
+            <SubSection id="anwendung" title="3.3 Anwendung und Nutzen">
+              <p className="text-slate-600 mb-2">
+                <strong>Räumliche Analyse:</strong> Komplexe 3D-Strukturen (z. B. CAD, Medizin-Daten) lassen sich schneller erfassen als auf herkömmlichen 2D-Monitoren.
+              </p>
+              <p className="text-slate-600 mb-2">
+                <strong>Kollaboratives Arbeiten:</strong> Gemeinsame Betrachtung von 3D-Inhalten in Gruppen ohne technische Barrieren (3D-Brillen).
+              </p>
+              <p className="text-slate-600">
+                <strong>Prozessoptimierung:</strong> Frühzeitige Erkennung von Proportionen und räumlichen Fehlern in der Entwicklungs- oder Planungsphase.
               </p>
             </SubSection>
 
