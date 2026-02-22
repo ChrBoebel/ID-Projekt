@@ -3,14 +3,20 @@
 interface SectionLinkProps {
   sectionId: string;
   text: string;
+  onNavigate?: () => void;
 }
 
-export default function SectionLink({ sectionId, text }: SectionLinkProps) {
+export default function SectionLink({ sectionId, text, onNavigate }: SectionLinkProps) {
   const handleClick = () => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    // Close chat first (on mobile it covers the page)
+    onNavigate?.();
+    // Small delay so the chat closes before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
   };
 
   return (

@@ -6,6 +6,7 @@ import SectionLink from "./SectionLink";
 interface ChatMessageProps {
   role: "user" | "assistant";
   content: string;
+  onNavigate?: () => void;
 }
 
 /**
@@ -32,7 +33,7 @@ function parseContent(content: string) {
   return parts;
 }
 
-export default function ChatMessage({ role, content }: ChatMessageProps) {
+export default function ChatMessage({ role, content, onNavigate }: ChatMessageProps) {
   const isUser = role === "user";
   const parsed = parseContent(content);
 
@@ -57,7 +58,7 @@ export default function ChatMessage({ role, content }: ChatMessageProps) {
             </Fragment>
           ) : (
             <span key={i} className="block my-1">
-              <SectionLink sectionId={part.sectionId} text={part.text} />
+              <SectionLink sectionId={part.sectionId} text={part.text} onNavigate={onNavigate} />
             </span>
           )
         )}

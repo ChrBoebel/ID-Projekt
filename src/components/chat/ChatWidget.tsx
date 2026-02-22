@@ -36,6 +36,18 @@ export default function ChatWidget() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Body scroll lock on mobile when chat is open
+  useEffect(() => {
+    if (isOpen && window.innerWidth < 640) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   const sendMessage = async () => {
     const text = inputValue.trim();
     if (!text || isLoading) return;
@@ -136,11 +148,19 @@ export default function ChatWidget() {
 
   return (
     <div className="chat-widget fixed bottom-6 right-6 z-50 print-hide">
+      {/* Mobile Backdrop */}
+      {isOpen && (
+        <div
+          className="hidden max-sm:block fixed inset-0 bg-black/40 z-40 chat-backdrop"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
       {/* Chat Panel */}
       {isOpen && (
-        <div className="absolute bottom-16 right-0 w-[360px] sm:w-[400px] h-[500px] max-h-[80vh] bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden chat-slide-up max-sm:fixed max-sm:inset-2 max-sm:bottom-20 max-sm:w-auto max-sm:h-auto max-sm:rounded-2xl">
+        <div className="absolute bottom-16 right-0 w-[360px] sm:w-[400px] h-[500px] max-h-[80vh] bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden chat-slide-up max-sm:fixed max-sm:inset-0 max-sm:z-50 max-sm:w-full max-sm:h-full max-sm:max-h-none max-sm:rounded-none max-sm:border-none">
           {/* Header */}
-          <div className="bg-[#003E77] text-white px-4 py-3 flex items-center justify-between shrink-0">
+          <div className="bg-[#003E77] text-white px-4 py-3 flex items-center justify-between shrink-0 max-sm:pt-[max(0.75rem,env(safe-area-inset-top))]">
             <div className="flex items-center gap-2">
               <MessageCircle className="w-5 h-5" />
               <span className="font-medium text-sm">3D-Display Assistent</span>
@@ -159,7 +179,7 @@ export default function ChatWidget() {
             className="flex-1 overflow-y-auto p-4 space-y-1"
           >
             {messages.map((msg) => (
-              <ChatMessage key={msg.id} role={msg.role} content={msg.content} />
+              <ChatMessage key={msg.id} role={msg.role} content={msg.content} onNavigate={() => setIsOpen(false)} />
             ))}
             {isLoading &&
               messages[messages.length - 1]?.content === "" && (
@@ -195,7 +215,7 @@ export default function ChatWidget() {
       {/* Floating Bubble */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-14 h-14 rounded-full bg-[#003E77] hover:bg-[#004A99] text-white shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-105 ${
+        className={`relative z-50 w-14 h-14 rounded-full bg-[#003E77] hover:bg-[#004A99] text-white shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-105 ${
           !hasAnimated && !isOpen ? "chat-pulse" : ""
         }`}
         aria-label={isOpen ? "Chat schließen" : "Chat öffnen"}
