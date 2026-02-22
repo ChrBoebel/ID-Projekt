@@ -1,6 +1,7 @@
 "use client";
 
 import { Fragment } from "react";
+import ReactMarkdown from "react-markdown";
 import SectionLink from "./SectionLink";
 
 interface ChatMessageProps {
@@ -48,14 +49,21 @@ export default function ChatMessage({ role, content, onNavigate }: ChatMessagePr
       >
         {parsed.map((part, i) =>
           typeof part === "string" ? (
-            <Fragment key={i}>
-              {part.split("\n").map((line, j, arr) => (
-                <Fragment key={j}>
-                  {line}
-                  {j < arr.length - 1 && <br />}
-                </Fragment>
-              ))}
-            </Fragment>
+            <ReactMarkdown
+              key={i}
+              components={{
+                p: ({ children }) => <span className="block mb-1 last:mb-0">{children}</span>,
+                strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
+                ul: ({ children }) => <ul className="list-disc pl-4 my-1">{children}</ul>,
+                ol: ({ children }) => <ol className="list-decimal pl-4 my-1">{children}</ol>,
+                li: ({ children }) => <li className="mb-0.5">{children}</li>,
+                a: ({ href, children }) => (
+                  <a href={href} className="underline" target="_blank" rel="noopener noreferrer">{children}</a>
+                ),
+              }}
+            >
+              {part}
+            </ReactMarkdown>
           ) : (
             <span key={i} className="block my-1">
               <SectionLink sectionId={part.sectionId} text={part.text} onNavigate={onNavigate} />
