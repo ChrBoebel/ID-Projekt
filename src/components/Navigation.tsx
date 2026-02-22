@@ -281,14 +281,16 @@ export default function Navigation() {
       <header className="lg:hidden fixed top-1 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-3">
-            <Image
-              src="/images/3d-global-logo.svg"
-              alt="3D Global Logo"
-              width={240}
-              height={80}
-              unoptimized
-              className="h-8 w-auto"
-            />
+            <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="cursor-pointer">
+              <Image
+                src="/images/3d-global-logo.svg"
+                alt="3D Global Logo"
+                width={240}
+                height={80}
+                unoptimized
+                className="h-8 w-auto"
+              />
+            </button>
           </div>
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -416,14 +418,16 @@ export default function Navigation() {
         <div className="p-8 pb-4">
           {/* Logo */}
           <div className="mb-8">
-            <Image
-              src="/images/3d-global-logo.svg"
-              alt="3D Global Logo"
-              width={300}
-              height={100}
-              unoptimized
-              className="h-12 w-auto"
-            />
+            <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="cursor-pointer">
+              <Image
+                src="/images/3d-global-logo.svg"
+                alt="3D Global Logo"
+                width={300}
+                height={100}
+                unoptimized
+                className="h-12 w-auto"
+              />
+            </button>
           </div>
 
           {/* Search */}
