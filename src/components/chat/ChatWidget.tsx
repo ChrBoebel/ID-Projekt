@@ -248,11 +248,13 @@ export default function ChatWidget() {
 
               return (
                 <div key={msg.id}>
-                  <ChatMessage
-                    role={msg.role}
-                    content={msg.content}
-                    onNavigate={() => setIsOpen(false)}
-                  />
+                  {msg.content !== "" && (
+                    <ChatMessage
+                      role={msg.role}
+                      content={msg.content}
+                      onNavigate={() => setIsOpen(false)}
+                    />
+                  )}
                   {showInitial && (
                     <SuggestedQuestions
                       questions={INITIAL_SUGGESTIONS}
