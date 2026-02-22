@@ -24,25 +24,21 @@ export const sectionMap: Record<string, SectionInfo> = {
     title: "2.1 Bestimmungsgemäße Verwendung",
     description: "Bestimmungsgemäße Verwendung des 3D-Displays",
   },
-  gesundheit: {
-    title: "2.2 Gesundheitshinweise (3D-spezifisch)",
-    description: "Epilepsie, visuelle Belastung, Unwohlsein, Altersbeschränkung",
+  voraussetzungen: {
+    title: "2.2 Bevor Sie das Gerät verwenden",
+    description: "Voraussetzungen vor der Gerätenutzung",
   },
-  elektrisch: {
-    title: "2.3 Elektrische Sicherheit",
-    description: "Stromschlag- und Brandgefahr, Netzkabel, Gehäuse, Feuchtigkeit",
+  uebergreifend: {
+    title: "2.3 Übergreifende Sicherheitshinweise",
+    description: "Allgemeine Sicherheitsregeln",
   },
-  aufstellung: {
-    title: "2.4 Aufstellung und Montage",
-    description: "VESA-Halterung, Tragfähigkeit, Belüftung, Montage",
+  spezifisch: {
+    title: "2.4 Spezifische Sicherheitshinweise",
+    description: "Sicherheitshinweise für Montage, Benutzung, Reinigung, Entsorgung",
   },
-  glasscheibe: {
-    title: "2.5 Umgang mit der Glasscheibe",
-    description: "Bruchgefahr, Verletzungsgefahr, Druckeinwirkung",
-  },
-  betriebsumgebung: {
-    title: "2.6 Betriebsumgebung und Belüftung",
-    description: "Lüftungsschlitze, Wärmequellen, Überhitzungsgefahr",
+  notfall: {
+    title: "2.5 Verhalten im Notfall",
+    description: "Notfallverhalten bei Rauch, Brand, medizinischen Notfällen",
   },
   leistung: {
     title: "3. Produktübersicht",

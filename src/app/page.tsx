@@ -187,7 +187,7 @@ export default function Home() {
             subtitle="Wichtige Sicherheitshinweise für den sicheren Betrieb"
           >
             <p className="text-slate-600 mb-6">
-              In dieser Bedienungsanleitung werden die folgenden Signalwörter und Symbole verwendet, um auf Gefahren und wichtige Informationen hinzuweisen. Lesen und beachten Sie stets alle Sicherheitshinweise.
+              Dieses Kapitel enthält grundlegende Regeln für den sicheren Betrieb des 3D-Displays. Das Produkt darf nur in technisch einwandfreiem Zustand und bestimmungsgemäß verwendet werden.
             </p>
 
             <SubSection id="signalwoerter" title="Verwendete Signalwörter und Symbole">
@@ -260,100 +260,92 @@ export default function Home() {
 
             <SubSection id="bestimmung" title="2.1 Bestimmungsgemäße Verwendung">
               <p className="text-slate-600">
-                Dieses Gerät dient zur brillenlosen 3D-Visualisierung für Einzelnutzer und Gruppen
-                in trockenen Innenräumen. Der Betrieb ist montiert auf zertifizierten VESA-Halterungen zulässig.
+                Das Gerät dient zur brillenlosen 3D-Visualisierung für Einzelnutzer und Gruppen in trockenen Innenräumen. Jede andere Verwendung gilt als nicht bestimmungsgemäß und kann zu unvorhersehbaren Gefahren führen.
               </p>
             </SubSection>
 
-            <SubSection id="gesundheit" title="2.2 Gesundheitshinweise (3D-spezifisch)">
+            <SubSection id="voraussetzungen" title="2.2 Bevor Sie das Gerät verwenden">
               <p className="text-slate-600 mb-4">
-                <strong>Epilepsie:</strong> Bestimmte 3D-Muster können Anfälle auslösen. Bei Schwindel oder Muskelzuckungen Nutzung sofort abbrechen. Bei einem länger als 15 Minuten andauernden epileptischen Anfall einen Notruf absetzen.
+                Anwender müssen diese Anleitung gelesen und verstanden haben.
               </p>
               <p className="text-slate-600 mb-4">
-                <strong>Visuelle Belastung:</strong> Die MultiView-Darstellung kann bei langem Gebrauch zu Augenermüdung führen, damit diese vermieden wird, empfehlen sich 15 Minuten Pause nach 60 Minuten Betrieb.
+                Auf Gefahren bei Benutzung mit Epilepsie hinweisen. Bestimmte Licht- und Farbmuster können bei entsprechend Personen zu Krampfanfällen führen.
               </p>
               <p className="text-slate-600 mb-4">
-                <strong>Unwohlsein:</strong> Die räumliche Darstellung kann Schwindel oder Übelkeit verursachen, damit es nicht zu einer Verschlechterung kommt, ist die Betrachtung bei ersten Anzeichen von Unwohlsein sofort zu beenden und der Blick dauerhaft vom 3D-Display abzuwenden. Das Gerät darf nicht weiterverwendet werden, bis die Symptome vollständig abgeklungen sind.
+                Kindern unter 6 Jahren die Nutzung des Geräts untersagen. Das Sehvermögen von Kleinkindern befindet sich noch in der Entwicklung. Die räumliche Darstellung kann diese Entwicklung beeinträchtigen.
               </p>
               <p className="text-slate-600">
-                <strong>Altersbeschränkung:</strong> Das Gerät ist nicht empfohlen für Kinder unter 6 Jahren, da sich das Sehvermögen noch in der Entwicklung befindet.
+                3D-Inhalte nur durch geschultes Personal erstellen lassen. Falsch konfigurierte 3D-Dateien belasten das visuelle System des Nutzers. Dies kann Schwindel, Übelkeit und Unwohlsein auslösen.
               </p>
             </SubSection>
 
-            <SubSection id="elektrisch" title="2.3 Elektrische Sicherheit">
+            <SubSection id="uebergreifend" title="2.3 Übergreifende Sicherheitshinweise">
               <p className="text-slate-600 mb-4">
-                Um die Gefahr von Stromschlägen oder Bränden zu vermeiden, beachten Sie folgende Hinweise:
+                Alle Kabel so verlegen, dass sie keine Stolperfallen bilden. Stolperunfälle können zu Sturzverletzungen des Nutzers führen oder das Gerät gewaltsam von der Halterung reißen.
               </p>
               <p className="text-slate-600 mb-4">
-                <strong>Stromquelle:</strong> Das Gerät darf nur an eine ordnungsgemäß geerdete Steckdose mit der auf dem Typenschild angegebenen Spannung angeschlossen werden.
+                Das Gerät niemals als Ablagefläche verwenden. Gegenstände auf dem Gehäuse blockieren die notwendige Luftzirkulation. Ein daraus resultierender Wärmestau führt zur Überhitzung und erhöht die Brandgefahr.
               </p>
               <p className="text-slate-600 mb-4">
-                <strong>Netzkabel:</strong> Es ist darauf zu achten, dass das Netzkabel nicht eingeklemmt, geknickt oder über scharfe Kanten geführt wird. Das Kabel ist immer am Stecker aus der Steckdose zu ziehen, niemals am Kabel selbst.
-              </p>
-              <p className="text-slate-600 mb-4">
-                <strong>Gehäuse:</strong> Damit die Gefahr von Stromschlägen oder Bränden vermieden wird, darf das Gehäuse niemals geöffnet werden. Wartungsarbeiten dürfen nur von qualifiziertem Personal durchgeführt werden.
-              </p>
-              <p className="text-slate-600 mb-4">
-                <strong>Überlastung:</strong> Es dürfen nicht zu viele Geräte an dieselbe Steckdose oder Verlängerungsschnur angeschlossen werden, damit eine Überlastung der Stromversorgung vermieden wird.
-              </p>
-              <p className="text-slate-600 mb-4">
-                <strong>Feuchtigkeit:</strong> Das Gerät darf niemals in der Nähe von Wasser oder im Freien betrieben werden, damit Kurzschlüsse durch Feuchtigkeit vermieden werden. Es ist vor Tropf- und Spritzwasser zu schützen.
+                Keine eigenmächtigen Änderungen oder Umbauten am Gerät vornehmen. Durch das Öffnen des Gehäuses oder Manipulationen an der Technik wird der werkseitige Schutz gegen elektrischen Schlag aufgehoben. Dies führt zu lebensgefährlichen Stromschlägen.
               </p>
               <p className="text-slate-600">
-                <strong>Fremdkörper:</strong> Es dürfen niemals Fremdkörper in die Öffnungen am Displaygehäuse geschoben werden, da dies Kurzschlüsse verursachen kann, welche zu Bränden oder Stromschlägen führen können.
+                Das Gerät bei gesprungenem Glas sofort außer Betrieb nehmen. Eine beschädigte Glasoberfläche besitzt keine Schutzwirkung mehr. Es besteht ein hohes Risiko für tiefe Schnittverletzungen bei Berührung.
               </p>
             </SubSection>
 
-            <SubSection id="aufstellung" title="2.4 Aufstellung und Montage">
+            <SubSection id="spezifisch" title="2.4 Spezifische Sicherheitshinweise">
+              <h4 className="font-semibold text-slate-700 mb-4 mt-2">Montage und Inbetriebnahme</h4>
               <p className="text-slate-600 mb-4">
-                Das Gerät wird an einer VESA-kompatiblen Wandhalterung oder einem Standfuß montiert.
+                Das 3D-Display aufgrund des hohen Eigengewichts vorzugsweise mit zwei Personen heben und montieren. Das Gewicht des Geräts kann die körperliche Belastbarkeit einer Einzelperson überschreiten. Ein Heben ohne Unterstützung begünstigt Rückenverletzungen oder führt zum Herabfallen und der Zerstörung des Displays.
+              </p>
+              <p className="text-slate-600 mb-4">
+                Ausschließlich zertifizierte VESA-Halterungen verwenden. Eine unterdimensionierte Halterung kann die Last des Displays nicht tragen und bricht. Das herabstürzende Gerät verursacht schwere Quetschungen oder Knochenbrüche.
+              </p>
+              <p className="text-slate-600 mb-4">
+                Einen Mindestabstand von 10 cm zu Wänden und Hindernissen einhalten. Eine unzureichende Belüftung führt zur Überhitzung interner Bauteile. Ein Wärmestau in den Lüftungsschlitzen kann einen Brand auslösen.
+              </p>
+              <p className="text-slate-600 mb-4">
+                Das Netzkabel vor jedem Einstecken auf Risse oder Brüche prüfen. Beschädigte Isolierungen legen spannungsführende Adern frei. Bei Kontakt wird die elektrische Spannung direkt auf den Benutzer übertragen.
               </p>
 
+              <h4 className="font-semibold text-slate-700 mb-4 mt-6">Benutzung</h4>
               <p className="text-slate-600 mb-4">
-                <strong>VESA-Halterung:</strong> Verwenden Sie ausschließlich Halterungen, die für das VESA-Maß und das spezifische Gewicht dieses 43 Zoll-3D-Displays zertifiziert sind.
+                Die Nutzung bei ersten Anzeichen von Schwindel oder Übelkeit sofort beenden. Die künstliche räumliche Darstellung kann den Gleichgewichtssinn stören und ein Unwohlsein erzeugen.
               </p>
               <p className="text-slate-600 mb-4">
-                <strong>Tragfähigkeit:</strong> Die Halterung und gegebenenfalls die Wand selbst müssen das Gewicht des 3D-Displays sicher tragen können, damit ein Herabfallen des Geräts verhindert wird.
+                Alle 60 Minuten eine Pause von mindestens 15 Minuten einlegen. Langes Benutzen ohne Unterbrechung führt zu starker Augenermüdung und Kopfschmerzen.
+              </p>
+
+              <h4 className="font-semibold text-slate-700 mb-4 mt-6">Reinigung</h4>
+              <p className="text-slate-600 mb-4">
+                Vor Beginn der Reinigung immer den Netzstecker ziehen. Reinigungsmittel können in das Innere gelangen und dort als elektrische Leiter fungieren. Dies führt zu schweren Verletzungen durch Stromschläge.
               </p>
               <p className="text-slate-600 mb-4">
-                <strong>Belüftung:</strong> Die Lüftungsöffnungen dürfen niemals abgedeckt werden, damit ein ausreichender Abstand zur Wand gewährleistet ist. Ein Wärmestau kann das Gerät beschädigen oder Brände verursachen.
+                Niemals nasse Tücher oder fließendes Wasser verwenden. Eindringende Flüssigkeit verursacht Kurzschlüsse, zerstört die empfindliche Elektronik und setzt metallische Gehäuseteile unter Spannung.
               </p>
-              <p className="text-slate-600 mb-4">
-                <strong>Stabiler Standplatz:</strong> Es ist auf einen stabilen Standplatz zu achten, damit der 3D-Display nicht umkippt. Es dürfen nur vom Hersteller empfohlene Halterungen oder Tische verwendet werden, da instabile Unterlagen zu Unfällen und Geräteschäden führen können.
-              </p>
-              <p className="text-slate-600 mb-4">
-                <strong>Montage:</strong> Bei der Montage ist genau der Anleitung zu folgen, damit eine sichere Befestigung gewährleistet wird. Es ist ausschließlich das Original-Zubehör zu verwenden.
-              </p>
+
+              <h4 className="font-semibold text-slate-700 mb-4 mt-6">Entsorgung</h4>
               <p className="text-slate-600">
-                <strong>Transport auf Wagen:</strong> Beim Bewegen des Geräts auf einem Wagen ist besonders vorsichtig zu fahren, damit ein Umfallen bei Unebenheiten vermieden wird.
+                Das Gerät ausschließlich bei offiziellen Elektronik-Sammelstellen abgeben. Im Inneren verbaute Komponenten enthalten Stoffe, die bei unsachgemäßer Entsorgung giftige Emissionen freisetzen und die Umwelt schädigen.
               </p>
             </SubSection>
 
-            <SubSection id="glasscheibe" title="2.5 Umgang mit der Glasscheibe">
-              <p className="text-slate-600 mb-4">
-                Trotz der robusten Bauweise besteht bei massiver mechanischer Einwirkung Bruchgefahr.
+            <SubSection id="notfall" title="2.5 Verhalten im Notfall">
+              <p className="text-slate-600 mb-6">
+                Bei Rauchentwicklung, Brandgeruch, ungewöhnlichen Geräuschen oder einem medizinischen Notfall (z. B. Epilepsieanfall):
               </p>
-              <p className="text-slate-600 mb-4">
-                <strong>Bruchschäden:</strong> Sollte die Glasscheibe springen oder zerbrechen, ist sofort der Netzstecker zu ziehen, damit keine weitere Gefährdung entsteht.
-              </p>
-              <p className="text-slate-600 mb-4">
-                <strong>Verletzungsgefahr:</strong> Glassplitter dürfen nicht mit bloßen Händen berührt werden, da akute Schnittgefahr besteht. Defekte Teile sind fachgerecht unter Verwendung von Schutzhandschuhen zu entsorgen.
-              </p>
-              <p className="text-slate-600">
-                <strong>Druckeinwirkung:</strong> Starker Druck oder Schläge auf die Oberfläche des 3D-Displays sind zu vermeiden, damit Beschädigungen der Glasscheibe verhindert werden.
-              </p>
-            </SubSection>
 
-            <SubSection id="betriebsumgebung" title="2.6 Betriebsumgebung und Belüftung">
-              <p className="text-slate-600 mb-4">
-                Unzureichende Belüftung oder die Nähe zu Wärmequellen kann zu einer Überhitzung des Geräts führen und Sachschäden verursachen.
-              </p>
-              <p className="text-slate-600 mb-4">
-                <strong>Lüftungsschlitze:</strong> Die Lüftungsöffnungen dürfen niemals abgedeckt werden (z. B. mit Zeitschriften oder Decken), damit eine ausreichende Belüftung sichergestellt ist. Ein Wärmestau kann das Gerät beschädigen oder Brände verursachen.
-              </p>
-              <p className="text-slate-600">
-                <strong>Wärmequellen:</strong> Das Gerät darf nicht in die Nähe von Heizkörpern, Öfen oder direkter Sonneneinstrahlung gestellt werden, damit eine Überhitzung vermieden wird.
-              </p>
+              <h4 className="font-semibold text-slate-700 mb-3">Medizinischer Notfall</h4>
+              <p className="text-slate-600 mb-2">Rufen Sie bei Bewusstlosigkeit oder Anfällen über 15 Minuten den Rettungsdienst.</p>
+              <p className="text-slate-600 mb-2"><strong>Visuellen Reiz stoppen:</strong> Schalten Sie das Display sofort aus.</p>
+              <p className="text-slate-600 mb-6"><strong>Betroffene sichern:</strong> Helfen Sie der Person beim Hinlegen, um Stürze zu vermeiden.</p>
+
+              <h4 className="font-semibold text-slate-700 mb-3">Rauch und Brand</h4>
+              <p className="text-slate-600 mb-2">Alarmieren Sie bei Feuer oder starkem Rauch die Feuerwehr.</p>
+              <p className="text-slate-600 mb-2"><strong>Stecker ziehen:</strong> Trennen Sie das Gerät sofort von der Steckdose, um die Stromzufuhr zu stoppen.</p>
+              <p className="text-slate-600 mb-2"><strong>Kein Wasser verwenden:</strong> Wasser leitet Strom – es besteht Lebensgefahr durch Stromschlag. Nutzen Sie nur CO₂-Löscher.</p>
+              <p className="text-slate-600"><strong>Sichern:</strong> Markieren Sie das Gerät mit „DEFEKT", um eine Wiederinbetriebnahme durch Dritte zu verhindern.</p>
             </SubSection>
           </Section>
 

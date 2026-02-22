@@ -39,11 +39,10 @@ const navItems: NavItem[] = [
     icon: ShieldAlert,
     subItems: [
       { id: "bestimmung", title: "Bestimmungsgemäße Verwendung" },
-      { id: "gesundheit", title: "Gesundheitshinweise" },
-      { id: "elektrisch", title: "Elektrische Sicherheit" },
-      { id: "aufstellung", title: "Aufstellung und Montage" },
-      { id: "glasscheibe", title: "Umgang mit der Glasscheibe" },
-      { id: "betriebsumgebung", title: "Betriebsumgebung" },
+      { id: "voraussetzungen", title: "Bevor Sie das Gerät verwenden" },
+      { id: "uebergreifend", title: "Übergreifende Sicherheitshinweise" },
+      { id: "spezifisch", title: "Spezifische Sicherheitshinweise" },
+      { id: "notfall", title: "Verhalten im Notfall" },
     ]
   },
   {
