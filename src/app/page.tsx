@@ -884,7 +884,6 @@ export default function Home() {
               <ul className="list-disc list-inside text-slate-600 space-y-1 ml-4">
                 <li><strong>Telefon:</strong> +49 7361 528299 – 0</li>
                 <li><strong>E-Mail:</strong> <a href="mailto:info@3d-global.com" className="text-blue-600 hover:underline">info@3d-global.com</a></li>
-                <li><strong>Kontaktformular:</strong> <a href="mailto:info@3d-global.com" className="text-blue-600 hover:underline">Anfrage senden</a></li>
               </ul>
 
               <div className="mt-4 p-4 bg-slate-100 rounded-lg">

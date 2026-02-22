@@ -50,9 +50,9 @@ const navItems: NavItem[] = [
     title: "Produktübersicht",
     icon: Sparkles,
     subItems: [
-      { id: "funktionen", title: "Zentrale Funktionen" },
-      { id: "einsatz", title: "Einsatzmöglichkeiten" },
-      { id: "vorteile", title: "Anwendervorteile" },
+      { id: "merkmale", title: "Technische Hauptmerkmale" },
+      { id: "schnittstellen", title: "Schnittstellen und Signalübertragung" },
+      { id: "anwendung", title: "Anwendung und Nutzen" },
       { id: "geraet", title: "Gerätebeschreibung" },
     ]
   },
