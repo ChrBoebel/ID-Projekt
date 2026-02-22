@@ -6,11 +6,15 @@ import type { ChatMessage } from "@/types/chat";
 const MAX_HISTORY = 20;
 
 export function createChatModel() {
+  const apiKey = process.env.OPENROUTER_API_KEY;
+  if (!apiKey) {
+    throw new Error("OPENROUTER_API_KEY is not set");
+  }
   return new ChatOpenAI({
-    modelName: "google/gemini-2.0-flash-001",
+    model: "google/gemini-3-flash-preview",
     temperature: 0.3,
     streaming: true,
-    openAIApiKey: process.env.OPENROUTER_API_KEY,
+    apiKey,
     configuration: {
       baseURL: "https://openrouter.ai/api/v1",
     },
