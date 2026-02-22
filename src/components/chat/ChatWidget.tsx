@@ -4,7 +4,31 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { MessageCircle, X } from "lucide-react";
 import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
+import SuggestedQuestions from "./SuggestedQuestions";
 import type { ChatMessage as ChatMessageType } from "@/types/chat";
+
+const INITIAL_SUGGESTIONS = [
+  "Wie richte ich das Display ein?",
+  "Welche Anschlüsse hat das Display?",
+  "Wie reinige ich den Bildschirm?",
+];
+
+function extractSuggestions(content: string): {
+  cleanContent: string;
+  suggestions: string[];
+} {
+  const match = content.match(/\[\[SUGGESTIONS:\s*(\[.*?\])\s*\]\]\s*$/);
+  if (!match) return { cleanContent: content, suggestions: [] };
+  try {
+    const suggestions = JSON.parse(match[1]) as string[];
+    return {
+      cleanContent: content.slice(0, match.index).trimEnd(),
+      suggestions,
+    };
+  } catch {
+    return { cleanContent: content, suggestions: [] };
+  }
+}
 
 const WELCOME_MESSAGE: ChatMessageType = {
   id: "welcome",
@@ -20,6 +44,9 @@ export default function ChatWidget() {
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [suggestedQuestions, setSuggestedQuestions] = useState<
+    Record<string, string[]>
+  >({});
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -48,8 +75,8 @@ export default function ChatWidget() {
     };
   }, [isOpen]);
 
-  const sendMessage = async () => {
-    const text = inputValue.trim();
+  const sendMessage = async (overrideText?: string) => {
+    const text = (overrideText ?? inputValue).trim();
     if (!text || isLoading) return;
 
     const userMessage: ChatMessageType = {
@@ -129,6 +156,27 @@ export default function ChatWidget() {
           }
         }
       }
+      // Extract suggestions from completed message
+      setMessages((prev) => {
+        const assistantMsg = prev.find((m) => m.id === assistantId);
+        if (!assistantMsg) return prev;
+
+        const { cleanContent, suggestions } = extractSuggestions(
+          assistantMsg.content
+        );
+        if (suggestions.length > 0) {
+          // Schedule suggestion state update for after this render
+          queueMicrotask(() =>
+            setSuggestedQuestions({ [assistantId]: suggestions })
+          );
+        }
+        if (cleanContent !== assistantMsg.content) {
+          return prev.map((m) =>
+            m.id === assistantId ? { ...m, content: cleanContent } : m
+          );
+        }
+        return prev;
+      });
     } catch {
       setMessages((prev) =>
         prev.map((m) =>
@@ -178,9 +226,48 @@ export default function ChatWidget() {
             ref={scrollContainerRef}
             className="flex-1 overflow-y-auto p-4 space-y-1"
           >
-            {messages.map((msg) => (
-              <ChatMessage key={msg.id} role={msg.role} content={msg.content} onNavigate={() => setIsOpen(false)} />
-            ))}
+            {messages.map((msg, index) => {
+              const isLastAssistant =
+                msg.role === "assistant" &&
+                !isLoading &&
+                index ===
+                  messages.reduce(
+                    (lastIdx, m, i) =>
+                      m.role === "assistant" ? i : lastIdx,
+                    -1
+                  );
+              const hasUserMessages = messages.some(
+                (m) => m.role === "user"
+              );
+              const showInitial =
+                msg.id === "welcome" && !hasUserMessages && !isLoading;
+              const showFollowUp =
+                isLastAssistant &&
+                msg.id !== "welcome" &&
+                suggestedQuestions[msg.id]?.length > 0;
+
+              return (
+                <div key={msg.id}>
+                  <ChatMessage
+                    role={msg.role}
+                    content={msg.content}
+                    onNavigate={() => setIsOpen(false)}
+                  />
+                  {showInitial && (
+                    <SuggestedQuestions
+                      questions={INITIAL_SUGGESTIONS}
+                      onSelect={(q) => sendMessage(q)}
+                    />
+                  )}
+                  {showFollowUp && (
+                    <SuggestedQuestions
+                      questions={suggestedQuestions[msg.id]}
+                      onSelect={(q) => sendMessage(q)}
+                    />
+                  )}
+                </div>
+              );
+            })}
             {isLoading &&
               messages[messages.length - 1]?.content === "" && (
                 <div className="flex justify-start mb-3">

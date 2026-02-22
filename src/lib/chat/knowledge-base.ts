@@ -23,7 +23,7 @@ Mitgelieferte Komponenten:
 - Schnellstartanleitung (Erste Schritte zur Inbetriebnahme)
 
 [#sicherheit] 2. SICHERHEIT
-Dieses Kapitel enthält grundlegende Regeln für den sicheren Betrieb des 3D-Displays. Das Produkt darf nur in technisch einwandfreiem Zustand und bestimmungsgemäß verwendet werden.
+In dieser Bedienungsanleitung werden die folgenden Signalwörter und Symbole verwendet, um auf Gefahren und wichtige Informationen hinzuweisen. Lesen und beachten Sie stets alle Sicherheitshinweise.
 
 [#signalwoerter] Verwendete Signalwörter und Symbole
 Vier farblich gekennzeichnete Warnstufen:
@@ -33,51 +33,42 @@ Vier farblich gekennzeichnete Warnstufen:
 - HINWEIS: Weist auf eine Situation hin, die zu Sachschäden führen kann. Enthält keine Warnung vor Personenschäden.
 
 [#bestimmung] 2.1 Bestimmungsgemäße Verwendung
-Das Gerät dient zur brillenlosen 3D-Visualisierung für Einzelnutzer und Gruppen in trockenen Innenräumen. Jede andere Verwendung gilt als nicht bestimmungsgemäß und kann zu unvorhersehbaren Gefahren führen.
+Dieses Gerät dient zur brillenlosen 3D-Visualisierung für Einzelnutzer und Gruppen in trockenen Innenräumen. Der Betrieb ist montiert auf zertifizierten VESA-Halterungen zulässig.
 
-[#voraussetzungen] 2.2 Bevor Sie das Gerät verwenden
-- Anwender müssen diese Anleitung gelesen und verstanden haben.
-- Auf Gefahren bei Benutzung mit Epilepsie hinweisen. Bestimmte Licht- und Farbmuster können bei entsprechend Personen zu Krampfanfällen führen.
-- Kindern unter 6 Jahren die Nutzung des Geräts untersagen. Das Sehvermögen von Kleinkindern befindet sich noch in der Entwicklung. Die räumliche Darstellung kann diese Entwicklung beeinträchtigen.
-- 3D-Inhalte nur durch geschultes Personal erstellen lassen. Falsch konfigurierte 3D-Dateien belasten das visuelle System des Nutzers. Dies kann Schwindel, Übelkeit und Unwohlsein auslösen.
+[#gesundheit] 2.2 Gesundheitshinweise (3D-spezifisch)
+WARNUNG - Epilepsie: Bestimmte 3D-Muster können Anfälle auslösen. Bei Schwindel oder Muskelzuckungen Nutzung sofort abbrechen. Bei einem länger als 15 Minuten andauernden epileptischen Anfall einen Notruf absetzen.
+Visuelle Belastung: Die MultiView-Darstellung kann bei langem Gebrauch zu Augenermüdung führen, damit diese vermieden wird, empfehlen sich 15 Minuten Pause nach 60 Minuten Betrieb.
+Unwohlsein: Die räumliche Darstellung kann Schwindel oder Übelkeit verursachen, damit es nicht zu einer Verschlechterung kommt, ist die Betrachtung bei ersten Anzeichen von Unwohlsein sofort zu beenden und der Blick dauerhaft vom 3D-Display abzuwenden. Das Gerät darf nicht weiterverwendet werden, bis die Symptome vollständig abgeklungen sind.
+Altersbeschränkung: Das Gerät ist nicht empfohlen für Kinder unter 6 Jahren, da sich das Sehvermögen noch in der Entwicklung befindet.
 
-[#uebergreifend] 2.3 Übergreifende Sicherheitshinweise
-VORSICHT - Stolpergefahr durch Kabel: Alle Kabel so verlegen, dass sie keine Stolperfallen bilden. Stolperunfälle können zu Sturzverletzungen des Nutzers führen oder das Gerät gewaltsam von der Halterung reißen.
-WARNUNG - Überhitzung und Brandgefahr: Das Gerät niemals als Ablagefläche verwenden. Gegenstände auf dem Gehäuse blockieren die notwendige Luftzirkulation. Ein daraus resultierender Wärmestau führt zur Überhitzung und erhöht die Brandgefahr.
-GEFAHR - Lebensgefährlicher Stromschlag: Keine eigenmächtigen Änderungen oder Umbauten am Gerät vornehmen. Durch das Öffnen des Gehäuses oder Manipulationen an der Technik wird der werkseitige Schutz gegen elektrischen Schlag aufgehoben. Dies führt zu lebensgefährlichen Stromschlägen.
-VORSICHT - Schnittverletzungen durch gesprungenes Glas: Das Gerät bei gesprungenem Glas sofort außer Betrieb nehmen. Eine beschädigte Glasoberfläche besitzt keine Schutzwirkung mehr. Es besteht ein hohes Risiko für tiefe Schnittverletzungen bei Berührung.
+[#elektrisch] 2.3 Elektrische Sicherheit
+GEFAHR - Stromschlag- und Brandgefahr: Um die Gefahr von Stromschlägen oder Bränden zu vermeiden, beachten Sie folgende Hinweise:
+Stromquelle: Das Gerät darf nur an eine ordnungsgemäß geerdete Steckdose mit der auf dem Typenschild angegebenen Spannung angeschlossen werden.
+Netzkabel: Es ist darauf zu achten, dass das Netzkabel nicht eingeklemmt, geknickt oder über scharfe Kanten geführt wird. Das Kabel ist immer am Stecker aus der Steckdose zu ziehen, niemals am Kabel selbst.
+Gehäuse: Damit die Gefahr von Stromschlägen oder Bränden vermieden wird, darf das Gehäuse niemals geöffnet werden. Wartungsarbeiten dürfen nur von qualifiziertem Personal durchgeführt werden.
+Überlastung: Es dürfen nicht zu viele Geräte an dieselbe Steckdose oder Verlängerungsschnur angeschlossen werden, damit eine Überlastung der Stromversorgung vermieden wird.
+Feuchtigkeit: Das Gerät darf niemals in der Nähe von Wasser oder im Freien betrieben werden, damit Kurzschlüsse durch Feuchtigkeit vermieden werden. Es ist vor Tropf- und Spritzwasser zu schützen.
+Fremdkörper: Es dürfen niemals Fremdkörper in die Öffnungen am Displaygehäuse geschoben werden, da dies Kurzschlüsse verursachen kann, welche zu Bränden oder Stromschlägen führen können.
 
-[#spezifisch] 2.4 Spezifische Sicherheitshinweise
-Montage und Inbetriebnahme:
-VORSICHT - Rückenverletzungen beim Heben: Das 3D-Display aufgrund des hohen Eigengewichts vorzugsweise mit zwei Personen heben und montieren.
-WARNUNG - Herabstürzendes Gerät durch ungeeignete Halterung: Ausschließlich zertifizierte VESA-Halterungen verwenden. Eine unterdimensionierte Halterung kann die Last des Displays nicht tragen.
-WARNUNG - Brandgefahr durch unzureichende Belüftung: Einen Mindestabstand von 10 cm zu Wänden und Hindernissen einhalten.
-GEFAHR - Stromschlag durch beschädigtes Netzkabel: Das Netzkabel vor jedem Einstecken auf Risse oder Brüche prüfen.
+[#aufstellung] 2.4 Aufstellung und Montage
+Das Gerät wird an einer VESA-kompatiblen Wandhalterung oder einem Standfuß montiert.
+HINWEIS: Verwenden Sie ausschließlich Halterungen, die für das VESA-Maß und das spezifische Gewicht dieses 43 Zoll-3D-Displays zertifiziert sind.
+Tragfähigkeit: Die Halterung und gegebenenfalls die Wand selbst müssen das Gewicht des 3D-Displays sicher tragen können, damit ein Herabfallen des Geräts verhindert wird.
+Belüftung: Die Lüftungsöffnungen dürfen niemals abgedeckt werden, damit ein ausreichender Abstand zur Wand gewährleistet ist. Ein Wärmestau kann das Gerät beschädigen oder Brände verursachen.
+Stabiler Standplatz: Es ist auf einen stabilen Standplatz zu achten, damit der 3D-Display nicht umkippt. Es dürfen nur vom Hersteller empfohlene Halterungen oder Tische verwendet werden, da instabile Unterlagen zu Unfällen und Geräteschäden führen können.
+Montage: Bei der Montage ist genau der Anleitung zu folgen, damit eine sichere Befestigung gewährleistet wird. Es ist ausschließlich das Original-Zubehör zu verwenden.
+Transport auf Wagen: Beim Bewegen des Geräts auf einem Wagen ist besonders vorsichtig zu fahren, damit ein Umfallen bei Unebenheiten vermieden wird.
 
-Benutzung:
-HINWEIS - Nutzung bei Unwohlsein sofort beenden. Die künstliche räumliche Darstellung kann den Gleichgewichtssinn stören.
-HINWEIS - Regelmäßige Pausen einlegen: Alle 60 Minuten eine Pause von mindestens 15 Minuten einlegen.
+[#glasscheibe] 2.5 Umgang mit der Glasscheibe
+VORSICHT - Bruchgefahr: Trotz der robusten Bauweise besteht bei massiver mechanischer Einwirkung Bruchgefahr.
+Bruchschäden: Sollte die Glasscheibe springen oder zerbrechen, ist sofort der Netzstecker zu ziehen, damit keine weitere Gefährdung entsteht.
+Verletzungsgefahr: Glassplitter dürfen nicht mit bloßen Händen berührt werden, da akute Schnittgefahr besteht. Defekte Teile sind fachgerecht unter Verwendung von Schutzhandschuhen zu entsorgen.
+Druckeinwirkung: Starker Druck oder Schläge auf die Oberfläche des 3D-Displays sind zu vermeiden, damit Beschädigungen der Glasscheibe verhindert werden.
 
-Reinigung:
-GEFAHR - Stromschlag bei der Reinigung: Vor Beginn der Reinigung immer den Netzstecker ziehen.
-WARNUNG - Kurzschluss durch Feuchtigkeit: Niemals nasse Tücher oder fließendes Wasser verwenden.
-
-Entsorgung:
-HINWEIS - Umweltgerechte Entsorgung: Das Gerät ausschließlich bei offiziellen Elektronik-Sammelstellen abgeben.
-
-[#notfall] 2.5 Verhalten im Notfall
-Bei Rauchentwicklung, Brandgeruch, ungewöhnlichen Geräuschen oder einem medizinischen Notfall (z. B. Epilepsieanfall):
-
-Medizinischer Notfall:
-- Rufen Sie bei Bewusstlosigkeit oder Anfällen über 15 Minuten den Rettungsdienst.
-- Visuellen Reiz stoppen: Schalten Sie das Display sofort aus.
-- Betroffene sichern: Helfen Sie der Person beim Hinlegen, um Stürze zu vermeiden.
-
-Rauch und Brand:
-- Alarmieren Sie bei Feuer oder starkem Rauch die Feuerwehr.
-- Stecker ziehen: Trennen Sie das Gerät sofort von der Steckdose.
-- Kein Wasser verwenden: Wasser leitet Strom – nutzen Sie nur CO₂-Löscher.
-- Sichern: Markieren Sie das Gerät mit „DEFEKT".
+[#betriebsumgebung] 2.6 Betriebsumgebung und Belüftung
+HINWEIS - Überhitzungsgefahr: Unzureichende Belüftung oder die Nähe zu Wärmequellen kann zu einer Überhitzung des Geräts führen und Sachschäden verursachen.
+Lüftungsschlitze: Die Lüftungsöffnungen dürfen niemals abgedeckt werden (z. B. mit Zeitschriften oder Decken), damit eine ausreichende Belüftung sichergestellt ist. Ein Wärmestau kann das Gerät beschädigen oder Brände verursachen.
+Wärmequellen: Das Gerät darf nicht in die Nähe von Heizkörpern, Öfen oder direkter Sonneneinstrahlung gestellt werden, damit eine Überhitzung vermieden wird.
 
 [#leistung] 3. PRODUKTÜBERSICHT
 Das Gerät ist ein autostereoskopisches 3D-Display zur brillenfreien Darstellung von 3D-Inhalten. Durch ein integriertes Linsensystem (Lentikular-Technologie) wird eine räumliche Tiefenwirkung ohne Zusatzhardware erzielt.
