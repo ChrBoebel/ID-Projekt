@@ -266,12 +266,9 @@ export default function Home() {
             </SubSection>
 
             <SubSection id="gesundheit" title="2.2 Gesundheitshinweise (3D-spezifisch)">
-              <WarningBox type="warnung" title="Epilepsie" icon="allgemein">
-                Bestimmte 3D-Muster können Anfälle auslösen. Bei Schwindel oder Muskelzuckungen
-                Nutzung sofort abbrechen. Bei einem länger als 15 Minuten andauernden epileptischen
-                Anfall einen Notruf absetzen.
-              </WarningBox>
-
+              <p className="text-slate-600 mb-4">
+                <strong>Epilepsie:</strong> Bestimmte 3D-Muster können Anfälle auslösen. Bei Schwindel oder Muskelzuckungen Nutzung sofort abbrechen. Bei einem länger als 15 Minuten andauernden epileptischen Anfall einen Notruf absetzen.
+              </p>
               <p className="text-slate-600 mb-4">
                 <strong>Visuelle Belastung:</strong> Die MultiView-Darstellung kann bei langem Gebrauch zu Augenermüdung führen, damit diese vermieden wird, empfehlen sich 15 Minuten Pause nach 60 Minuten Betrieb.
               </p>
@@ -284,11 +281,9 @@ export default function Home() {
             </SubSection>
 
             <SubSection id="elektrisch" title="2.3 Elektrische Sicherheit">
-              <WarningBox type="gefahr" title="Stromschlag- und Brandgefahr" icon="strom">
-                Um die Gefahr von Stromschlägen oder Bränden zu vermeiden, beachten Sie
-                folgende Hinweise:
-              </WarningBox>
-
+              <p className="text-slate-600 mb-4">
+                Um die Gefahr von Stromschlägen oder Bränden zu vermeiden, beachten Sie folgende Hinweise:
+              </p>
               <p className="text-slate-600 mb-4">
                 <strong>Stromquelle:</strong> Das Gerät darf nur an eine ordnungsgemäß geerdete Steckdose mit der auf dem Typenschild angegebenen Spannung angeschlossen werden.
               </p>
@@ -314,11 +309,9 @@ export default function Home() {
                 Das Gerät wird an einer VESA-kompatiblen Wandhalterung oder einem Standfuß montiert.
               </p>
 
-              <WarningBox type="hinweis">
-                Verwenden Sie ausschließlich Halterungen, die für das VESA-Maß und das
-                spezifische Gewicht dieses 43 Zoll-3D-Displays zertifiziert sind.
-              </WarningBox>
-
+              <p className="text-slate-600 mb-4">
+                <strong>VESA-Halterung:</strong> Verwenden Sie ausschließlich Halterungen, die für das VESA-Maß und das spezifische Gewicht dieses 43 Zoll-3D-Displays zertifiziert sind.
+              </p>
               <p className="text-slate-600 mb-4">
                 <strong>Tragfähigkeit:</strong> Die Halterung und gegebenenfalls die Wand selbst müssen das Gewicht des 3D-Displays sicher tragen können, damit ein Herabfallen des Geräts verhindert wird.
               </p>
@@ -337,10 +330,9 @@ export default function Home() {
             </SubSection>
 
             <SubSection id="glasscheibe" title="2.5 Umgang mit der Glasscheibe">
-              <WarningBox type="vorsicht" title="Bruchgefahr" icon="allgemein">
+              <p className="text-slate-600 mb-4">
                 Trotz der robusten Bauweise besteht bei massiver mechanischer Einwirkung Bruchgefahr.
-              </WarningBox>
-
+              </p>
               <p className="text-slate-600 mb-4">
                 <strong>Bruchschäden:</strong> Sollte die Glasscheibe springen oder zerbrechen, ist sofort der Netzstecker zu ziehen, damit keine weitere Gefährdung entsteht.
               </p>
@@ -353,10 +345,9 @@ export default function Home() {
             </SubSection>
 
             <SubSection id="betriebsumgebung" title="2.6 Betriebsumgebung und Belüftung">
-              <WarningBox type="hinweis" title="Überhitzungsgefahr">
+              <p className="text-slate-600 mb-4">
                 Unzureichende Belüftung oder die Nähe zu Wärmequellen kann zu einer Überhitzung des Geräts führen und Sachschäden verursachen.
-              </WarningBox>
-
+              </p>
               <p className="text-slate-600 mb-4">
                 <strong>Lüftungsschlitze:</strong> Die Lüftungsöffnungen dürfen niemals abgedeckt werden (z. B. mit Zeitschriften oder Decken), damit eine ausreichende Belüftung sichergestellt ist. Ein Wärmestau kann das Gerät beschädigen oder Brände verursachen.
               </p>
