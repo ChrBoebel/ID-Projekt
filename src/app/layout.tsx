@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import { ChatWidget } from "@/components/chat";
+import { EditProvider } from "@/contexts/EditContext";
 import "./globals.css";
 
 const sora = Sora({
@@ -26,8 +27,10 @@ export default function RootLayout({
   return (
     <html lang="de" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${sora.variable} ${inter.variable} font-sans antialiased bg-white text-slate-800`}>
-        {children}
-        <ChatWidget />
+        <EditProvider>
+          {children}
+          <ChatWidget />
+        </EditProvider>
       </body>
     </html>
   );

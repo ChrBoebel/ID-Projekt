@@ -1,7 +1,7 @@
 interface Step {
-  title?: string;
+  title?: React.ReactNode;
   content: React.ReactNode;
-  substeps?: string[];
+  substeps?: React.ReactNode[];
 }
 
 interface StepListProps {
@@ -69,8 +69,8 @@ export default function StepList({ steps, result }: StepListProps) {
 }
 
 interface ChecklistProps {
-  items: string[];
-  title?: string;
+  items: React.ReactNode[];
+  title?: React.ReactNode;
 }
 
 export function Checklist({ items, title }: ChecklistProps) {

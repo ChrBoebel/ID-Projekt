@@ -1,5 +1,5 @@
 interface TableProps {
-  headers: string[];
+  headers: React.ReactNode[];
   rows: (string | React.ReactNode)[][];
   caption?: string;
 }
@@ -77,7 +77,7 @@ export default function Table({ headers, rows, caption }: TableProps) {
 
 interface SpecTableProps {
   title?: string;
-  specs: { label: string; value: string | React.ReactNode }[];
+  specs: { label: React.ReactNode; value: string | React.ReactNode }[];
 }
 
 export function SpecTable({ title, specs }: SpecTableProps) {

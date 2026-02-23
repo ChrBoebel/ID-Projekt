@@ -1,7 +1,7 @@
 interface SectionProps {
   id: string;
-  title: string;
-  subtitle?: string;
+  title: React.ReactNode;
+  subtitle?: React.ReactNode;
   children: React.ReactNode;
 }
 
@@ -25,7 +25,7 @@ export default function Section({ id, title, subtitle, children, className }: Se
 
 interface SubSectionProps {
   id?: string;
-  title: string;
+  title: React.ReactNode;
   children: React.ReactNode;
 }
 

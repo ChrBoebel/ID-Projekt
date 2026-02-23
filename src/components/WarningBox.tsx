@@ -13,7 +13,7 @@ export type WarningIcon =
 
 interface WarningBoxProps {
   type: WarningType;
-  title?: string;
+  title?: React.ReactNode;
   icon?: WarningIcon;
   children: React.ReactNode;
 }

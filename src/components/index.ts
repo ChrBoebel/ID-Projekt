@@ -7,3 +7,5 @@ export { default as ImageGallery, SingleImage } from "./ImageGallery";
 export { default as Footer } from "./Footer";
 export { default as FeatureCard, FeatureGrid } from "./FeatureCard";
 export { default as ScrollToTop } from "./ScrollToTop";
+export { default as EditableText } from "./EditableText";
+export { default as EditModeToggle } from "./EditModeToggle";
