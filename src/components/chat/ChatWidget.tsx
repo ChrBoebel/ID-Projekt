@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { MessageCircle, X } from "lucide-react";
+import { BotMessageSquare, X } from "lucide-react";
 import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
 import SuggestedQuestions from "./SuggestedQuestions";
@@ -210,7 +210,7 @@ export default function ChatWidget() {
           {/* Header */}
           <div className="bg-[#003E77] text-white px-4 py-3 flex items-center justify-between shrink-0 max-sm:pt-[max(0.75rem,env(safe-area-inset-top))]">
             <div className="flex items-center gap-2">
-              <MessageCircle className="w-5 h-5" />
+              <BotMessageSquare className="w-5 h-5" />
               <span className="font-medium text-sm">3D-Display Assistent</span>
             </div>
             <button
@@ -312,7 +312,7 @@ export default function ChatWidget() {
         {isOpen ? (
           <X className="w-6 h-6" />
         ) : (
-          <MessageCircle className="w-6 h-6" />
+          <BotMessageSquare className="w-6 h-6" />
         )}
       </button>
     </div>

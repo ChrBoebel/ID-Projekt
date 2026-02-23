@@ -63,11 +63,11 @@ export default function Footer() {
                 <p className="font-medium mb-4 sm:mb-6">Downloads</p>
                 <div className="flex items-start gap-4 sm:gap-6">
                   {/* Booklet */}
-                  <a href="#" className="flex flex-col items-center gap-1.5 sm:gap-2 group">
+                  <a href="/Quick-Start-Guide.pdf" download="Quick-Start-Guide.pdf" className="flex flex-col items-center gap-1.5 sm:gap-2 group">
                     <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-[#73C7D4] transition-colors">
                       <svg className="w-5 h-5 sm:w-7 sm:h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M21 4H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM3 18V6h8v12H3zm18 0h-8V6h8v12zM9 10H4v2h5v-2zm0 4H4v2h5v-2zm5-4h5v2h-5v-2zm0 4h5v2h-5v-2z" /></svg>
                     </div>
-                    <span className="text-xs text-center group-hover:text-[#73C7D4] transition-colors">Booklet</span>
+                    <span className="text-xs text-center group-hover:text-[#73C7D4] transition-colors">Quick-Start</span>
                   </a>
                   {/* Information */}
                   <a href="#" className="flex flex-col items-center gap-1.5 sm:gap-2 group">

@@ -6,3 +6,4 @@ export { default as StepList, Checklist } from "./StepList";
 export { default as ImageGallery, SingleImage } from "./ImageGallery";
 export { default as Footer } from "./Footer";
 export { default as FeatureCard, FeatureGrid } from "./FeatureCard";
+export { default as ScrollToTop } from "./ScrollToTop";

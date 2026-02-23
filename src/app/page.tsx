@@ -10,11 +10,13 @@ import {
   Checklist,
   SingleImage,
   Footer,
+  ScrollToTop,
 } from "@/components";
 
 export default function Home() {
   return (
     <>
+      <ScrollToTop />
       <Navigation />
 
       <main className="lg:ml-[280px] min-h-screen">
